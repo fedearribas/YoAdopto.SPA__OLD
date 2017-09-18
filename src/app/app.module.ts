@@ -1,3 +1,4 @@
+import { AdoptionsService } from './adoptions/adoptions.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { LostComponent } from './lost/lost.component';
 import { AdoptionItemComponent } from './adoptions/adoption-list/adoption-item/adoption-item.component';
 import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.component';
+import { AdoptionDetailComponent } from './adoptions/adoption-detail/adoption-detail.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,15 @@ import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.c
     HeaderComponent,
     LostComponent,
     AdoptionItemComponent,
-    AdoptionListComponent
+    AdoptionListComponent,
+    AdoptionDetailComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AdoptionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

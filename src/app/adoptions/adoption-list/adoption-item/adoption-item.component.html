@@ -4,7 +4,11 @@
     <div class="caption">
       <h3>{{ adoption.pet.name }}</h3>
       <p>{{ adoption.description }}</p>
-      <p><a class="btn btn-primary" role="button">Ver mas</a></p>
+      <p class="small"> {{ adoption.publishedDate | date }}</p>
+      <p>
+        <a class="btn btn-success" role="button">Adoptar</a>
+        <a class="btn btn-primary" [routerLink]="[adoption.id]">Ver mas</a>
+      </p>
     </div>
   </div>
 </div>

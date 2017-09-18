@@ -1,7 +1,9 @@
   export class Pet {
-    constructor(private name: string,
-                private age: number,
-                private image: string,
-                private adopted: boolean,
-                private lost: boolean) {}
+    constructor(
+                public id: number,
+                public name: string,
+                public age: number,
+                public image: string,
+                public adopted: boolean,
+                public lost: boolean) {}
   }
