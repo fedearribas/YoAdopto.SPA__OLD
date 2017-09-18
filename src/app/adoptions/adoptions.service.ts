@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AdoptionsService {
 
-  private baseUrl = 'http://localhost:51916/api/adoptions';
+  private baseUrl = 'http://yoadoptoap.azurewebsites.net/api/adoptions';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,5 +28,9 @@ export class AdoptionsService {
         return adoption;
       }
     );
+  }
+
+  insertAdoption(adoption: Adoption) {
+    return this.httpClient.post(this.baseUrl, adoption);
   }
 }

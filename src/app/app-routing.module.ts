@@ -1,3 +1,4 @@
+import { AdoptionFormComponent } from './adoptions/adoption-form/adoption-form.component';
 import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.component';
 import { AdoptionDetailComponent } from './adoptions/adoption-detail/adoption-detail.component';
 import { AdoptionsComponent } from './adoptions/adoptions.component';
@@ -10,7 +11,9 @@ const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'adoptions', component: AdoptionsComponent, children: [
     {path: '', component: AdoptionListComponent },
-    {path: ':id', component: AdoptionDetailComponent }
+    {path: 'new', component: AdoptionFormComponent },
+    {path: ':id', component: AdoptionDetailComponent },
+    {path: ':id/edit', component: AdoptionFormComponent }
   ] },
   {path: 'lost', component: LostComponent }
 ];

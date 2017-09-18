@@ -27,10 +27,26 @@ export class AdoptionListComponent implements OnInit {
       'Hermoso gato', new Date()) */
   ];
 
+  dataAvailable = true;
+  errorMessage = '';
+
   ngOnInit() {
     this.adoptionService
     .getAll()
-    .subscribe(p => this.adoptions = p);
+    .subscribe(
+      p => {
+        this.dataAvailable = true;
+        this.adoptions = p;
+        if (this.adoptions.length <= 0) {
+          this.errorMessage = 'No hay adopciones cargadas.';
+        }
+      },
+      err => {
+        this.dataAvailable = false;
+        this.errorMessage = 'Ocurrió un problema recuperando la información. Vuelva a intentarlo en unos minutos.';
+        console.log('Error obteniendo la información');
+      }
+    );
   }
 
 }
