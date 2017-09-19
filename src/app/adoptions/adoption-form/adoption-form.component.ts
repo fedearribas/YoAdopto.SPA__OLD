@@ -1,5 +1,4 @@
 import { AdoptionsService } from './../adoptions.service';
-import { Pet } from './../../shared/pet.model';
 import { Adoption } from './../adoption.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -38,10 +37,10 @@ export class AdoptionFormComponent implements OnInit {
     const ageUnit = this.adoptionForm.value['ageUnit'];
     const phone = this.adoptionForm.value['phone'];
     const email = this.adoptionForm.value['email'];
-    const pet = new Pet(name, age, ageUnit, image, false, false);
-    const adoption = new Adoption(pet, description, new Date(), phone, email);
+    const adoption = new Adoption(name, age, ageUnit, image, false, description, new Date(), phone, email);
     this.adoptionsService.insertAdoption(adoption).subscribe();
-    this.router.navigate(['/']);
+    console.log(adoption);
+    this.router.navigate(['adoptions']);
   }
 
 }
