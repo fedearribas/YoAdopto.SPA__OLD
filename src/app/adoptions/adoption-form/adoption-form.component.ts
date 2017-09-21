@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdoptionFormComponent implements OnInit {
   adoptionForm: FormGroup;
+  adoption = new Adoption;
   constructor(private adoptionsService: AdoptionsService, private router: Router) { }
 
   ngOnInit() {
