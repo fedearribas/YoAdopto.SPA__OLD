@@ -31,4 +31,9 @@ export class AdoptionsMemoryService {
     );
   }
 
+  insertAdoption(adption: Adoption) {
+    this.adoptions.push(adption);
+    this.adoptionsListChanged.next(this.adoptions.slice());
+  }
+
 }
