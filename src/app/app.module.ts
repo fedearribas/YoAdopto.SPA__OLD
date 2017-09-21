@@ -15,6 +15,7 @@ import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.c
 import { AdoptionDetailComponent } from './adoptions/adoption-detail/adoption-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdoptionFormComponent } from './adoptions/adoption-form/adoption-form.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AdoptionFormComponent } from './adoptions/adoption-form/adoption-form.c
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [AdoptionsService],
   bootstrap: [AppComponent]

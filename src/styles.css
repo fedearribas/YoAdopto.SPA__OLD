@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin-top: 80px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/images/perrito.png");
+  background-size:cover;
+}

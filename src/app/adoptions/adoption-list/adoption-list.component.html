@@ -5,9 +5,12 @@
 </div>
 <hr>
 <div class="row">
+  <div class="card-group" *ngIf="adoptions">
   <app-adoption-item *ngFor="let adoption of adoptions;" [adoption]="adoption"></app-adoption-item>
 </div>
-<div class="row">
+<div class="row" *ngIf="errorMessage">
   <h2>{{ errorMessage }}</h2>
 </div>
-
+<div class="row" *ngIf="noDataMsg">
+  <h2 class="display-4 text-muted"></h2>
+</div>

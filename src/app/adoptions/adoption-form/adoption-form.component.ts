@@ -40,7 +40,7 @@ export class AdoptionFormComponent implements OnInit {
     const adoption = new Adoption(name, age, ageUnit, image, false, description, new Date(), phone, email);
     this.adoptionsService.insertAdoption(adoption).subscribe();
     console.log(adoption);
-    this.router.navigate(['adoptions']);
+    this.router.navigate(['/adoptions']);
   }
 
 }

@@ -1,14 +1,10 @@
-<div class="col-sm-6 col-md-4">
-  <div class="thumbnail">
-    <img src="{{ adoption.image }}" alt="{{ adoption.name }}">
-    <div class="caption">
-      <h3>{{ adoption.name }}</h3>
-      <p>{{ adoption.description }}</p>
-      <p class="small"> {{ adoption.published_date | date }}</p>
-      <p>
-        <a class="btn btn-success" role="button">Adoptar</a>
-        <a class="btn btn-primary" [routerLink]="[adoption.id]">Ver mas</a>
-      </p>
-    </div>
+<div class="card">
+  <div style="max-width: 400px; height: 320px; max-height: 320px; overflow: hidden;">
+  <a routerLink="{{ adoption.id }}"><img class="card-img-top" src="{{ adoption.image }}" alt="{{ adoption.name }}"></a>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{ adoption.name }}</h4>
+    <p class="card-text">{{ adoption.description }}</p>
+    <p class="card-text"><small class="text-muted">Publicado en {{ adoption.published_date | date }}</small></p>
   </div>
 </div>

@@ -1,38 +1,43 @@
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
 
 @Component({
   selector: 'app-adoption-list',
   templateUrl: './adoption-list.component.html',
   styleUrls: ['./adoption-list.component.css']
 })
-export class AdoptionListComponent implements OnInit {
+export class AdoptionListComponent implements OnInit, OnDestroy {
 
   constructor (private adoptionService: AdoptionsService) {}
 
   adoptions: Adoption[] = [];
-
-  dataAvailable = true;
-  errorMessage = '';
+  errorMessage: string;
+  timerSubscription: Subscription;
+  noDataMsg: string;
 
   ngOnInit() {
-    this.adoptionService
-    .getAll()
-    .subscribe(
-      p => {
-        this.dataAvailable = true;
-        this.adoptions = p;
+    this.timerSubscription = TimerObservable.create(0, 3000).subscribe(
+      () => this.getAdoptions()
+    );
+  }
+
+  getAdoptions() {
+    this.adoptionService.getAll().subscribe(
+      (adoptions: Adoption[]) => {
+        this.adoptions = adoptions;
         if (this.adoptions.length <= 0) {
-          this.errorMessage = 'No hay adopciones cargadas.';
+          this.noDataMsg = 'Aun no hay datos cargados, vuelva a intentarlo mas tarde!';
         }
       },
-      err => {
-        this.dataAvailable = false;
-        this.errorMessage = 'Ocurrió un problema recuperando la información. Vuelva a intentarlo en unos minutos.';
-        console.log('Error obteniendo la información');
-      }
+      (error) => this.errorMessage = error
     );
+  }
+
+  ngOnDestroy() {
+    this.timerSubscription.unsubscribe();
   }
 
 }
