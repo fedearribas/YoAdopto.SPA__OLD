@@ -1,3 +1,4 @@
+import { AdoptionsMemoryService } from './adoptions/adoptions-memory.service';
 import { AdoptionsService } from './adoptions/adoptions.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -38,7 +39,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AdoptionsService],
+  providers: [AdoptionsService, AdoptionsMemoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

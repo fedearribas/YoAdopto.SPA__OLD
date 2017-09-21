@@ -1,3 +1,4 @@
+import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -11,16 +12,21 @@ import { TimerObservable } from 'rxjs/observable/TimerObservable';
 })
 export class AdoptionListComponent implements OnInit, OnDestroy {
 
-  constructor (private adoptionService: AdoptionsService) {}
+  constructor (private adoptionService: AdoptionsService, private adoptionsMemoryService: AdoptionsMemoryService) {}
 
   adoptions: Adoption[] = [];
+  subscription: Subscription;
   errorMessage: string;
   timerSubscription: Subscription;
   noDataMsg: string;
 
   ngOnInit() {
-    this.timerSubscription = TimerObservable.create(0, 3000).subscribe(
+    /* this.timerSubscription = TimerObservable.create(0, 3000).subscribe(
       () => this.getAdoptions()
+    ); */
+    this.adoptions = this.adoptionsMemoryService.getData();
+    this.subscription = this.adoptionsMemoryService.adoptionsListChanged.subscribe(
+      (adoptions: Adoption[]) => {this.adoptions = adoptions; }
     );
   }
 
@@ -37,7 +43,8 @@ export class AdoptionListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.timerSubscription.unsubscribe();
+    // this.timerSubscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
 }
