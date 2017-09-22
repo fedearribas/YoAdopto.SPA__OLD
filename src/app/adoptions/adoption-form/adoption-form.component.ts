@@ -14,13 +14,15 @@ export class AdoptionFormComponent implements OnInit {
   adoptionForm: FormGroup;
   adoption = new Adoption;
   imageUrl = '';
+  imageSelected = false;
 
-  constructor(private adoptionsService: AdoptionsService, 
+  constructor(private adoptionsService: AdoptionsService,
               private router: Router,
               private adoptionsMemoryService: AdoptionsMemoryService) { }
 
   ngOnInit() {
     this.initForm();
+    console.log(this.imageUrl);
   }
 
   private initForm() {
@@ -41,15 +43,22 @@ export class AdoptionFormComponent implements OnInit {
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.imageUrl = event.target.result;
+        this.imageSelected = true;
+       // console.log('imagen: ' + this.imageUrl);
       }
-      reader.readAsDataURL(event.target.files[0]);
+     reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  onClearSelectedImage() {
+    this.imageUrl = '';
+    this.imageSelected = false;
   }
 
   onSubmit() {
     const name = this.adoptionForm.value['name'];
     const description = this.adoptionForm.value['description'];
-    const image = this.adoptionForm.value['image'];
+    const image = this.imageUrl;
     const age = this.adoptionForm.value['age'];
     const ageUnit = this.adoptionForm.value['ageUnit'];
     const phone = this.adoptionForm.value['phone'];

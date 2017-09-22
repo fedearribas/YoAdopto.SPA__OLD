@@ -9,9 +9,15 @@
           <input type="text" id="name" formControlName="name" [(ngModel)]="adoption.name" class="form-control">
         </div>
         <div class="form-group">
-          <label for="image">Imagen</label>
-          <input type="file" id="image" accept="image/*" formControlName="image" (change)="readUrl($event)" [(ngModel)]="adoption.image" class="form-control">
+          
+            <label class="btn btn-primary" style="margin-bottom:0px;">Seleccionar Imagen
+              <input type="file" style="display:none;"  id="image" accept="image/*" formControlName="image" (change)="readUrl($event)" [(ngModel)]="adoption.image" class="form-control">
+            </label>
+            <button type="button" *ngIf="imageSelected" (click)="onClearSelectedImage()" class="btn btn-danger">Borrar Imagen</button>
+          
+          
         </div>
+        
         <div class="form-group">
           <label for="description">Descripción</label>
           <textarea type="text" id="description" [(ngModel)]="adoption.description" formControlName="description" rows="5" class="form-control">          
