@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class AdoptionFormComponent implements OnInit {
   adoptionForm: FormGroup;
   adoption = new Adoption;
+  imageUrl = '';
+
   constructor(private adoptionsService: AdoptionsService, 
               private router: Router,
               private adoptionsMemoryService: AdoptionsMemoryService) { }
@@ -25,12 +27,23 @@ export class AdoptionFormComponent implements OnInit {
     this.adoptionForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'description': new FormControl(null, Validators.required),
-      'image': new FormControl(null, Validators.required),
+      'image': new FormControl(null),
       'age': new FormControl(null, Validators.required),
       'ageUnit': new FormControl(null, Validators.required),
       'phone': new FormControl(null, Validators.required),
       'email': new FormControl(null, Validators.required)
     });
+  }
+
+  readUrl(event) {
+    if (event.target.files && event.target.files[0]) {
+      console.log(event);
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.imageUrl = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 
   onSubmit() {

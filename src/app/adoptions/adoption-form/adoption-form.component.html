@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
           <label for="image">Imagen</label>
-          <input type="text" id="image" formControlName="image" [(ngModel)]="adoption.image" class="form-control">
+          <input type="file" id="image" accept="image/*" formControlName="image" (change)="readUrl($event)" [(ngModel)]="adoption.image" class="form-control">
         </div>
         <div class="form-group">
           <label for="description">Descripción</label>
@@ -43,7 +43,7 @@
 
       <div class="col-md-6">
         <h1 class="display-4">{{ adoption.name }}</h1>
-        <img src="{{adoption.image}}" alt="" width="100%;" class="rounded-top rounded-bottom">
+        <img [src]="imageUrl" alt="" width="100%;" class="rounded-top rounded-bottom">
         <p class="lead">{{ adoption.description }}</p>
         <p *ngIf="adoption.age && adoption.age_measurement_unit">{{ adoption.age}}  {{adoption.age_measurement_unit }} de edad</p>
         <p> <i class="fa fa-mobile" aria-hidden="true" *ngIf="adoption.contact_phone" ></i> <span class="card-text">{{ adoption.contact_phone }}</span></p>
