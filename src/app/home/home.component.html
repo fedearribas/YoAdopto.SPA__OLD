@@ -7,8 +7,21 @@
     <br>    
   </div>
       <div class="text-center">     
-        <button routerLink="adoptions" class="btn btn-outline-success">Ver Adopciones</button>
+        <button 
+          routerLink="adoptions" 
+          class="btn btn-outline-success"
+          ngbPopover="Llena tu hogar de felicidad salvando una vida :)"
+          triggers="mouseenter:mouseleave" 
+          placement="left"
+          popoverTitle="Adopta">Ver Adopciones
+        </button>
         &nbsp;&nbsp;
-        <button routerLink="lost" class="btn btn-outline-warning">Ver Perdidos</button>
+        <button 
+          routerLink="lost" 
+          class="btn btn-outline-warning"
+          ngbPopover="Se perdió tu mascota o encontraste una perdida? Este es el lugar!" 
+          triggers="mouseenter:mouseleave" 
+          placement="right"
+          popoverTitle="Perdidos">Ver Perdidos</button>
     </div>
 </div>

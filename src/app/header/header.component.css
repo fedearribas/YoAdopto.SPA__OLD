@@ -25,3 +25,8 @@
 .active>a {
   color: green;
 }
+
+.logo {
+  color: #795548;
+  font-size: 1.5em;
+}

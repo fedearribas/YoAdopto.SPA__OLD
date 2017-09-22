@@ -20,12 +20,13 @@ export class AdoptionDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         const id = params['id'];
-/*         this.adoptionsService.getAdoption(id)
-          .subscribe(a => {
-            this.adoption = a;
-            this.isDataAvailable = true;
-          }); */
+
           this.adoption = this.adoptionsMemoryService.getAdoption(id);
+          if (!this.adoption) {
+            this.adoptionsService.getAdoption(id).subscribe(
+              (adoption: Adoption) => this.adoption = adoption
+            );
+          }
       }
     );
   }

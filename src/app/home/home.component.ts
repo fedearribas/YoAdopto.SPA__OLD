@@ -1,3 +1,5 @@
+import { AdoptionsMemoryService } from './../adoptions/adoptions-memory.service';
+import { Adoption } from './../adoptions/adoption.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  adoptions: Adoption[];
 
-  constructor() { }
+  constructor(private adoptionsMemoryService: AdoptionsMemoryService) { }
 
   ngOnInit() {
+    this.adoptionsMemoryService.getData();
   }
-
 }

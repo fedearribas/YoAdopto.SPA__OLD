@@ -2,3 +2,7 @@ a {
   text-decoration: none;
   color:black;
 }
+
+img.resize{
+	max-height:300px;
+}
