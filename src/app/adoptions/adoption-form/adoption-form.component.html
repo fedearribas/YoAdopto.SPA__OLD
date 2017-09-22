@@ -9,13 +9,11 @@
           <input type="text" id="name" formControlName="name" [(ngModel)]="adoption.name" class="form-control">
         </div>
         <div class="form-group">
-          
-            <label class="btn btn-primary" style="margin-bottom:0px;">Seleccionar Imagen
+            <label>Imagen</label><br>
+            <label class="btn btn-primary clickable" style="margin-bottom:0px;">Seleccionar Imagen
               <input type="file" style="display:none;"  id="image" accept="image/*" formControlName="image" (change)="readUrl($event)" [(ngModel)]="adoption.image" class="form-control">
             </label>
-            <button type="button" *ngIf="imageSelected" (click)="onClearSelectedImage()" class="btn btn-danger">Borrar Imagen</button>
-          
-          
+            <button type="button" *ngIf="imageSelected" (click)="onClearSelectedImage()" class="btn btn-danger clickable">Borrar Imagen</button>
         </div>
         
         <div class="form-group">
@@ -59,7 +57,7 @@
 
     <div class="row">
       <div class="col-md-4 mr-md-auto ml-md-auto">
-        <button type="submit" class="btn btn-success btn-block" [disabled]="!adoptionForm.valid" >Enviar</button>
+        <button type="submit" class="btn btn-success btn-block" [disabled]="!adoptionForm.valid || !imageSelected" >Enviar</button>
       </div>
     </div>
   </form>

@@ -7,6 +7,6 @@ textarea.ng-invalid.ng-touched  {
   padding:30px;
 }
 
-button, label.btn {
+button.clickable, label.clickable {
   cursor: pointer;
 }

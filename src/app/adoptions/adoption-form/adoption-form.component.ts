@@ -1,3 +1,4 @@
+import { ImageModel } from './../../shared/image-model.model';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
@@ -63,12 +64,15 @@ export class AdoptionFormComponent implements OnInit {
     const ageUnit = this.adoptionForm.value['ageUnit'];
     const phone = this.adoptionForm.value['phone'];
     const email = this.adoptionForm.value['email'];
-    const adoption = new Adoption(name, age, ageUnit, image, false, description, new Date(), phone, email);
+    const adoption = new Adoption(name, age, ageUnit, null, image, false, description, new Date(), phone, email);
     this.adoptionsService.insertAdoption(adoption).subscribe(
-      (data: Adoption) => this.adoptionsMemoryService.insertAdoption(data)
+      (data: Adoption) => {
+        this.adoptionsMemoryService.insertAdoption(data);
+        console.log(adoption);
+        this.router.navigate(['/adoptions']);
+      }
     );
-    console.log(adoption);
-    this.router.navigate(['/adoptions']);
+
   }
 
 }
