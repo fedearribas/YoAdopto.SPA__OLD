@@ -15,7 +15,8 @@ const routes: Routes = [
     {path: ':id', component: AdoptionDetailComponent },
     {path: ':id/edit', component: AdoptionFormComponent }
   ] },
-  {path: 'lost', component: LostComponent }
+  {path: 'lost', component: LostComponent },
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

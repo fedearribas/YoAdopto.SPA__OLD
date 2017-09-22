@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AdoptionItemComponent implements OnInit {
 
   @Input() adoption: Adoption;
-
+  private _window = window;
   constructor() { }
 
   ngOnInit() {

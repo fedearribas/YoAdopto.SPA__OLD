@@ -1,6 +1,6 @@
 <div class="card">
   <div style="max-width: 350px; overflow: hidden;">
-  <a routerLink="{{ adoption.id }}"><img class="resize" src="{{ adoption.image }}" alt="{{ adoption.name }}"></a>
+  <a routerLink="{{ adoption.id }}"><img [ngClass]="{'img-fluid': _window.screen.width < 577, 'resize': _window.screen.width > 577}" src="{{ adoption.image }}" alt="{{ adoption.name }}"></a>
   </div>
   <div class="card-body">
     <h4 class="card-title">{{ adoption.name }}</h4>

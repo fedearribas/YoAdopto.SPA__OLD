@@ -1,4 +1,4 @@
-<div class="card mb-3" >
+<div class="card mb-3" *ngIf="adoption">
   <img class="card-img-top" src="{{ adoption?.image }}" alt="{{ adoption?.name }}" style="max-width: 100%;">
   <div class="card-body">
     <h2 class="card-title">{{ adoption?.name }}</h2>
