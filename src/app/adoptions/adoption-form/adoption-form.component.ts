@@ -39,7 +39,9 @@ export class AdoptionFormComponent implements OnInit {
   }
 
   readUrl(event) {
+    console.log('tst');
     if (event.target.files && event.target.files[0]) {
+
       console.log(event);
       var reader = new FileReader();
       reader.onload = (event: any) => {
@@ -54,6 +56,7 @@ export class AdoptionFormComponent implements OnInit {
   onClearSelectedImage() {
     this.imageUrl = '';
     this.imageSelected = false;
+    this.adoptionForm.get('image').reset();
   }
 
   onSubmit() {
@@ -64,7 +67,7 @@ export class AdoptionFormComponent implements OnInit {
     const ageUnit = this.adoptionForm.value['ageUnit'];
     const phone = this.adoptionForm.value['phone'];
     const email = this.adoptionForm.value['email'];
-    const adoption = new Adoption(name, age, ageUnit, null, image, false, description, new Date(), phone, email);
+    const adoption = new Adoption(name, age, ageUnit, image, false, description, new Date(), phone, email);
     this.adoptionsService.insertAdoption(adoption).subscribe(
       (data: Adoption) => {
         this.adoptionsMemoryService.insertAdoption(data);
