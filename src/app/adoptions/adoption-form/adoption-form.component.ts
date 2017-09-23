@@ -34,7 +34,7 @@ export class AdoptionFormComponent implements OnInit {
       'age': new FormControl(null, Validators.required),
       'ageUnit': new FormControl(null, Validators.required),
       'phone': new FormControl(null, Validators.required),
-      'email': new FormControl(null, Validators.required)
+      'email': new FormControl(null, [Validators.required, Validators.email])
     });
   }
 

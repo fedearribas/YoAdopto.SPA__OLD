@@ -50,11 +50,14 @@
         <img [src]="imageUrl" alt="" width="100%;" class="rounded-top rounded-bottom">
         <p class="lead">{{ adoption.description }}</p>
         <p *ngIf="adoption.age && adoption.age_measurement_unit">{{ adoption.age}}  {{adoption.age_measurement_unit }} de edad</p>
-        <p> <i class="fa fa-mobile" aria-hidden="true" *ngIf="adoption.contact_phone" ></i> <span class="card-text">{{ adoption.contact_phone }}</span></p>
-        <p> <i class="fa fa-envelope-o" aria-hidden="true" *ngIf="adoption.contact_email"></i> <span class="card-text">{{ adoption.contact_email }}</span></p>
+        <div class="list-group-item" *ngIf="adoption.contact_phone || adoption.contact_email">
+          <p class="lead">Datos de contacto:</p>
+          <p> <i class="fa fa-mobile" aria-hidden="true" *ngIf="adoption.contact_phone" ></i> <span class="card-text">{{ adoption.contact_phone }}</span></p>
+          <p> <i class="fa fa-envelope-o" aria-hidden="true" *ngIf="adoption.contact_email"></i> <span class="card-text">{{ adoption.contact_email }}</span></p>
+        </div>
       </div>
     </div>
-
+<br>
     <div class="row">
       <div class="col-md-4 mr-md-auto ml-md-auto">
         <button type="submit" class="btn btn-success btn-block" [disabled]="!adoptionForm.valid || !imageSelected" >Enviar</button>
