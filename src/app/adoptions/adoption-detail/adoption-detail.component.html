@@ -1,15 +1,22 @@
 <div class="card mb-3" *ngIf="adoption">
-  <img class="card-img-top" src="{{ adoption?.image }}" alt="{{ adoption?.name }}" style="max-width: 100%;">
+  
   <div class="card-body">
-    <h2 class="card-title">{{ adoption?.name }}</h2>
-    <p>{{ adoption?.description }}</p>
-    <p>{{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
-    <div class="list-group-item">
-      <p class="lead">Datos de contacto:</p>
-      <p> <i class="fa fa-mobile" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_phone }}</span></p>
-      <p> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_email }}</span></p>
-      <p class="card-text"><small class="text-muted">{{ adoption?.published_date | date }}</small></p>
-  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img class="card-img-top" src="{{ adoption?.image }}" alt="{{ adoption?.name }}" style="max-width: 100%;">
+      </div>
+      <div class="col-md-6">
+          <p class="card-text"><small class="text-muted">{{ adoption?.created_at | date:"dd/MM/yyyy hh:mm:ss" }}</small></p>
+        <h2 class="card-title">{{ adoption?.name }}</h2>
+        <p>{{ adoption?.description }}</p>
+        <p>{{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
+        <div class="list-group-item">
+          <p class="lead">Datos de contacto:</p>
+          <p> <i class="fa fa-mobile" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_phone }}</span></p>
+          <p> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_email }}</span></p>          
+        </div>
+      </div>
+    </div>   
   <br>
     <button type="button" routerLink="/adoptions" class="btn btn-outline-success">Volver</button>
 </div>
