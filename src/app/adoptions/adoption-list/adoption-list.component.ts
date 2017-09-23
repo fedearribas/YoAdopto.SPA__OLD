@@ -26,7 +26,12 @@ export class AdoptionListComponent implements OnInit, OnDestroy {
     ); */
     this.adoptions = this.adoptionsMemoryService.getData();
     this.subscription = this.adoptionsMemoryService.adoptionsListChanged.subscribe(
-      (adoptions: Adoption[]) => {this.adoptions = adoptions; }
+      (adoptions: Adoption[]) => {
+        this.adoptions = adoptions;
+        if (this.adoptions.length <= 0) {
+          this.noDataMsg = 'Aun no hay datos cargados, vuelva a intentarlo mas tarde!';
+        }
+      }
     );
   }
 
