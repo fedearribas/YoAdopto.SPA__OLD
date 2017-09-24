@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './users/user/user.component';
 import { AdoptionsComponent } from './adoptions/adoptions.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,11 +16,14 @@ import { AdoptionDetailComponent } from './adoptions/adoption-detail/adoption-de
 import { HttpClientModule } from '@angular/common/http';
 import { AdoptionFormComponent } from './adoptions/adoption-form/adoption-form.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { Angular2TokenService } from 'angular2-token';
+import { HttpModule } from '@angular/http';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
     AdoptionsComponent,
     HomeComponent,
     HeaderComponent,
@@ -29,17 +31,20 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AdoptionItemComponent,
     AdoptionListComponent,
     AdoptionDetailComponent,
-    AdoptionFormComponent
+    AdoptionFormComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpModule,
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AdoptionsService, AdoptionsMemoryService],
+  providers: [AdoptionsService, AdoptionsMemoryService, Angular2TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

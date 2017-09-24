@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-6 mr-md-auto ml-md-auto">
+        <div class="card">    
+            <div class="card-body">
+                <h3 class="card-title">Registrarse</h3>
+                <hr>
+              <form (ngSubmit)="onSignUpSubmit()" #f="ngForm">        
+                <div class="row">
+                  <div class="col-md-12">
+          
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input id="email"
+                            type="email"
+                            required
+                            email
+                            name='email' 
+                            [(ngModel)]="signUpUser.email" 
+                            class="form-control">      
+                    </div>
+              
+                  <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input id="password" 
+                          type="password" 
+                          required  
+                          name='password' 
+                          [(ngModel)]="signUpUser.password" 
+                          class="form-control">          
+                  </div>
+
+                  <div class="form-group">
+                      <label for="password_confirmation">Confirmar contraseña</label>
+                      <input id="password_confirmation" 
+                            type="password" 
+                            required  
+                            name='password_confirmation' 
+                            [(ngModel)]="signUpUser.passwordConfirmation" 
+                            class="form-control">          
+                    </div>
+
+                    <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
+                        style="color:red">
+                    Passwords must match
+                  </span>
+                  
+                    <button type="submit" 
+                            [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
+                            [ngClass]="{'disabled': !(f.valid)}" 
+                            class="btn btn-primary">Sign up 
+                    </button>
+          
+                  </div>
+                </div>    
+              </form>
+          
+            </div>
+          </div>
+          
+    </div>
+  </div>
+  
+  

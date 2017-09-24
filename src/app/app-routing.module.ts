@@ -1,3 +1,5 @@
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 import { AdoptionFormComponent } from './adoptions/adoption-form/adoption-form.component';
 import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.component';
 import { AdoptionDetailComponent } from './adoptions/adoption-detail/adoption-detail.component';
@@ -16,6 +18,8 @@ const routes: Routes = [
     {path: ':id/edit', component: AdoptionFormComponent }
   ] },
   {path: 'lost', component: LostComponent },
+  {path: 'login', component: LoginComponent },
+  {path: 'register', component: RegisterComponent },
   {path: '**', redirectTo: ''}
 ];
 
