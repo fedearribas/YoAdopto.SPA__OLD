@@ -1,4 +1,3 @@
-import { ImageModel } from './../shared/image-model.model';
 export class Adoption {
   public id: number;
   public created_at: Date;

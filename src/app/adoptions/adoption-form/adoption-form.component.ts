@@ -1,4 +1,4 @@
-import { ImageModel } from './../../shared/image-model.model';
+import { Angular2TokenService } from 'angular2-token';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
