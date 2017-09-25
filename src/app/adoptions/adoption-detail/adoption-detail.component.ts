@@ -1,3 +1,4 @@
+import { Angular2TokenService } from 'angular2-token';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
@@ -14,13 +15,13 @@ export class AdoptionDetailComponent implements OnInit {
   isDataAvailable = false;
   constructor(private route: ActivatedRoute,
     private adoptionsService: AdoptionsService,
-    private adoptionsMemoryService: AdoptionsMemoryService) { }
+    private adoptionsMemoryService: AdoptionsMemoryService,
+    public authService: Angular2TokenService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
         const id = params['id'];
-
           this.adoption = this.adoptionsMemoryService.getAdoption(id);
           if (!this.adoption) {
             this.adoptionsService.getAdoption(id).subscribe(

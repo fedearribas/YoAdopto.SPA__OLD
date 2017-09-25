@@ -1,3 +1,4 @@
+import { Angular2TokenService } from 'angular2-token';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
@@ -12,7 +13,10 @@ import { TimerObservable } from 'rxjs/observable/TimerObservable';
 })
 export class AdoptionListComponent implements OnInit, OnDestroy {
 
-  constructor (private adoptionService: AdoptionsService, private adoptionsMemoryService: AdoptionsMemoryService) {}
+  constructor (private adoptionService: AdoptionsService,
+              private adoptionsMemoryService: AdoptionsMemoryService,
+              public authService: Angular2TokenService
+            ) {}
 
   adoptions: Adoption[] = [];
   subscription: Subscription;

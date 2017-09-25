@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
 
@@ -8,10 +9,17 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class HeaderComponent implements OnInit {
   navbarCollapsed = false;
-  constructor(public tokenAuthService: Angular2TokenService) { }
+  constructor(public tokenAuthService: Angular2TokenService,
+              private router: Router) { }
 
   ngOnInit() {
     console.log(this.tokenAuthService);
+  }
+
+  onSignOut() {
+    this.tokenAuthService.signOut();
+    this.navbarCollapsed = true;
+    this.router.navigate(['/']);
   }
 
 }

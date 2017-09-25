@@ -1,3 +1,4 @@
+import { Angular2TokenService } from 'angular2-token';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AdoptionFormComponent } from './adoptions/adoption-form/adoption-form.component';
@@ -13,9 +14,9 @@ const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'adoptions', component: AdoptionsComponent, children: [
     {path: '', component: AdoptionListComponent },
-    {path: 'new', component: AdoptionFormComponent },
+    {path: 'new', component: AdoptionFormComponent, canActivate: [Angular2TokenService] },
     {path: ':id', component: AdoptionDetailComponent },
-    {path: ':id/edit', component: AdoptionFormComponent }
+    {path: ':id/edit', component: AdoptionFormComponent, canActivate: [Angular2TokenService] }
   ] },
   {path: 'lost', component: LostComponent },
   {path: 'login', component: LoginComponent },

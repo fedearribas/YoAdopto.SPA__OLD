@@ -10,11 +10,14 @@
         <h2 class="card-title">{{ adoption?.name }}</h2>
         <p>{{ adoption?.description }}</p>
         <p>{{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
-        <div class="list-group-item">
+        <div class="list-group-item" *ngIf="authService.userSignedIn(); else showData" >
           <p class="lead">Datos de contacto:</p>
           <p> <i class="fa fa-mobile" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_phone }}</span></p>
           <p> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_email }}</span></p>          
         </div>
+        <ng-template #showData>
+          <button routerLink="/login" class="btn btn-outline-info">Ver datos de contacto</button>
+        </ng-template>
       </div>
     </div>   
   <br>

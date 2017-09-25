@@ -10,6 +10,7 @@ import { Angular2TokenService } from 'angular2-token';
 export class RegisterComponent implements OnInit {
   signUpUser = {
     email: '',
+    name: '',
     password: '',
     passwordConfirmation: ''
   };
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit {
     this.tokenAuthSerivce.registerAccount(this.signUpUser).subscribe(
       (res) => {
         if (res.status == 200) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/adoptions']);
           console.log(res);
         }
       },

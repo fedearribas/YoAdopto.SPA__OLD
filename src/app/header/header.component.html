@@ -17,13 +17,10 @@
 				</li>	
 			</ul>
 			<ul class="navbar-nav ml-auto">
-
-
 				<div ngbDropdown class="d-inline-block" *ngIf="tokenAuthService.userSignedIn()">
-					<button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>{{ tokenAuthService.currentAuthData.uid }}</button>
+					<button class="btn btn-outline-success dropdown" id="dropdownMenu1" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> {{ tokenAuthService.currentAuthData.uid }}</button>
 					<div ngbDropdownMenu aria-labelledby="dropdownMenu1">
-						<button class="dropdown-item" (click)="tokenAuthService.signOut(); navbarCollapsed = true">Salir</button>
-
+						<button class="dropdown-item" (click)="onSignOut()">Salir</button>
 					</div>
 				</div>
 
