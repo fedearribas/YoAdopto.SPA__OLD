@@ -1,3 +1,4 @@
+import { User } from './../auth/user.model';
 export class Adoption {
   public id: number;
   public created_at: Date;
@@ -11,6 +12,7 @@ export class Adoption {
     public description?: string,
     public published_date?: Date,
     public contact_phone?: number,
-    public contact_email?: string) {  }
+    public contact_email?: string,
+    public user?: User) {  }
 
 }
