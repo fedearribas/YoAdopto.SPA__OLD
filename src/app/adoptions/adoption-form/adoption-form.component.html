@@ -10,10 +10,10 @@
         </div>
         <div class="form-group">
             <label>Imagen</label><br>
-            <label class="btn btn-info clickable" style="margin-bottom:0px;">Seleccionar Imagen
+            <label class="btn btn-info clickable" style="margin-bottom:0px;"><i class="fa fa-picture-o" aria-hidden="true"></i> Seleccionar Imagen
               <input type="file" style="display:none;"  id="image" accept="image/*" formControlName="image" (change)="readUrl($event)" class="form-control">
             </label>
-            <button type="button" *ngIf="imageSelected" (click)="onClearSelectedImage()" class="btn btn-secondary clickable">Borrar Imagen</button>
+            <button type="button" *ngIf="imageSelected" (click)="onClearSelectedImage()" class="btn btn-secondary clickable"><i class="fa fa-trash" aria-hidden="true"></i> Borrar Imagen</button>
         </div>
         
         <div class="form-group">

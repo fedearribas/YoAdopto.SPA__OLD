@@ -14,6 +14,9 @@ img.resize{
 p.desc {
   word-wrap: break-word;
 }
+h4.pet-name {
+  font-size:2.5rem;
+}
 
 div.center-cropped {
   width: 350px;
