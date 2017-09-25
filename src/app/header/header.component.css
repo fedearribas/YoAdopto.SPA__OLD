@@ -10,10 +10,6 @@
   color: #c9c9c9;
 }
 
-.nav-link.active {
-  color:#e64758;
-}
-
 .dropdown-links a {
   color: #1a1b22;
 }
@@ -22,7 +18,7 @@
   color: #252830;
 }
 
-.active>a {
+.active>.nav-link {
   color: #795548;
 }
 

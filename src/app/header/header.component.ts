@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.tokenAuthService);
+    if (this.tokenAuthService.userSignedIn()) {
+      this.tokenAuthService.validateToken().subscribe();
+    }
   }
 
   onSignOut() {

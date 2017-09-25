@@ -6,7 +6,7 @@
         <img class="card-img-top rounded-top rounded-bottom" src="{{ adoption?.image }}" alt="{{ adoption?.name }}" style="max-width: 100%;">
       </div>
       <div class="col-md-6">
-          <p class="card-text"><small class="text-muted">Publicado por {{adoption.user?.email}} el {{ adoption?.created_at | date:"dd/MM/yyyy hh:mm:ss" }}</small></p>
+          <p class="card-text"><small class="text-muted">Publicado por {{adoption.user?.name}} el {{ adoption?.created_at | date:"dd/MM/yyyy HH:mm:ss" }}</small></p>
         <h2 class="card-title">{{ adoption?.name }}</h2>
         <p>{{ adoption?.description }}</p>
         <p>{{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>

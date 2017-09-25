@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         res => {
           if(res.status == 200){
             console.log(res);
-             this.router.navigate(['/']);
+             this.router.navigate(['/adoptions']);
             // this.router.navigateByUrl(localStorage.getItem('redirectTo'));
           }
         },

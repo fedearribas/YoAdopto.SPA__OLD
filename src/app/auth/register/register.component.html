@@ -49,10 +49,11 @@
                             class="form-control">          
                     </div>
 
-                    <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
+                    <p *ngIf="signUpUser.password && signUpUser.passwordConfirmation &&
+                                signUpUser.password !== signUpUser.passwordConfirmation"
                         style="color:red">
                     Las contraseñas deben coincidir
-                  </span>
+                  </p>
                   
                     <button type="submit" 
                             [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
