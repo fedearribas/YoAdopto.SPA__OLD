@@ -28,6 +28,8 @@
                         [(ngModel)]="signInUser.password" 
                         class="form-control">          
                 </div>
+
+                <p> No tienes una cuenta? Regístrate <a routerLink="/register">aquí</a></p>
                 
                   <button type="submit" 
                           [disabled]="!(f.valid)" 

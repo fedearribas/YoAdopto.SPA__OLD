@@ -54,7 +54,9 @@
                         style="color:red">
                     Las contraseñas deben coincidir
                   </p>
-                  
+
+                  <p> Ya tienes una cuenta? Ingresa desde <a routerLink="/login">aquí</a></p>
+
                     <button type="submit" 
                             [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
                             [ngClass]="{'disabled': !(f.valid)}" 

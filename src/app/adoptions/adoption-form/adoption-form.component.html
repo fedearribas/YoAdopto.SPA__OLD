@@ -49,7 +49,7 @@
         <h1 class="display-4">{{ adoption.name }}</h1>
         <img [src]="imageUrl" alt="" width="100%;" class="rounded-top rounded-bottom">
         <p class="lead">{{ adoption.description }}</p>
-        <p *ngIf="adoption.age && adoption.age_measurement_unit">{{ adoption.age}}  {{adoption.age_measurement_unit }} de edad</p>
+        <p *ngIf="adoption.age && adoption.age_measurement_unit"> <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ adoption.age}}  {{adoption.age_measurement_unit }} de edad</p>
         <div class="list-group-item" *ngIf="adoption.contact_phone || adoption.contact_email">
           <p class="lead">Datos de contacto:</p>
           <p> <i class="fa fa-mobile" aria-hidden="true" *ngIf="adoption.contact_phone" ></i> <span class="card-text">{{ adoption.contact_phone }}</span></p>

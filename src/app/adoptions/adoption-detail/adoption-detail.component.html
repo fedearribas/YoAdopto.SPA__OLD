@@ -9,7 +9,7 @@
           <p class="card-text"><small class="text-muted">Publicado por {{adoption.user?.name}} el {{ adoption?.created_at | date:"dd/MM/yyyy HH:mm:ss" }}</small></p>
         <h2 class="card-title">{{ adoption?.name }}</h2>
         <p>{{ adoption?.description }}</p>
-        <p>{{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
+        <p> <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
         <div class="list-group-item" *ngIf="authService.userSignedIn(); else showData" >
           <p class="lead">Datos de contacto:</p>
           <p> <i class="fa fa-mobile" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_phone }}</span></p>

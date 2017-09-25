@@ -1,5 +1,9 @@
-<div class="row" *ngIf="authService.userSignedIn()">
+
+<div class="row">
   <div class="col-md-12">
+    <h1 class="display-4 heading">Adopciones</h1>
+  </div>
+  <div class="col-md-12" *ngIf="authService.userSignedIn()">
     <button type="button" class="btn btn-success" routerLink="new">Publicar</button>
   </div>
 </div>
