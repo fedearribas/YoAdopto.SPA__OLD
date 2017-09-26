@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './not-found/not-found.component';
 import { Angular2TokenService } from 'angular2-token';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'lost', component: LostComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: 'notfound'},
+  {path: 'notfound', component: NotFoundComponent}
 ];
 
 @NgModule({

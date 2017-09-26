@@ -27,7 +27,11 @@ export class AdoptionDetailComponent implements OnInit {
           if (!this.adoption) {
             this.adoptionsService.getAdoption(id).subscribe(
               (adoption: Adoption) => this.adoption = adoption,
-              (error) => alert(error)
+              (error: Response) => { 
+                if (error.status == 404) {
+                  this.router.navigate(['/404']);
+                }
+               }
             );
           }
       }

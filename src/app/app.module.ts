@@ -20,6 +20,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { HttpModule } from '@angular/http';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RegisterComponent } from './auth/register/register.component';
     AdoptionDetailComponent,
     AdoptionFormComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
