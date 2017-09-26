@@ -29,7 +29,7 @@ export class AdoptionDetailComponent implements OnInit {
               (adoption: Adoption) => this.adoption = adoption,
               (error: Response) => { 
                 if (error.status == 404) {
-                  this.router.navigate(['/404']);
+                  this.router.navigate(['/notfound']);
                 }
                }
             );
