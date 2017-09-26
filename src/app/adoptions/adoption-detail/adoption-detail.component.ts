@@ -26,7 +26,8 @@ export class AdoptionDetailComponent implements OnInit {
           this.adoption = this.adoptionsMemoryService.getAdoption(id);
           if (!this.adoption) {
             this.adoptionsService.getAdoption(id).subscribe(
-              (adoption: Adoption) => this.adoption = adoption
+              (adoption: Adoption) => this.adoption = adoption,
+              (error) => alert(error)
             );
           }
       }
@@ -34,7 +35,10 @@ export class AdoptionDetailComponent implements OnInit {
   }
 
   canManage() {
-    return this.authService.currentUserData.id === this.adoption.user.id;
+    if (this.authService.userSignedIn()) {
+      return this.authService.currentUserData.id === this.adoption.user.id;
+    }
+    return false;
   }
 
   onDelete() {
