@@ -4,7 +4,7 @@ import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../auth/user.model';
 
 @Component({
@@ -15,20 +15,46 @@ import { User } from '../../auth/user.model';
 export class AdoptionFormComponent implements OnInit {
   adoptionForm: FormGroup;
   adoption = new Adoption;
+  id: number;
   imageUrl = '';
   imageSelected = false;
+  editMode = false;
 
   constructor(private adoptionsService: AdoptionsService,
               private router: Router,
               private adoptionsMemoryService: AdoptionsMemoryService,
-              private authService: Angular2TokenService) { }
+              private authService: Angular2TokenService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.initForm();
-    console.log(this.imageUrl);
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = Number(params['id']);
+        this.editMode = params['id'] != null;
+        this.initForm();
+      }
+    );
   }
 
   private initForm() {
+
+    if (this.editMode) {
+      if (this.adoptionsMemoryService.hasData) {
+        this.adoption = this.adoptionsMemoryService.getAdoption(this.id);
+        this.imageUrl = this.adoption.image;
+        this.imageSelected = true;
+      } else {
+        // Retrieve from api
+        this.adoptionsService.getAdoption(this.id).subscribe(
+          (adoption: Adoption) => {
+            this.adoption = adoption;
+            this.imageUrl = this.adoption.image;
+            this.imageSelected = true;
+          }
+        );
+      }
+    }
+
     this.adoptionForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'description': new FormControl(null, Validators.required),
@@ -69,18 +95,35 @@ export class AdoptionFormComponent implements OnInit {
     const ageUnit = this.adoptionForm.value['ageUnit'];
     const phone = this.adoptionForm.value['phone'];
     const email = this.adoptionForm.value['email'];
-    const user = new User(this.authService.currentUserData.email, this.authService.currentUserData.name);
-    user.id = this.authService.currentUserData.id;
-    console.log(user);
-    const adoption = new Adoption(name, age, ageUnit, image, false, description, new Date(), phone, email, user);
-    this.adoptionsService.insertAdoption(adoption).subscribe(
-      (data: Adoption) => {
-        this.adoptionsMemoryService.insertAdoption(data);
-        console.log(adoption);
-        this.router.navigate(['/adoptions']);
-      }
-    );
 
+    this.adoption.name = name;
+    this.adoption.description = description;
+    this.adoption.image = image;
+    this.adoption.age = age;
+    this.adoption.age_measurement_unit = ageUnit;
+    this.adoption.contact_phone = phone;
+    this.adoption.contact_email = email;
+
+    if (this.editMode) {
+      this.adoptionsService.updateAdoption(this.adoption).subscribe(
+        (data: Adoption) => {
+          this.adoptionsMemoryService.updateAdoption(this.adoption);
+          this.router.navigate(['/adoptions']);
+        },
+        (error) => alert(error.error)
+      );
+    } else {
+      const user = new User(this.authService.currentUserData.email, this.authService.currentUserData.name);
+      user.id = this.authService.currentUserData.id;
+      this.adoption.user = user;
+      this.adoptionsService.insertAdoption(this.adoption).subscribe(
+        (data: Adoption) => {
+          this.adoptionsMemoryService.insertAdoption(data);
+          console.log(this.adoption);
+          this.router.navigate(['/adoptions']);
+        }
+      );
+    }
   }
 
 }

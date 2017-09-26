@@ -19,7 +19,15 @@
           <button routerLink="/login" class="btn btn-outline-info"><i class="fa fa-id-card-o" aria-hidden="true"></i> Ver datos de contacto</button>
         </ng-template>
       </div>
-    </div>   
-  <br>
-    <button type="button" routerLink="/adoptions" class="btn btn-outline-success">Volver</button>
+    </div>  
+    <br> 
+    <div class="row" *ngIf="canManage()">
+      <div class="col-md-12">
+        <button class="btn btn-primary clickable" routerLink="edit" >Editar</button>
+        <button class="btn btn-danger clickable" (click)="onDelete()">Borrar</button>
+    </div>
+     
+    </div>
+    <br> 
+    <button type="button" routerLink="/adoptions" class="btn btn-outline-success clickable">Volver</button>
 </div>

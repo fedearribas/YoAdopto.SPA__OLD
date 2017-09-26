@@ -6,7 +6,3 @@ textarea.ng-invalid.ng-touched  {
 .card-container {
   padding:30px;
 }
-
-button.clickable, label.clickable {
-  cursor: pointer;
-}

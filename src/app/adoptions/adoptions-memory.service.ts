@@ -8,6 +8,7 @@ export class AdoptionsMemoryService {
 
   private adoptions: Adoption[] = [];
   adoptionsListChanged = new Subject<Adoption[]>();
+  hasData: boolean;
 
   constructor(private adoptionsService: AdoptionsService) { }
 
@@ -15,6 +16,7 @@ export class AdoptionsMemoryService {
     if (this.adoptions.length <= 0) {
       this.setData();
     }
+    this.hasData = true;
     return this.adoptions.slice();
   }
 
@@ -31,9 +33,21 @@ export class AdoptionsMemoryService {
     );
   }
 
-  insertAdoption(adption: Adoption) {
-    this.adoptions.push(adption);
+  insertAdoption(adoption: Adoption) {
+    this.adoptions.push(adoption);
     this.adoptionsListChanged.next(this.adoptions.slice());
   }
+
+  updateAdoption(adoption: Adoption) {
+    this.adoptions[this.adoptions.indexOf(this.getAdoption(adoption.id))] = adoption;
+    this.adoptionsListChanged.next(this.adoptions.slice());
+  }
+
+  deleteAdoption(adoption: Adoption) {
+    const index = this.adoptions.indexOf(adoption);
+    this.adoptions.splice(index, 1);
+    this.adoptionsListChanged.next(this.adoptions.slice());
+  }
+
 
 }

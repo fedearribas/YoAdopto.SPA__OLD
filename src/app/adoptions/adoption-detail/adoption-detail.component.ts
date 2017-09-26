@@ -3,7 +3,7 @@ import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-adoption-detail',
@@ -16,7 +16,8 @@ export class AdoptionDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private adoptionsService: AdoptionsService,
     private adoptionsMemoryService: AdoptionsMemoryService,
-    public authService: Angular2TokenService) { }
+    public authService: Angular2TokenService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -30,6 +31,21 @@ export class AdoptionDetailComponent implements OnInit {
           }
       }
     );
+  }
+
+  canManage() {
+    return this.authService.currentUserData.id === this.adoption.user.id;
+  }
+
+  onDelete() {
+    if (confirm('Esta seguro de borrar la publicación de ' + this.adoption.name + '?')) {
+    this.adoptionsService.deleteAdoption(this.adoption).subscribe(
+      (data) => {
+        this.adoptionsMemoryService.deleteAdoption(this.adoption);
+        this.router.navigate(['/adoptions']);
+      }
+    );
+    }
   }
 
 }
