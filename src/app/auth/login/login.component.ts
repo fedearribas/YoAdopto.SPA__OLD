@@ -1,5 +1,5 @@
+import { AuthService } from './../auth.service';
 import { Router } from '@angular/router';
-import { Angular2TokenService } from 'angular2-token';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,26 +14,13 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor(private tokenAuthSerivce: Angular2TokenService,
-              private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   onSignInSubmit() {
-    this.tokenAuthSerivce.signIn(this.signInUser).subscribe(
-        res => {
-          if(res.status == 200){
-            console.log(res);
-             this.router.navigate(['/adoptions']);
-            // this.router.navigateByUrl(localStorage.getItem('redirectTo'));
-          }
-        },
-        err => {
-          console.log('err:', err);
-          alert(err.json().errors[0]);
-        }
-    );
+    this.authService.signIn(this.signInUser);
   }
 
 }

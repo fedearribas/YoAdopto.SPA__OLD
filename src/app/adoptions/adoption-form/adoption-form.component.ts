@@ -1,4 +1,4 @@
-import { Angular2TokenService } from 'angular2-token';
+import { AuthService } from './../../auth/auth.service';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
@@ -23,7 +23,7 @@ export class AdoptionFormComponent implements OnInit {
   constructor(private adoptionsService: AdoptionsService,
               private router: Router,
               private adoptionsMemoryService: AdoptionsMemoryService,
-              private authService: Angular2TokenService,
+              private authService: AuthService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -113,8 +113,8 @@ export class AdoptionFormComponent implements OnInit {
         (error) => alert(error.error)
       );
     } else {
-      const user = new User(this.authService.currentUserData.email, this.authService.currentUserData.name);
-      user.id = this.authService.currentUserData.id;
+      const user = new User(this.authService.current_user.email, this.authService.current_user.name);
+      user.id = this.authService.current_user.id;
       this.adoption.user = user;
       this.adoptionsService.insertAdoption(this.adoption).subscribe(
         (data: Adoption) => {

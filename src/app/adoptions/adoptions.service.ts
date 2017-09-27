@@ -1,4 +1,4 @@
-import { Angular2TokenService } from 'angular2-token';
+import { AuthService } from './../auth/auth.service';
 import { Adoption } from './adoption.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +15,7 @@ export class AdoptionsService {
   private baseUrl = 'https://yoadopto-api-fedearribas.c9users.io/adoptions';
   private currentUserHeader;
 
-  constructor(private httpClient: HttpClient, private authService: Angular2TokenService) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   getAll() {
     return this.httpClient.get<Adoption[]>(this.baseUrl).map(
@@ -40,7 +40,7 @@ export class AdoptionsService {
   }
 
   updateAdoption(adoption: Adoption) {
-    this.currentUserHeader = new HttpHeaders().set('CURRENTUSERID', this.authService.currentUserData.id.toString());
+    this.currentUserHeader = new HttpHeaders().set('CURRENTUSERID', this.authService.current_user.id.toString());
     return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader});
   }
 

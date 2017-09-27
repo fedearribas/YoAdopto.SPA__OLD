@@ -17,17 +17,17 @@
 				</li>	
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<div ngbDropdown class="d-inline-block" *ngIf="tokenAuthService.userSignedIn()">
-					<button class="btn btn-outline-success dropdown" id="dropdownMenu1" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> {{ tokenAuthService.currentUserData?.name }}</button>
+				<div ngbDropdown class="d-inline-block" *ngIf="authService.userSignedIn()">
+					<button class="btn btn-outline-success dropdown" id="dropdownMenu1" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> {{ authService.current_user?.name }}</button>
 					<div ngbDropdownMenu aria-labelledby="dropdownMenu1">
 						<button class="dropdown-item" (click)="onSignOut()"><i class="fa fa-sign-out" aria-hidden="true"></i> Salir</button>
 					</div>
 				</div>
 
-					<li class='nav-item' routerLinkActive="active" *ngIf="!tokenAuthService.userSignedIn()">
+					<li class='nav-item' routerLinkActive="active" *ngIf="!authService.userSignedIn()">
 							<a class='nav-link' routerLink="/login" (click)="navbarCollapsed = true"><i class="fa fa-sign-in" aria-hidden="true"></i> Ingresar</a>
 						</li>
-						<li class='nav-item' routerLinkActive="active" *ngIf="!tokenAuthService.userSignedIn()">
+						<li class='nav-item' routerLinkActive="active" *ngIf="!authService.userSignedIn()">
 							<a class='nav-link' routerLink="/register" (click)="navbarCollapsed = true"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrarse</a>
 						</li>		
 				</ul>

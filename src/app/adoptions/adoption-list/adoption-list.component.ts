@@ -1,4 +1,4 @@
-import { Angular2TokenService } from 'angular2-token';
+import { AuthService } from './../../auth/auth.service';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
@@ -15,7 +15,7 @@ export class AdoptionListComponent implements OnInit, OnDestroy {
 
   constructor (private adoptionService: AdoptionsService,
               private adoptionsMemoryService: AdoptionsMemoryService,
-              public authService: Angular2TokenService
+              public authService: AuthService
             ) {}
 
   adoptions: Adoption[] = [];

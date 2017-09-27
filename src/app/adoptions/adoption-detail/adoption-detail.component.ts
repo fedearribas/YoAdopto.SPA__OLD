@@ -1,4 +1,4 @@
-import { Angular2TokenService } from 'angular2-token';
+import { AuthService } from './../../auth/auth.service';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
@@ -16,7 +16,7 @@ export class AdoptionDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private adoptionsService: AdoptionsService,
     private adoptionsMemoryService: AdoptionsMemoryService,
-    public authService: Angular2TokenService,
+    public authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class AdoptionDetailComponent implements OnInit {
           if (!this.adoption) {
             this.adoptionsService.getAdoption(id).subscribe(
               (adoption: Adoption) => this.adoption = adoption,
-              (error: Response) => { 
+              (error: Response) => {
                 if (error.status == 404) {
                   this.router.navigate(['/notfound']);
                 }
@@ -40,7 +40,7 @@ export class AdoptionDetailComponent implements OnInit {
 
   canManage() {
     if (this.authService.userSignedIn()) {
-      return this.authService.currentUserData.id === this.adoption.user.id;
+      return this.authService.current_user.id === this.adoption.user.id || this.authService.current_user.admin;
     }
     return false;
   }
