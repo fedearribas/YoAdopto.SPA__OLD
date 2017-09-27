@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header *ngIf="authService.tokenWasValidated()"></app-header>
 <div class="container"> 
-  <router-outlet></router-outlet> 
+  <router-outlet *ngIf="authService.tokenWasValidated()"></router-outlet> 
 </div>

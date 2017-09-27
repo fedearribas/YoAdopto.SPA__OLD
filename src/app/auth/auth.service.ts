@@ -10,6 +10,8 @@ import 'rxjs/add/operator/catch';
 export class AuthService {
 
   public current_user;
+  public signed_in = false;
+  private validated_token = false;
 
   constructor(private http: Http,
               public tokenService: Angular2TokenService,
@@ -21,6 +23,7 @@ export class AuthService {
         if(res.status == 200){
           console.log(res);
           this.current_user = res.json().data;
+          this.signed_in = true;
           this.router.navigate(['/adoptions']);
           console.log(this.current_user);
         }
@@ -37,6 +40,7 @@ export class AuthService {
       (res) => {
         if (res.status == 200) {
           this.current_user = res.json().data;
+          this.signed_in = true;
           this.router.navigate(['/adoptions']);
           console.log(res);
         }
@@ -52,15 +56,27 @@ export class AuthService {
     this.tokenService.signOut();
     this.router.navigate(['/']);
     this.current_user = null;
+    this.signed_in = false;
   }
 
   userSignedIn() {
-    return this.tokenService.userSignedIn();
+     return this.signed_in;
+  }
+
+  tokenWasValidated() {
+    return this.validated_token;
   }
 
   validateToken() {
     this.tokenService.validateToken().subscribe(
-      (res) => this.current_user = res.json().data
+      (res) => {
+        this.signed_in = true;
+        this.current_user = res.json().data;
+        this.validated_token = true;
+      },
+      (err) => {
+        this.validated_token = true;
+      }
     );
   }
 }

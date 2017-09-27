@@ -13,10 +13,6 @@ export class HeaderComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    console.log(this.authService);
-    if (this.authService.userSignedIn()) {
-      this.authService.validateToken();
-    }
   }
 
   onSignOut() {

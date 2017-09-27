@@ -1,3 +1,4 @@
+import { AuthService } from './auth/auth.service';
 import { Component } from '@angular/core';
 import {Angular2TokenService} from 'angular2-token';
 import {environment} from '../environments/environment';
@@ -10,9 +11,9 @@ import {environment} from '../environments/environment';
 export class AppComponent {
   title = 'app';
 
-  constructor(private authToken: Angular2TokenService) {
+  constructor(private authToken: Angular2TokenService, public authService: AuthService) {
     this.authToken.init(environment.token_auth_config);
-
+    this.authService.validateToken();
   /*   this.authToken.signIn({email: 'admin@test.com', password: 'fede1234'}).subscribe(
       res => {
 

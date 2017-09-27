@@ -34,7 +34,7 @@ export class AdoptionsMemoryService {
   }
 
   insertAdoption(adoption: Adoption) {
-    this.adoptions.push(adoption);
+    this.adoptions.unshift(adoption);
     this.adoptionsListChanged.next(this.adoptions.slice());
   }
 

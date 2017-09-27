@@ -10,7 +10,7 @@
         <h4 class="display-4">{{ adoption?.name }}</h4>
         <p class="lead">{{ adoption?.description }}</p>
         <p> <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
-        <div class="list-group-item" *ngIf="authService.userSignedIn(); else showData" >
+        <div class="list-group-item" *ngIf="canSeeData(); else showData" >
           <p class="lead">Datos de contacto:</p>
           <p> <i class="fa fa-mobile" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_phone }}</span></p>
           <p> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_email }}</span></p>          

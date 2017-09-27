@@ -38,6 +38,13 @@ export class AdoptionDetailComponent implements OnInit {
     );
   }
 
+  canSeeData() {
+    if (this.authService.userSignedIn()) {
+      return true;
+    }
+    return false;
+  }
+
   canManage() {
     if (this.authService.userSignedIn()) {
       return this.authService.current_user.id === this.adoption.user.id || this.authService.current_user.admin;
