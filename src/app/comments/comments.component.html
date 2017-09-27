@@ -3,6 +3,6 @@
   <hr>
   <app-comment-list [comments]="comments"></app-comment-list>
 <br>
- <app-comment-new></app-comment-new>
+ <app-comment-new *ngIf="authService.userSignedIn()"></app-comment-new>
   <br>
 </div>
