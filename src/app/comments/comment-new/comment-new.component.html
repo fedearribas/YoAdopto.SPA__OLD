@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <form (ngSubmit)="onSubmit()" f="ngForm">
+
+      <div class="form-group">
+        <label for="message">Escribir comentario:</label>
+        <textarea 
+          type="text" 
+          placeholder="Escribe aquí tu comentario..." 
+          id="message" name="message" 
+          class="form-control" 
+          rows="3"
+          ngModel
+          required ></textarea>
+      </div>    
+        <button type="submit" class="btn btn-primary btn-sm clickable float-md-right">Comentar</button>
+    </form>
+
+  </div>
+</div>

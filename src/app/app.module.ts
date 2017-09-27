@@ -23,6 +23,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CommentsComponent } from './comments/comments.component';
+import { CommentListComponent } from './comments/comment-list/comment-list.component';
+import { CommentNewComponent } from './comments/comment-new/comment-new.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CommentsComponent } from './comments/comments.component';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    CommentsComponent
+    CommentsComponent,
+    CommentListComponent,
+    CommentNewComponent
   ],
   imports: [
     BrowserModule,
