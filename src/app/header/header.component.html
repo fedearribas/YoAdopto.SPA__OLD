@@ -24,11 +24,11 @@
 					</div>
 				</div>
 
-					<li class='nav-item' routerLinkActive="active" *ngIf="!authService.userSignedIn()">
-							<a class='nav-link' routerLink="/login" (click)="navbarCollapsed = true"><i class="fa fa-sign-in" aria-hidden="true"></i> Ingresar</a>
+					<li class='nav-item' style="margin-right:5px;" *ngIf="!authService.userSignedIn()">
+							<a class='btn btn-success btn-block' routerLink="/login" (click)="navbarCollapsed = true"><i class="fa fa-sign-in" aria-hidden="true"></i> Ingresar</a>
 						</li>
-						<li class='nav-item' routerLinkActive="active" *ngIf="!authService.userSignedIn()">
-							<a class='nav-link' routerLink="/register" (click)="navbarCollapsed = true"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrarse</a>
+						<li class='nav-item' style="margin-right:5px;" *ngIf="!authService.userSignedIn()">
+							<a class='btn btn-info btn-block' routerLink="/register" (click)="navbarCollapsed = true"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrarse</a>
 						</li>		
 				</ul>
 		</div>
