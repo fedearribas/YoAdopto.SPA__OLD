@@ -1,3 +1,4 @@
+import { Comment } from './../comments/comment.model';
 import { User } from './../auth/user.model';
 export class Adoption {
   public id: number;
@@ -13,6 +14,7 @@ export class Adoption {
     public published_date?: Date,
     public contact_phone?: number,
     public contact_email?: string,
-    public user?: User) {  }
+    public user?: User,
+    public comments?: Comment[]) {  }
 
 }

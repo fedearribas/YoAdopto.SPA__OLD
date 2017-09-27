@@ -30,4 +30,7 @@
     </div>
     <br> 
     <button type="button" routerLink="/adoptions" class="btn btn-outline-success clickable">Volver</button>
+
+    
 </div>
+<app-comments *ngFor="let comment of adoption.comments" [comment]="comment"></app-comments>
