@@ -3,32 +3,76 @@
   <div class="card-body">
     <div class="row">
       <div class="col-md-6">
-        <img class="card-img-top rounded-top rounded-bottom" src="{{ adoption?.image }}" alt="{{ adoption?.name }}" style="max-width: 100%;">
+        <img 
+          class="card-img-top rounded-top rounded-bottom" 
+          src="{{ adoption?.image }}" 
+          alt="{{ adoption?.name }}" 
+          style="max-width: 100%;">
       </div>
       <div class="col-md-6">
-          <p class="card-text"><small class="text-muted">Publicado por {{adoption.user?.name}} el {{ adoption?.created_at | date:"dd/MM/yyyy HH:mm:ss" }}</small></p>
+          <p class="card-text">
+            <small 
+            class="text-muted">
+            Publicado por <b>{{adoption.user?.name}}</b>
+             el {{ adoption?.created_at | date:"dd/MM/yyyy HH:mm:ss" }}
+            </small>
+          </p>
         <h4 class="display-4">{{ adoption?.name }}</h4>
         <p class="lead">{{ adoption?.description }}</p>
-        <p> <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
+        <p>
+          <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+           {{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad
+        </p>
         <div class="list-group-item" *ngIf="canSeeData(); else showData" >
           <p class="lead">Datos de contacto:</p>
-          <p> <i class="fa fa-mobile" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_phone }}</span></p>
-          <p> <i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="card-text">{{ adoption?.contact_email }}</span></p>          
+          <p>
+            <i class="fa fa-mobile" aria-hidden="true"></i> 
+            <span class="card-text">{{ adoption?.contact_phone }}
+            </span>
+          </p>
+          <p>
+            <i class="fa fa-envelope-o" aria-hidden="true"></i> 
+            <span class="card-text">{{ adoption?.contact_email }}
+            </span>
+          </p>          
         </div>
         <ng-template #showData>
-          <button routerLink="/login" class="btn btn-outline-info"><i class="fa fa-id-card-o" aria-hidden="true"></i> Ver datos de contacto</button>
+          <button 
+            routerLink="/login" 
+            class="btn btn-outline-info">
+            <i class="fa fa-id-card-o" aria-hidden="true"></i> 
+            Ver datos de contacto
+          </button>
         </ng-template>
       </div>
     </div>  
     <br> 
     <div class="row" *ngIf="canManage()">
       <div class="col-md-12">
-        <button type="button" class="btn btn-info clickable" routerLink="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
-        <button type="button" class="btn btn-secondary clickable" (click)="onDelete()"><i class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
+        <button
+          type="button" 
+          class="btn btn-info clickable" 
+          routerLink="edit">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
+          Editar
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-secondary clickable" 
+          (click)="onDelete()">
+          <i class="fa fa-trash-o" aria-hidden="true"></i> 
+          Borrar
+        </button>
       </div>     
     </div>
     <br> 
-    <button type="button" routerLink="/adoptions" class="btn btn-outline-success clickable"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button>    
+    <button 
+      type="button" 
+      routerLink="/adoptions" 
+      class="btn btn-outline-success clickable">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i> 
+      Volver
+    </button>    
   </div>
   
   <app-comments [adoption]="adoption"></app-comments>

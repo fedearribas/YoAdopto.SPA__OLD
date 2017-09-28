@@ -51,7 +51,9 @@ export class AdoptionListComponent implements OnInit, OnDestroy {
           this.noDataMsg = 'Aun no hay datos cargados, vuelva a intentarlo mas tarde!';
         }
       },
-      (error) => this.errorMessage = error
+      (error) =>  {
+        this.errorMessage = error.message;
+      }
     );
   }
 

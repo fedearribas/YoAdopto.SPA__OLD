@@ -6,29 +6,67 @@
 
         <div class="form-group">
           <label for="name">Nombre</label>
-          <input type="text" id="name" formControlName="name" [(ngModel)]="adoption.name" class="form-control">
+          <input 
+            type="text" 
+            id="name"
+            formControlName="name" 
+            [(ngModel)]="adoption.name" 
+            class="form-control">
         </div>
         <div class="form-group">
             <label>Imagen</label><br>
-            <label class="btn btn-info clickable" style="margin-bottom:0px;"><i class="fa fa-picture-o" aria-hidden="true"></i> Seleccionar Imagen
-              <input type="file" style="display:none;"  id="image" accept="image/*" formControlName="image" (change)="readUrl($event)" class="form-control">
+            <label 
+              class="btn btn-info clickable" 
+              style="margin-bottom:0px;">
+              <i class="fa fa-picture-o" aria-hidden="true"></i> 
+              Seleccionar Imagen
+              <input 
+                type="file" 
+                style="display:none;" 
+                id="image" accept="image/*" 
+                formControlName="image" 
+                (change)="readUrl($event)" 
+                class="form-control">
             </label>
-            <button type="button" *ngIf="imageSelected" (click)="onClearSelectedImage()" class="btn btn-secondary clickable"><i class="fa fa-trash" aria-hidden="true"></i> Borrar Imagen</button>
+            <button 
+              type="button" 
+              *ngIf="imageSelected" 
+              (click)="onClearSelectedImage()" 
+              class="btn btn-secondary clickable">
+              <i class="fa fa-trash" aria-hidden="true"></i> 
+              Borrar Imagen
+            </button>
         </div>
         
         <div class="form-group">
           <label for="description">Descripción</label>
-          <textarea type="text" id="description" [(ngModel)]="adoption.description" formControlName="description" rows="5" class="form-control">          
+          <textarea 
+            type="text" 
+            id="description" 
+            [(ngModel)]="adoption.description" 
+            formControlName="description" 
+            rows="5" 
+            class="form-control">          
           </textarea>
         </div>
         <div class="form-group">
           <label for="name">Edad</label>
           <div class="row">
             <div class="col-md-6">
-              <input type="number" id="age" formControlName="age" [(ngModel)]="adoption.age" class="form-control">
+              <input 
+                type="number" 
+                id="age" 
+                formControlName="age" 
+                [(ngModel)]="adoption.age" 
+                class="form-control">
             </div>
             <div class="col-md-6">
-              <select name="ageUnit" id="ageUnit" formControlName="ageUnit" [(ngModel)]="adoption.age_measurement_unit" class="form-control">
+              <select 
+                name="ageUnit" 
+                id="ageUnit" 
+                formControlName="ageUnit" 
+                [(ngModel)]="adoption.age_measurement_unit" 
+                class="form-control">
                 <option value="Meses">Meses</option>
                 <option value="Años">Años</option>
               </select>
@@ -37,11 +75,21 @@
         </div>  
         <div class="form-group">
           <label for="phone">Teléfono</label>
-          <input type="tel" id="phone" formControlName="phone" [(ngModel)]="adoption.contact_phone" class="form-control">
+          <input 
+            type="tel" 
+            id="phone" 
+            formControlName="phone" 
+            [(ngModel)]="adoption.contact_phone" 
+            class="form-control">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" formControlName="email" [(ngModel)]="adoption.contact_email" class="form-control">
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            [(ngModel)]="adoption.contact_email" 
+            class="form-control">
         </div>        
       </div>
 
@@ -49,18 +97,34 @@
         <h1 class="display-4">{{ adoption.name }}</h1>
         <img [src]="imageUrl" alt="" width="100%;" class="rounded-top rounded-bottom">
         <p class="lead">{{ adoption.description }}</p>
-        <p *ngIf="adoption.age && adoption.age_measurement_unit"> <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ adoption.age}}  {{adoption.age_measurement_unit }} de edad</p>
+        <p 
+          *ngIf="adoption.age && adoption.age_measurement_unit">
+          <i class="fa fa-birthday-cake" aria-hidden="true"></i> 
+          {{ adoption.age}}  {{adoption.age_measurement_unit }} de edad
+        </p>
         <div class="list-group-item" *ngIf="adoption.contact_phone || adoption.contact_email">
           <p class="lead">Datos de contacto:</p>
-          <p> <i class="fa fa-mobile" aria-hidden="true" *ngIf="adoption.contact_phone" ></i> <span class="card-text">{{ adoption.contact_phone }}</span></p>
-          <p> <i class="fa fa-envelope-o" aria-hidden="true" *ngIf="adoption.contact_email"></i> <span class="card-text">{{ adoption.contact_email }}</span></p>
+          <p>
+            <i class="fa fa-mobile" aria-hidden="true" *ngIf="adoption.contact_phone" ></i> 
+            <span class="card-text">{{ adoption.contact_phone }}</span>
+          </p>
+          <p>
+            <i class="fa fa-envelope-o" aria-hidden="true" *ngIf="adoption.contact_email"></i> 
+            <span class="card-text">{{ adoption.contact_email }}</span>
+          </p>
         </div>
       </div>
     </div>
 <br>
     <div class="row">
       <div class="col-md-4 mr-md-auto ml-md-auto">
-        <button type="submit" class="btn btn-success btn-block" [disabled]="!adoptionForm.valid || !imageSelected"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+        <button 
+          type="submit" 
+          class="btn btn-success btn-block" 
+          [disabled]="!adoptionForm.valid || !imageSelected">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i> 
+          Guardar
+        </button>
       </div>
     </div>
   </form>

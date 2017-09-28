@@ -1,7 +1,16 @@
 <nav class="navbar fixed-top navbar-expand-md navbar-light nav-styles">
 	<div class="container">
-		<a routerLink="" (click)="navbarCollapsed = true"><i class="fa fa-paw logo" aria-hidden="true"></i></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar4" (click)="navbarCollapsed = !navbarCollapsed" >
+		<a 
+			routerLink="" 
+			(click)="navbarCollapsed = true">
+			<i class="fa fa-paw logo" aria-hidden="true"></i>
+		</a>
+		<button 
+			class="navbar-toggler" 
+			type="button" 
+			data-toggle="collapse" 
+			data-target="#navbar4" 
+			(click)="navbarCollapsed = !navbarCollapsed">
 			<span class="navbar-toggler-icon"></span>
 		</button>		
 		<div class="navbar-collapse collapse" id="navbar4" [ngbCollapse]="navbarCollapsed">
@@ -18,19 +27,42 @@
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<div ngbDropdown class="d-inline-block" *ngIf="authService.userSignedIn()">
-					<button class="btn btn-outline-success dropdown" id="dropdownMenu1" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> {{ authService.current_user.name }}</button>
+					<button 
+						class="btn btn-outline-success dropdown" 
+						id="dropdownMenu1" 
+						ngbDropdownToggle>
+						<i class="fa fa-user" aria-hidden="true"></i> 
+						{{ authService.current_user.name }}
+					</button>
 					<div ngbDropdownMenu aria-labelledby="dropdownMenu1">
-						<button class="dropdown-item" (click)="onSignOut()"><i class="fa fa-sign-out" aria-hidden="true"></i> Salir</button>
+						<button 
+							class="dropdown-item" 
+							(click)="onSignOut()">
+							<i class="fa fa-sign-out" aria-hidden="true"></i> 
+							Salir
+						</button>
 					</div>
 				</div>
 
-					<li class='nav-item' style="margin-right:5px;" *ngIf="!authService.userSignedIn()">
-							<a class='btn btn-success btn-block' routerLink="/login" (click)="navbarCollapsed = true"><i class="fa fa-sign-in" aria-hidden="true"></i> Ingresar</a>
-						</li>
-						<li class='nav-item' style="margin-right:5px;" *ngIf="!authService.userSignedIn()">
-							<a class='btn btn-info btn-block' routerLink="/register" (click)="navbarCollapsed = true"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrarse</a>
-						</li>		
-				</ul>
+				<li class='nav-item' style="margin-right:5px;" *ngIf="!authService.userSignedIn()">
+					<a 
+						class='btn btn-success btn-block' 
+						routerLink="/login" 
+						(click)="navbarCollapsed = true">
+						<i class="fa fa-sign-in" aria-hidden="true"></i> 
+						Ingresar
+					</a>
+				</li>
+				<li class='nav-item' style="margin-right:5px;" *ngIf="!authService.userSignedIn()">
+					<a 
+						class='btn btn-info btn-block' 
+						routerLink="/register" 
+						(click)="navbarCollapsed = true">
+						<i class="fa fa-user-plus" aria-hidden="true"></i> 
+						Registrarse
+					</a>
+				</li>		
+			</ul>
 		</div>
 	</div>
 </nav>

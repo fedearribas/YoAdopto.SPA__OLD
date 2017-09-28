@@ -4,7 +4,13 @@
     <h1 class="display-4 heading">Adopciones</h1>
   </div>
   <div class="col-md-12" *ngIf="authService.userSignedIn()">
-    <button type="button" class="btn btn-success clickable" routerLink="new"><i class="fa fa-paw" aria-hidden="true"></i> Publicar</button>
+    <button 
+      type="button" 
+      class="btn btn-success clickable" 
+      routerLink="new">
+      <i class="fa fa-paw" aria-hidden="true"></i> 
+      Publicar
+    </button>
   </div>
 </div>
 <hr>
@@ -16,7 +22,7 @@
 </div>
 </div>
 <div class="row" *ngIf="errorMessage">
-  <h2>{{ errorMessage }}</h2>
+  <h2 class="error-message">{{ errorMessage }}</h2>
 </div>
 <div class="row" *ngIf="noDataMsg">
   <h2 class="display-4 no-data"> {{ noDataMsg }}</h2>
