@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AdoptionsMemoryService } from './../../adoptions/adoptions-memory.service';
+import { AuthService } from './../../auth/auth.service';
+import { Adoption } from './../../adoptions/adoption.model';
+import { Comment } from './../comment.model';
+import { CommentsService } from './../comments.service';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,13 +13,26 @@ import { NgForm } from '@angular/forms';
 })
 export class CommentNewComponent implements OnInit {
   @ViewChild('f') form: NgForm;
+  @Input() adoption: Adoption;
 
-  constructor() { }
+  constructor(private commentsService: CommentsService,
+              private authService: AuthService,
+              private adoptionsMemoryService: AdoptionsMemoryService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    const value = this.form.value;
+    const comment = new Comment(value.message, this.adoption.id, this.authService.current_user.id);
+    console.log(comment);
+    this.commentsService.createComment(comment).subscribe(
+      (data: Comment) => {
+        this.adoption.comments.push(data);
+        this.adoptionsMemoryService.updateAdoption(this.adoption);
+      }
+    );
+    this.form.reset();
 
   }
 

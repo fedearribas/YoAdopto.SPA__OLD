@@ -1,4 +1,4 @@
-import { Comment } from './../comment.model';
+import { Adoption } from './../../adoptions/adoption.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,17 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CommentListComponent implements OnInit {
 
-  @Input() comments: Comment[];
+  @Input() adoption: Adoption;
+
   constructor() { }
 
-  getProfileImage(image) {
-    if (!image) {
-      return '../../../assets/images/profile_image_default.png';
-    }
-    return image;
-  }
   ngOnInit() {
-    console.log(this.comments);
+   // console.log(this.comments);
   }
-
 }

@@ -1,3 +1,4 @@
+import { CommentsService } from './comments/comments.service';
 import { AuthService } from './auth/auth.service';
 import { AdoptionsMemoryService } from './adoptions/adoptions-memory.service';
 import { AdoptionsService } from './adoptions/adoptions.service';
@@ -25,6 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { CommentNewComponent } from './comments/comment-new/comment-new.component';
+import { CommentItemComponent } from './comments/comment-list/comment-item/comment-item.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { CommentNewComponent } from './comments/comment-new/comment-new.componen
     NotFoundComponent,
     CommentsComponent,
     CommentListComponent,
-    CommentNewComponent
+    CommentNewComponent,
+    CommentItemComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,13 @@ import { CommentNewComponent } from './comments/comment-new/comment-new.componen
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AdoptionsService, AdoptionsMemoryService, Angular2TokenService, AuthService],
+  providers: [
+    AdoptionsService,
+    AdoptionsMemoryService,
+    Angular2TokenService,
+    AuthService,
+    CommentsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

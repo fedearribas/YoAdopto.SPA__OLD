@@ -1,8 +1,8 @@
 <div class="container">
-  <h4>Comentarios</h4>
+  <h4>{{getCommentsCount()}}</h4>
   <hr>
-  <app-comment-list [comments]="comments"></app-comment-list>
+  <app-comment-list [adoption]="adoption"></app-comment-list>
 <br>
- <app-comment-new *ngIf="authService.userSignedIn()"></app-comment-new>
+ <app-comment-new *ngIf="authService.userSignedIn()" [adoption]="adoption"></app-comment-new>
   <br>
 </div>
