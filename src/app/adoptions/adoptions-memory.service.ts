@@ -6,31 +6,18 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class AdoptionsMemoryService {
 
-  private adoptions: Adoption[] = [];
-  adoptionsListChanged = new Subject<Adoption[]>();
+  public adoptions: Adoption[] = [];
+  public adoptionsListChanged = new Subject<Adoption[]>();
   hasData: boolean;
 
-  constructor(private adoptionsService: AdoptionsService) { }
+  constructor() { }
 
   getData() {
-    if (this.adoptions.length <= 0) {
-      this.setData();
-    }
-    this.hasData = true;
     return this.adoptions.slice();
   }
 
   getAdoption(id: number): Adoption {
      return this.adoptions.find(x => x.id == id);
-  }
-
-  setData() {
-    this.adoptionsService.getAll().subscribe(
-      adoptions => {
-        this.adoptions = adoptions;
-        this.adoptionsListChanged.next(this.adoptions.slice());
-      }
-    );
   }
 
   insertAdoption(adoption: Adoption) {

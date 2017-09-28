@@ -54,12 +54,7 @@ export class AdoptionDetailComponent implements OnInit {
 
   onDelete() {
     if (confirm('Esta seguro de borrar la publicación de ' + this.adoption.name + '?')) {
-    this.adoptionsService.deleteAdoption(this.adoption).subscribe(
-      (data) => {
-        this.adoptionsMemoryService.deleteAdoption(this.adoption);
-        this.router.navigate(['/adoptions']);
-      }
-    );
+    this.adoptionsService.deleteAdoption(this.adoption);
     }
   }
 

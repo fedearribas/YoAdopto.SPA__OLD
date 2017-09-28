@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AdoptionsMemoryService } from './adoptions-memory.service';
 import { AuthService } from './../auth/auth.service';
 import { Adoption } from './adoption.model';
 import { Injectable } from '@angular/core';
@@ -15,12 +17,17 @@ export class AdoptionsService {
   private baseUrl = 'https://yoadopto-api-fedearribas.c9users.io/adoptions';
   private currentUserHeader;
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) { }
+  constructor(private httpClient: HttpClient,
+              private authService: AuthService,
+              private adoptionsMemoryService: AdoptionsMemoryService,
+              private router: Router) { }
 
   getAll() {
     return this.httpClient.get<Adoption[]>(this.baseUrl).map(
       (adoptions: Adoption[]) => {
         console.log(adoptions);
+        this.adoptionsMemoryService.adoptions = adoptions;
+        this.adoptionsMemoryService.adoptionsListChanged.next(this.adoptionsMemoryService.adoptions.slice());
         return adoptions;
       }
     );
@@ -36,16 +43,32 @@ export class AdoptionsService {
   }
 
   insertAdoption(adoption: Adoption) {
-    return this.httpClient.post(this.baseUrl, adoption);
-  }
+    return this.httpClient.post(this.baseUrl, adoption).subscribe(
+      (data: Adoption) => {
+        this.adoptionsMemoryService.insertAdoption(data);
+        this.router.navigate(['/adoptions']);
+      });
+    }
 
   updateAdoption(adoption: Adoption) {
     this.currentUserHeader = new HttpHeaders().set('CURRENTUSERID', this.authService.current_user.id.toString());
-    return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader});
+    return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader})
+      .subscribe(
+        (data: Adoption) => {
+          this.adoptionsMemoryService.updateAdoption(data);
+          this.router.navigate(['/adoptions']);
+        },
+        (error) => alert(error.error)
+      );
   }
 
   deleteAdoption(adoption: Adoption) {
-    return this.httpClient.delete(this.baseUrl + '/' + adoption.id);
+    return this.httpClient.delete(this.baseUrl + '/' + adoption.id).subscribe(
+      (data) => {
+        this.adoptionsMemoryService.deleteAdoption(adoption);
+        this.router.navigate(['/adoptions']);
+      }
+    );
   }
 
 }

@@ -39,8 +39,8 @@ export class AdoptionFormComponent implements OnInit {
   private initForm() {
 
     if (this.editMode) {
-      if (this.adoptionsMemoryService.hasData) {
-        this.adoption = this.adoptionsMemoryService.getAdoption(this.id);
+      this.adoption = this.adoptionsMemoryService.getAdoption(this.id);
+      if (this.adoption) {
         this.imageUrl = this.adoption.image;
         this.imageSelected = true;
       } else {
@@ -105,24 +105,12 @@ export class AdoptionFormComponent implements OnInit {
     this.adoption.contact_email = email;
 
     if (this.editMode) {
-      this.adoptionsService.updateAdoption(this.adoption).subscribe(
-        (data: Adoption) => {
-          this.adoptionsMemoryService.updateAdoption(this.adoption);
-          this.router.navigate(['/adoptions']);
-        },
-        (error) => alert(error.error)
-      );
+      this.adoptionsService.updateAdoption(this.adoption);
     } else {
       const user = new User(this.authService.current_user.email, this.authService.current_user.name);
       user.id = this.authService.current_user.id;
       this.adoption.user = user;
-      this.adoptionsService.insertAdoption(this.adoption).subscribe(
-        (data: Adoption) => {
-          this.adoptionsMemoryService.insertAdoption(data);
-          console.log(this.adoption);
-          this.router.navigate(['/adoptions']);
-        }
-      );
+      this.adoptionsService.insertAdoption(this.adoption);
     }
   }
 

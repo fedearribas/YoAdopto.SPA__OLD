@@ -29,6 +29,10 @@ export class AdoptionListComponent implements OnInit, OnDestroy {
       () => this.getAdoptions()
     ); */
     this.adoptions = this.adoptionsMemoryService.getData();
+    console.log(this.adoptions.length);
+    if (this.adoptions.length <= 0) {
+      this.getAdoptions();
+    }
     this.subscription = this.adoptionsMemoryService.adoptionsListChanged.subscribe(
       (adoptions: Adoption[]) => {
         this.adoptions = adoptions;

@@ -13,6 +13,6 @@ export class HomeComponent implements OnInit {
   constructor(private adoptionsMemoryService: AdoptionsMemoryService) { }
 
   ngOnInit() {
-    this.adoptionsMemoryService.getData();
+
   }
 }
