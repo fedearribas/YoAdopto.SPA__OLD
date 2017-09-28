@@ -23,13 +23,13 @@
     <br> 
     <div class="row" *ngIf="canManage()">
       <div class="col-md-12">
-        <button class="btn btn-primary clickable" routerLink="edit" >Editar</button>
-        <button class="btn btn-danger clickable" (click)="onDelete()">Borrar</button>
+        <button class="btn btn-info clickable" routerLink="edit" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
+        <button class="btn btn-secondary clickable" (click)="onDelete()"><i class="fa fa-trash-o" aria-hidden="true"></i> Borrar</button>
     </div>
      
     </div>
     <br> 
-    <button type="button" routerLink="/adoptions" class="btn btn-outline-success clickable">Volver</button>
+    <button type="button" routerLink="/adoptions" class="btn btn-outline-success clickable"><i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</button>
 
     
 </div>
