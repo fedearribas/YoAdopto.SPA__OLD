@@ -1,4 +1,7 @@
-<app-adoption-item
-*ngFor="let adoption of adoptions" 
-[adoption]="adoption">
-</app-adoption-item>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="display-4 heading">Destacados</h1>
+  </div>
+</div>
+<hr>
+<app-adoption-list [adoptions]="adoptions"></app-adoption-list>

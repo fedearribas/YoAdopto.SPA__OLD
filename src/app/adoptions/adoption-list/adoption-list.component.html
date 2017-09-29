@@ -1,22 +1,6 @@
-
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="display-4 heading">En Adopción</h1>
-  </div>
-  <div class="col-md-12" *ngIf="authService.userSignedIn()">
-    <button 
-      type="button" 
-      class="btn btn-success clickable" 
-      routerLink="new">
-      <i class="fa fa-paw" aria-hidden="true"></i> 
-      Publicar
-    </button>
-  </div>
-</div>
-<hr>
 <div class="row">
   <div class="col-md-12 col-xs-12">
-    <div class="card-group" *ngIf="adoptions.length > 0">
+    <div class="card-group" *ngIf="adoptions?.length > 0">
       <app-adoption-item
         *ngFor="let adoption of adoptions| paginate: { itemsPerPage: 15, currentPage: p }" 
         [adoption]="adoption">
@@ -31,7 +15,7 @@
   <h2 class="display-4 no-data"> {{ noDataMsg }}</h2>
 </div>
 
-<div *ngIf="adoptions.length > 0">
+<div *ngIf="adoptions?.length > 0">
   <hr>
   <pagination-controls
     class="adoption-pagination"

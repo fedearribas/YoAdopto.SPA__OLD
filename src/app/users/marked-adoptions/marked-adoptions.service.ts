@@ -22,9 +22,12 @@ export class MarkedAdoptionsService {
     );
   }
 
-  insertAdoptionMark(adoption_id: number, user_id: number) {
-    const mark = {'adoption_id': adoption_id, 'user_id': user_id};
+  insertAdoptionMark(mark: MarkedAdoptions) {
     return this.http.post(this.postUrl, mark);
+  }
+
+  deleteAdoptionMark(markId: number) {
+    return this.http.delete(this.postUrl + '/' + markId);
   }
 
 }

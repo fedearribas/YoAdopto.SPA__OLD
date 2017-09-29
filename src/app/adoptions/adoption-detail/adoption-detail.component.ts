@@ -1,3 +1,4 @@
+import { MarkedAdoptions } from './../../users/marked-adoptions/marked-adoptions.model';
 import { MarkedAdoptionsService } from './../../users/marked-adoptions/marked-adoptions.service';
 import { AuthService } from './../../auth/auth.service';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
@@ -5,6 +6,7 @@ import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-adoption-detail',
@@ -22,7 +24,8 @@ export class AdoptionDetailComponent implements OnInit {
     private adoptionsMemoryService: AdoptionsMemoryService,
     public authService: AuthService,
     private router: Router,
-    private markedAdoptionsService: MarkedAdoptionsService) {}
+    private markedAdoptionsService: MarkedAdoptionsService,
+    private location: Location) {}
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -31,22 +34,56 @@ export class AdoptionDetailComponent implements OnInit {
           this.adoption = this.adoptionsMemoryService.getAdoption(id);
           if (!this.adoption) {
             this.adoptionsService.getAdoption(id).subscribe(
-              (adoption: Adoption) => this.adoption = adoption,
+              (adoption: Adoption) => {
+                this.adoption = adoption;
+                this.getMark();
+              },
               (error: Response) => {
                 if (error.status == 404) {
                   this.router.navigate(['/notfound']);
                 }
                }
             );
+          } else {
+            this.getMark();
           }
       }
     );
+  }
 
-    // TODO  --- MARCAR SEGUN USUARIO
+  getMark() {
+    if (this.adoption.marked_adoptions.find(x => x.user.id == this.authService.current_user.id)) {
+      this.marked = true;
+    }
   }
 
   onFav() {
-    this.marked = !this.marked;
+    if (!this.marked) {
+      const mark = new MarkedAdoptions(this.adoption.id, this.authService.current_user.id);
+      this.markedAdoptionsService.insertAdoptionMark(mark).subscribe(
+        (res: MarkedAdoptions) => {
+          this.adoption.marked_adoptions.push(res);
+          this.adoptionsMemoryService.updateAdoption(this.adoption);
+          this.marked = true;
+        }
+      );
+
+    } else {
+      const markDelete: MarkedAdoptions = this.adoption.marked_adoptions.find(x => x.user.id == this.authService.current_user.id);
+      this.markedAdoptionsService.deleteAdoptionMark(markDelete.id).subscribe(
+        (res: MarkedAdoptions) => {
+          const index = this.adoption.marked_adoptions.findIndex((x => x.id == markDelete.id));
+          this.adoption.marked_adoptions.splice(index, 1);
+          this.adoptionsMemoryService.updateAdoption(this.adoption);
+          this.marked = false;
+        }
+      );
+
+    }
+  }
+
+  onBack() {
+    this.location.back(); // <-- go back to previous location on cancel
   }
 
   canSeeData() {

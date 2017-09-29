@@ -30,6 +30,7 @@ import { CommentNewComponent } from './comments/comment-new/comment-new.componen
 import { CommentItemComponent } from './comments/comment-list/comment-item/comment-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adoptions.component';
+import { AdoptionsContainerComponent } from './adoptions/adoptions-container/adoptions-container.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adopti
     CommentListComponent,
     CommentNewComponent,
     CommentItemComponent,
-    MarkedAdoptionsComponent
+    MarkedAdoptionsComponent,
+    AdoptionsContainerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { AdoptionsContainerComponent } from './adoptions/adoptions-container/adoptions-container.component';
 import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adoptions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { Angular2TokenService } from 'angular2-token';
@@ -15,7 +16,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'adoptions', component: AdoptionsComponent, children: [
-    {path: '', component: AdoptionListComponent },
+    {path: '', component: AdoptionsContainerComponent },
     {path: 'new', component: AdoptionFormComponent, canActivate: [Angular2TokenService] },
     {path: ':id', component: AdoptionDetailComponent },
     {path: ':id/edit', component: AdoptionFormComponent, canActivate: [Angular2TokenService] }

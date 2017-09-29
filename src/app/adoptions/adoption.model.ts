@@ -1,8 +1,10 @@
+import { MarkedAdoptions } from './../users/marked-adoptions/marked-adoptions.model';
 import { Comment } from './../comments/comment.model';
 import { User } from './../auth/user.model';
 export class Adoption {
   public id: number;
   public created_at: Date;
+  public marked_adoptions: MarkedAdoptions[];
 
   constructor(
     public name?: string,
