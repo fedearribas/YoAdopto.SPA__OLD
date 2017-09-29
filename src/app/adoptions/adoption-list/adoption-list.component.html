@@ -16,7 +16,7 @@
 <hr>
 <div class="row">
   <div class="col-md-12 col-xs-12">
-    <div class="card-group" *ngIf="adoptions">
+    <div class="card-group" *ngIf="adoptions.length > 0">
       <app-adoption-item
         *ngFor="let adoption of adoptions| paginate: { itemsPerPage: 15, currentPage: p }" 
         [adoption]="adoption">
@@ -31,7 +31,7 @@
   <h2 class="display-4 no-data"> {{ noDataMsg }}</h2>
 </div>
 
-<div *ngIf="adoptions">
+<div *ngIf="adoptions.length > 0">
   <hr>
   <pagination-controls
     style="color:white;"
