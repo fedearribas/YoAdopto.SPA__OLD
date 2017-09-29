@@ -1,3 +1,4 @@
+import { MarkedAdoptionsService } from './users/marked-adoptions/marked-adoptions.service';
 import { CommentsService } from './comments/comments.service';
 import { AuthService } from './auth/auth.service';
 import { AdoptionsMemoryService } from './adoptions/adoptions-memory.service';
@@ -28,6 +29,7 @@ import { CommentListComponent } from './comments/comment-list/comment-list.compo
 import { CommentNewComponent } from './comments/comment-new/comment-new.component';
 import { CommentItemComponent } from './comments/comment-list/comment-item/comment-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adoptions.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommentsComponent,
     CommentListComponent,
     CommentNewComponent,
-    CommentItemComponent
+    CommentItemComponent,
+    MarkedAdoptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AdoptionsMemoryService,
     Angular2TokenService,
     AuthService,
-    CommentsService
+    CommentsService,
+    MarkedAdoptionsService
   ],
   bootstrap: [AppComponent]
 })

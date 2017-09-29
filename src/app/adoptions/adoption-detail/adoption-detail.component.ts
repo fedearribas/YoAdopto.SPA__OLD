@@ -1,3 +1,4 @@
+import { MarkedAdoptionsService } from './../../users/marked-adoptions/marked-adoptions.service';
 import { AuthService } from './../../auth/auth.service';
 import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
@@ -11,13 +12,17 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./adoption-detail.component.css']
 })
 export class AdoptionDetailComponent implements OnInit {
+
   adoption: Adoption;
   isDataAvailable = false;
+  marked = false;
+
   constructor(private route: ActivatedRoute,
     private adoptionsService: AdoptionsService,
     private adoptionsMemoryService: AdoptionsMemoryService,
     public authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private markedAdoptionsService: MarkedAdoptionsService) {}
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -36,6 +41,12 @@ export class AdoptionDetailComponent implements OnInit {
           }
       }
     );
+
+    // TODO  --- MARCAR SEGUN USUARIO
+  }
+
+  onFav() {
+    this.marked = !this.marked;
   }
 
   canSeeData() {

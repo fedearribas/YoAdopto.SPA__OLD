@@ -17,7 +17,18 @@
              el {{ adoption?.created_at | date:"dd/MM/yyyy HH:mm:ss" }}
             </small>
           </p>
-        <h4 class="display-4">{{ adoption?.name }}</h4>
+        <h4 class="display-4">{{ adoption?.name }}</h4>        
+        
+        <div *ngIf="authService.userSignedIn()">
+          <span class="noSelect" (click)="onFav()">
+            <span class="star" [class.filled]="marked">&#9733;</span>
+            <span class="clickable" *ngIf="!marked">Agregar a Destacados</span>
+            <span class="clickable" *ngIf="marked">En Destacados</span>
+            <br>
+            <br>
+          </span>          
+        </div>
+
         <p class="lead">{{ adoption?.description }}</p>
         <p>
           <i class="fa fa-birthday-cake" aria-hidden="true"></i>
