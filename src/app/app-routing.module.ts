@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'lost', component: LostComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent},
-  {path: 'user/marked_adoptions', component: MarkedAdoptionsComponent},
+  {path: 'user/marked_adoptions', component: MarkedAdoptionsComponent, canActivate: [Angular2TokenService] },
   {path: '**', redirectTo: 'notfound'},
   {path: 'notfound', component: NotFoundComponent}
 ];
