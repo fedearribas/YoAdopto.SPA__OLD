@@ -27,6 +27,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { CommentNewComponent } from './comments/comment-new/comment-new.component';
 import { CommentItemComponent } from './comments/comment-list/comment-item/comment-item.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CommentItemComponent } from './comments/comment-list/comment-item/comme
     HttpClientModule,
     HttpModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     AdoptionsService,

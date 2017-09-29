@@ -16,14 +16,27 @@
 <hr>
 <div class="row">
   <div class="col-md-12 col-xs-12">
-  <div class="card-group" *ngIf="adoptions">
-  <app-adoption-item *ngFor="let adoption of adoptions;" [adoption]="adoption"></app-adoption-item>
-</div>
-</div>
+    <div class="card-group" *ngIf="adoptions">
+      <app-adoption-item
+        *ngFor="let adoption of adoptions| paginate: { itemsPerPage: 15, currentPage: p }" 
+        [adoption]="adoption">
+      </app-adoption-item>
+    </div>
+  </div>
 </div>
 <div class="row" *ngIf="errorMessage">
   <h2 class="error-message">{{ errorMessage }}</h2>
 </div>
 <div class="row" *ngIf="noDataMsg">
   <h2 class="display-4 no-data"> {{ noDataMsg }}</h2>
+</div>
+
+<div *ngIf="adoptions">
+  <hr>
+  <pagination-controls
+    style="color:white;"
+    (pageChange)="p = $event"
+    previousLabel="Anterior"
+    nextLabel="Siguiente">
+  </pagination-controls>
 </div>
