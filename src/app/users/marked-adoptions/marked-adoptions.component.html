@@ -4,4 +4,5 @@
   </div>
 </div>
 <hr>
-<app-adoption-list [adoptions]="adoptions"></app-adoption-list>
+<app-adoption-list *ngIf="adoptions && adoptions.length > 0" [adoptions]="adoptions"></app-adoption-list>
+<p class="lead no-data" *ngIf="!adoptions || adoptions.length <= 0">Aún no tiene ninguna publicación en Destacados</p>
