@@ -10,7 +10,8 @@
             type="text" 
             id="name"
             formControlName="name" 
-            [(ngModel)]="adoption.name" 
+            [(ngModel)]="adoption.name"
+            placeholder="Nombre de la mascota..." 
             class="form-control">
         </div>
         <div class="form-group">
@@ -45,6 +46,7 @@
             id="description" 
             [(ngModel)]="adoption.description" 
             formControlName="description" 
+            placeholder="Deja una descripción..."
             rows="5" 
             class="form-control">          
           </textarea>

@@ -34,6 +34,7 @@
 <div *ngIf="adoptions.length > 0">
   <hr>
   <pagination-controls
+    class="adoption-pagination"
     style="color:white;"
     (pageChange)="p = $event"
     previousLabel="Anterior"

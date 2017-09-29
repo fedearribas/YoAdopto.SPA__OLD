@@ -9,3 +9,7 @@
 .error-message {
   color: white;
 }
+
+.adoption-pagination /deep/ .ngx-pagination .current {
+  background: #8BC34A;
+}
