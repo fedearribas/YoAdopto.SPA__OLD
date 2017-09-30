@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class MarkedAdoptionsComponent implements OnInit {
 
   adoptions: Adoption[] = [];
+  noDataMsg = '';
 
   constructor(private markedAdoptionsService: MarkedAdoptionsService,
               private authService: AuthService) { }
@@ -19,6 +20,9 @@ export class MarkedAdoptionsComponent implements OnInit {
   ngOnInit() {
     this.markedAdoptionsService.getMarkedAdoptionsByUserId(this.authService.current_user.id).subscribe(
       (res: MarkedAdoptions[]) => {
+        if (res.length <= 0) {
+          this.noDataMsg = 'Aún no tiene ninguna publicación en Destacados';
+        }
         console.log(res);
         res.forEach(element => {
           this.adoptions.push(element.adoption);
