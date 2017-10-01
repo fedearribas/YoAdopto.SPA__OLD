@@ -4,7 +4,6 @@ import { User } from './../auth/user.model';
 export class Adoption {
   public id: number;
   public created_at: Date;
-  public marked_adoptions: MarkedAdoptions[];
 
   constructor(
     public name?: string,
@@ -16,7 +15,7 @@ export class Adoption {
     public published_date?: Date,
     public contact_phone?: number,
     public contact_email?: string,
-    public user?: User,
-    public comments?: Comment[]) {  }
+    public user?: User
+    ) {  }
 
 }

@@ -22,6 +22,14 @@ export class MarkedAdoptionsService {
     );
   }
 
+  getMarkedAdoptionByUserIdAndAdoptionId(user_id: number, adoption_id: number) {
+    return this.http.get(this.baseUrl + '/' + user_id + '/' + adoption_id).map(
+      (res: MarkedAdoptions) => {
+        return res;
+      }
+    );
+  }
+
   insertAdoptionMark(mark: MarkedAdoptions) {
     return this.http.post(this.postUrl, mark);
   }

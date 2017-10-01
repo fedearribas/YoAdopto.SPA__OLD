@@ -1,7 +1,9 @@
 <div class="container">
   <h4>{{ commentsCount }}</h4>
   <hr>
+  <div class="loader" [hidden]="comments"></div>    
   <app-comment-list [comments]="comments"></app-comment-list>
+
 <br>
  <app-comment-new *ngIf="authService.userSignedIn()"></app-comment-new>
   <br>

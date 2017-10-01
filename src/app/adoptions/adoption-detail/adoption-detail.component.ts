@@ -17,6 +17,8 @@ export class AdoptionDetailComponent implements OnInit {
   adoption: Adoption;
   isDataAvailable = false;
   marked = false;
+  markedAdoption: MarkedAdoptions;
+  loadedMarked = false;
 
   constructor(private route: ActivatedRoute,
     private adoptionsService: AdoptionsService,
@@ -40,9 +42,16 @@ export class AdoptionDetailComponent implements OnInit {
   }
 
   getMark() {
-    if (this.adoption.marked_adoptions.find(x => x.user.id == this.authService.current_user.id)) {
-      this.marked = true;
-    }
+    this.markedAdoptionsService.getMarkedAdoptionByUserIdAndAdoptionId(this.authService.current_user.id, this.adoption.id).subscribe(
+      (res: MarkedAdoptions) => {
+        this.markedAdoption = res;
+        console.log(res);
+        if (this.markedAdoption) {
+          this.marked = true;
+        }
+        this.loadedMarked = true;
+      }
+    );
   }
 
   onFav() {
@@ -55,8 +64,7 @@ export class AdoptionDetailComponent implements OnInit {
       );
 
     } else {
-      const markDelete: MarkedAdoptions = this.adoption.marked_adoptions.find(x => x.user.id == this.authService.current_user.id);
-      this.markedAdoptionsService.deleteAdoptionMark(markDelete.id).subscribe(
+      this.markedAdoptionsService.deleteAdoptionMark(this.markedAdoption.id).subscribe(
         (res: MarkedAdoptions) => {
           this.marked = false;
         }

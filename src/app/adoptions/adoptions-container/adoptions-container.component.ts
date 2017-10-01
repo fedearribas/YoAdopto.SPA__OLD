@@ -15,6 +15,7 @@ export class AdoptionsContainerComponent implements OnInit, OnDestroy {
   adoptions: Adoption[] = [];
   private adoptionsSubscription: AnonymousSubscription;
   private timerSubscription: AnonymousSubscription;
+  isLoading = false;
 
   constructor (public adoptionsService: AdoptionsService,
   public authService: AuthService) {}
@@ -31,6 +32,7 @@ export class AdoptionsContainerComponent implements OnInit, OnDestroy {
     this.adoptionsService.getAll();
     this.adoptionsSubscription = this.adoptionsService.adoptionsListChanged.subscribe(res => {
         this.adoptions = res;
+        this.isLoading = true;
     });
   }
 

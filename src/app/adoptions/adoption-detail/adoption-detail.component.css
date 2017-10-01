@@ -21,3 +21,8 @@ h4.pet-name {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+.loader {
+  width:30px;
+  height: 30px;
+}

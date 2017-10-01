@@ -20,6 +20,7 @@
         <h4 class="display-4">{{ adoption?.name }}</h4>        
         
         <div *ngIf="authService.userSignedIn()">
+          <div class="loader" [hidden]="loadedMarked"></div>    
           <span class="noSelect" (click)="onFav()">
             <span class="star" [class.filled]="marked">&#9733;</span>
             <span class="clickable" *ngIf="!marked">Agregar a Destacados</span>
