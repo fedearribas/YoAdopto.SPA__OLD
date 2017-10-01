@@ -66,7 +66,8 @@ export class AdoptionsService {
     return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader})
       .subscribe(
         (data: Adoption) => {
-          this.router.navigate(['/adoptions']);
+          this.adoptions[this.adoptions.indexOf(data)] = data;
+          this.adoptionsListChanged.next(this.adoptions);
         },
         (error) => alert(error.error)
       );

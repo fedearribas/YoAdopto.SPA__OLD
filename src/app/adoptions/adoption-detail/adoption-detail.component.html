@@ -17,7 +17,14 @@
              el {{ adoption?.created_at | date:"dd/MM/yyyy HH:mm:ss" }}
             </small>
           </p>
-        <h4 class="display-4">{{ adoption?.name }}</h4>        
+          <h4>
+            <span class="display-4">{{ adoption?.name }}&nbsp; &nbsp;</span>
+            <span 
+              *ngIf="adoption.adopted" 
+              class="badge badge-pill badge-success">
+              Adoptado!
+            </span>
+          </h4>        
         
         <div *ngIf="authService.userSignedIn()">
           <div class="loader" [hidden]="loadedMarked"></div>    
@@ -56,7 +63,23 @@
             Ver datos de contacto
           </button>
         </ng-template>
+        <br>
+        <button 
+          class="btn btn-success clickable" 
+          *ngIf="canManage() && !adoption.adopted" 
+          (click)="onMarkAsAdopted()" 
+          type="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> 
+          Marcar como adoptado
+        </button>
+        <button 
+          class="btn btn-danger clickable" 
+          *ngIf="canManage() && adoption.adopted" 
+          (click)="onDismarkAsAdopted()" 
+          type="button"><i class="fa fa-ban" aria-hidden="true"></i> 
+          Desmarcar como adoptado
+        </button>
       </div>
+     
     </div>  
     <br> 
     <div class="row" *ngIf="canManage()">

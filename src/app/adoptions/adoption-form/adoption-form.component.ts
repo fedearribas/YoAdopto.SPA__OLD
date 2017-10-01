@@ -99,6 +99,7 @@ export class AdoptionFormComponent implements OnInit {
 
     if (this.editMode) {
       this.adoptionsService.updateAdoption(this.adoption);
+      this.router.navigate(['/adoptions']);
     } else {
       const user = new User(this.authService.current_user.email, this.authService.current_user.name);
       user.id = this.authService.current_user.id;

@@ -7,7 +7,16 @@
   </a>
   </div>
   <div class="card-body">
-    <h4 class="display-4 pet-name">{{ adoption.name }}</h4>
+    <span 
+      class="display-4 pet-name"
+      ngbTooltip="{{ adoption.name }}">
+      {{( adoption.name.length>8)? (adoption.name | slice:0:8)+'...':(adoption.name) }}
+    </span>
+    <span 
+      *ngIf="adoption.adopted" 
+      class="badge badge-pill badge-success pull-right">
+      Adoptado!
+    </span>
     <p 
       class="card-text desc" 
       ngbTooltip="{{ adoption.description }}">

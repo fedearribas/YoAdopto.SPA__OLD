@@ -76,6 +76,16 @@ export class AdoptionDetailComponent implements OnInit {
     this.location.back(); // <-- go back to previous location on cancel
   }
 
+  onMarkAsAdopted() {
+    this.adoption.adopted = true;
+    this.adoptionsService.updateAdoption(this.adoption);
+  }
+
+  onDismarkAsAdopted() {
+    this.adoption.adopted = false;
+    this.adoptionsService.updateAdoption(this.adoption);
+  }
+
   canSeeData() {
     if (this.authService.userSignedIn()) {
       return true;

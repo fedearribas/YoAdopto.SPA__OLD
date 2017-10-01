@@ -27,7 +27,6 @@ export class CommentsComponent implements OnInit, OnDestroy {
   }
 
   getComments() {
-    this.commentsService.getCommentsByAdoptionId(this.id);
     this.commentsSubscription = this.commentsService.commentListChanged.subscribe(
       (res: Comment[]) => {
         this.comments = res;
@@ -37,6 +36,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
         }
       }
     );
+    this.commentsService.getCommentsByAdoptionId(this.id);
   }
 
   ngOnDestroy() {

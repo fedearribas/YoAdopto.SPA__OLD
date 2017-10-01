@@ -29,11 +29,11 @@ export class AdoptionsContainerComponent implements OnInit, OnDestroy {
   }
 
   private refreshData(): void {
-    this.adoptionsService.getAll();
     this.adoptionsSubscription = this.adoptionsService.adoptionsListChanged.subscribe(res => {
         this.adoptions = res;
         this.isLoading = true;
     });
+    this.adoptionsService.getAll();
   }
 
   ngOnDestroy() {
