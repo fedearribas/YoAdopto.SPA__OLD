@@ -1,7 +1,6 @@
 import { MarkedAdoptions } from './../../users/marked-adoptions/marked-adoptions.model';
 import { MarkedAdoptionsService } from './../../users/marked-adoptions/marked-adoptions.service';
 import { AuthService } from './../../auth/auth.service';
-import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
 import { Component, OnInit, Input } from '@angular/core';
@@ -21,7 +20,6 @@ export class AdoptionDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private adoptionsService: AdoptionsService,
-    private adoptionsMemoryService: AdoptionsMemoryService,
     public authService: AuthService,
     private router: Router,
     private markedAdoptionsService: MarkedAdoptionsService,
@@ -31,22 +29,12 @@ export class AdoptionDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         const id = params['id'];
-          this.adoption = this.adoptionsMemoryService.getAdoption(id);
-          if (!this.adoption) {
-            this.adoptionsService.getAdoption(id).subscribe(
-              (adoption: Adoption) => {
-                this.adoption = adoption;
+          this.adoptionsService.getAdoption(id).subscribe(
+              (res) => {
+                this.adoption = res;
                 this.getMark();
-              },
-              (error: Response) => {
-                if (error.status == 404) {
-                  this.router.navigate(['/notfound']);
-                }
-               }
-            );
-          } else {
-            this.getMark();
-          }
+            });
+          console.log(this.adoption);
       }
     );
   }
@@ -63,7 +51,7 @@ export class AdoptionDetailComponent implements OnInit {
       this.markedAdoptionsService.insertAdoptionMark(mark).subscribe(
         (res: MarkedAdoptions) => {
           this.adoption.marked_adoptions.push(res);
-          this.adoptionsMemoryService.updateAdoption(this.adoption);
+          this.adoptionsService.updateAdoptionArray(this.adoption);
           this.marked = true;
         }
       );
@@ -74,11 +62,10 @@ export class AdoptionDetailComponent implements OnInit {
         (res: MarkedAdoptions) => {
           const index = this.adoption.marked_adoptions.findIndex((x => x.id == markDelete.id));
           this.adoption.marked_adoptions.splice(index, 1);
-          this.adoptionsMemoryService.updateAdoption(this.adoption);
+          this.adoptionsService.updateAdoptionArray(this.adoption);
           this.marked = false;
         }
       );
-
     }
   }
 
@@ -94,7 +81,7 @@ export class AdoptionDetailComponent implements OnInit {
   }
 
   canManage() {
-    if (this.authService.userSignedIn()) {
+    if (this.authService.userSignedIn() && this.adoption) {
       return this.authService.current_user.id === this.adoption.user.id || this.authService.current_user.admin;
     }
     return false;

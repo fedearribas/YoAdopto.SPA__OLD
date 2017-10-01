@@ -13,4 +13,4 @@
   </div>
 </div>
 <hr>
-<app-adoption-list [adoptions]="adoptions"></app-adoption-list>
+<app-adoption-list *ngIf="adoptions && adoptions.length > 0" [adoptions]="adoptions"></app-adoption-list>

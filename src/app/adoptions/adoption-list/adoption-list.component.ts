@@ -12,13 +12,6 @@ export class AdoptionListComponent implements OnInit {
 
   @Input() adoptions: Adoption[];
 
-  errorMessage: string;
-  noDataMsg: string;
-
-  ngOnInit() {
-    if (!this.adoptions ) {
-      this.noDataMsg = 'Aun no hay datos cargados, vuelva a intentarlo mas tarde!';
-    }
-  }
+  ngOnInit() { }
 
 }

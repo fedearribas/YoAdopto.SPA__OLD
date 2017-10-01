@@ -1,4 +1,4 @@
-import { AdoptionsMemoryService } from './../../adoptions/adoptions-memory.service';
+import { AdoptionsService } from './../../adoptions/adoptions.service';
 import { AuthService } from './../../auth/auth.service';
 import { Adoption } from './../../adoptions/adoption.model';
 import { Comment } from './../comment.model';
@@ -17,7 +17,7 @@ export class CommentNewComponent implements OnInit {
 
   constructor(private commentsService: CommentsService,
               private authService: AuthService,
-              private adoptionsMemoryService: AdoptionsMemoryService) { }
+              private adoptionsService: AdoptionsService) { }
 
   ngOnInit() {
   }
@@ -29,7 +29,7 @@ export class CommentNewComponent implements OnInit {
     this.commentsService.createComment(comment).subscribe(
       (data: Comment) => {
         this.adoption.comments.push(data);
-        this.adoptionsMemoryService.updateAdoption(this.adoption);
+        this.adoptionsService.updateAdoptionArray(this.adoption);
       }
     );
     this.form.reset();

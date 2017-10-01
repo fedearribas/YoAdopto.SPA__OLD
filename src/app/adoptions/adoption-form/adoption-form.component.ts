@@ -1,5 +1,4 @@
 import { AuthService } from './../../auth/auth.service';
-import { AdoptionsMemoryService } from './../adoptions-memory.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +21,6 @@ export class AdoptionFormComponent implements OnInit {
 
   constructor(private adoptionsService: AdoptionsService,
               private router: Router,
-              private adoptionsMemoryService: AdoptionsMemoryService,
               private authService: AuthService,
               private route: ActivatedRoute) { }
 
@@ -39,21 +37,16 @@ export class AdoptionFormComponent implements OnInit {
   private initForm() {
 
     if (this.editMode) {
-      this.adoption = this.adoptionsMemoryService.getAdoption(this.id);
-      if (this.adoption) {
-        this.imageUrl = this.adoption.image;
-        this.imageSelected = true;
-      } else {
         // Retrieve from api
-        this.adoptionsService.getAdoption(this.id).subscribe(
-          (adoption: Adoption) => {
-            this.adoption = adoption;
+      // this.adoption = <Adoption>this.adoptionsService.getAdoption(this.id);
+      this.adoptionsService.getAdoption(this.id)
+          .subscribe(res => {
+            this.adoption = res;
             this.imageUrl = this.adoption.image;
             this.imageSelected = true;
           }
         );
       }
-    }
 
     this.adoptionForm = new FormGroup({
       'name': new FormControl(null, Validators.required),

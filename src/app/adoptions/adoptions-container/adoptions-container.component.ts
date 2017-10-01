@@ -1,7 +1,7 @@
-import { Subscription } from 'rxjs/Subscription';
-import { Adoption } from './../adoption.model';
 import { AuthService } from './../../auth/auth.service';
-import { AdoptionsMemoryService } from './../adoptions-memory.service';
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import { AnonymousSubscription } from 'rxjs/Subscription';
+import { Adoption } from './../adoption.model';
 import { AdoptionsService } from './../adoptions.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -11,41 +11,35 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./adoptions-container.component.css']
 })
 export class AdoptionsContainerComponent implements OnInit, OnDestroy {
-  adoptions: Adoption[] = [];
-  subscription: Subscription;
 
-  constructor (private adoptionService: AdoptionsService,
-    private adoptionsMemoryService: AdoptionsMemoryService,
-    public authService: AuthService
-  ) {}
+  adoptions: Adoption[] = [];
+  private adoptionsSubscription: AnonymousSubscription;
+  private timerSubscription: AnonymousSubscription;
+
+  constructor (public adoptionsService: AdoptionsService,
+  public authService: AuthService) {}
 
   ngOnInit() {
-    this.adoptions = this.adoptionsMemoryService.getData();
-    console.log(this.adoptions.length);
-    if (this.adoptions.length <= 0) {
-      this.getAdoptions();
-    }
-    this.subscription = this.adoptionsMemoryService.adoptionsListChanged.subscribe(
-      (adoptions: Adoption[]) => {
-        this.adoptions = adoptions;
-      }
-    );
+    this.subscribeToData();
   }
 
-  getAdoptions() {
-    this.adoptionService.getAll().subscribe(
-      (adoptions: Adoption[]) => {
-        this.adoptions = adoptions;
-      },
-      (error) =>  {
-       console.log(error.message);
-      }
-    );
+  private subscribeToData(): void {
+    this.timerSubscription = TimerObservable.create(0, 5000).subscribe(() => this.refreshData());
+  }
+
+  private refreshData(): void {
+    this.adoptionsService.getAll();
+    this.adoptionsSubscription = this.adoptionsService.adoptionsListChanged.subscribe(res => {
+        this.adoptions = res;
+    });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.adoptionsSubscription) {
+      this.adoptionsSubscription.unsubscribe();
+    }
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
-
-
 }

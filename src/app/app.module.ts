@@ -1,7 +1,6 @@
 import { MarkedAdoptionsService } from './users/marked-adoptions/marked-adoptions.service';
 import { CommentsService } from './comments/comments.service';
 import { AuthService } from './auth/auth.service';
-import { AdoptionsMemoryService } from './adoptions/adoptions-memory.service';
 import { AdoptionsService } from './adoptions/adoptions.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -65,7 +64,6 @@ import { AdoptionsContainerComponent } from './adoptions/adoptions-container/ado
   ],
   providers: [
     AdoptionsService,
-    AdoptionsMemoryService,
     Angular2TokenService,
     AuthService,
     CommentsService,
