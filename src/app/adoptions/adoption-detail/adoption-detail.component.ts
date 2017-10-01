@@ -50,8 +50,6 @@ export class AdoptionDetailComponent implements OnInit {
       const mark = new MarkedAdoptions(this.adoption.id, this.authService.current_user.id);
       this.markedAdoptionsService.insertAdoptionMark(mark).subscribe(
         (res: MarkedAdoptions) => {
-          this.adoption.marked_adoptions.push(res);
-          this.adoptionsService.updateAdoptionArray(this.adoption);
           this.marked = true;
         }
       );
@@ -60,9 +58,6 @@ export class AdoptionDetailComponent implements OnInit {
       const markDelete: MarkedAdoptions = this.adoption.marked_adoptions.find(x => x.user.id == this.authService.current_user.id);
       this.markedAdoptionsService.deleteAdoptionMark(markDelete.id).subscribe(
         (res: MarkedAdoptions) => {
-          const index = this.adoption.marked_adoptions.findIndex((x => x.id == markDelete.id));
-          this.adoption.marked_adoptions.splice(index, 1);
-          this.adoptionsService.updateAdoptionArray(this.adoption);
           this.marked = false;
         }
       );

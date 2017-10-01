@@ -27,7 +27,7 @@ export class AdoptionsService {
               private router: Router) { }
 
   getAll() {
-     this.httpClient.get<Adoption[]>(this.baseUrl).map(
+     return this.httpClient.get<Adoption[]>(this.baseUrl).map(
       (adoptions: Adoption[]) => {
        return adoptions;
       }
@@ -56,7 +56,6 @@ export class AdoptionsService {
   insertAdoption(adoption: Adoption) {
     return this.httpClient.post(this.baseUrl, adoption).subscribe(
       (data: Adoption) => {
-        this.adoptions.unshift(data);
         this.adoptionsListChanged.next(this.adoptions);
         this.router.navigate(['/adoptions']);
       });
@@ -67,7 +66,6 @@ export class AdoptionsService {
     return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader})
       .subscribe(
         (data: Adoption) => {
-          this.updateAdoptionArray(data);
           this.router.navigate(['/adoptions']);
         },
         (error) => alert(error.error)
@@ -78,17 +76,9 @@ export class AdoptionsService {
     return this.adoptions.find(x => x.id == id);
  }
 
- updateAdoptionArray(adoption: Adoption) {
-  this.adoptions[this.adoptions.indexOf(this.getAdoptionArray(adoption.id))] = adoption;
-  this.adoptionsListChanged.next(this.adoptions);
-}
-
   deleteAdoption(adoption: Adoption) {
     return this.httpClient.delete(this.baseUrl + '/' + adoption.id).subscribe(
       (data) => {
-        const index = this.adoptions.indexOf(adoption);
-        this.adoptions.splice(index, 1);
-        this.adoptionsListChanged.next(this.adoptions);
         this.router.navigate(['/adoptions']);
       }
     );

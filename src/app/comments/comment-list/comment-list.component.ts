@@ -1,4 +1,4 @@
-import { Adoption } from './../../adoptions/adoption.model';
+import { Comment } from './../comment.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CommentListComponent implements OnInit {
 
-  @Input() adoption: Adoption;
+  @Input() comments: Comment[];
 
   constructor() { }
 

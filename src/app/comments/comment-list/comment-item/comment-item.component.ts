@@ -1,5 +1,3 @@
-import { AdoptionsService } from './../../../adoptions/adoptions.service';
-import { Adoption } from './../../../adoptions/adoption.model';
 import { AuthService } from './../../../auth/auth.service';
 import { CommentsService } from './../../comments.service';
 import { Comment } from './../../comment.model';
@@ -13,10 +11,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CommentItemComponent implements OnInit {
 
   @Input() comment: Comment;
-  @Input() adoption: Adoption;
 
 constructor(private commentsService: CommentsService,
-              private adoptionsService: AdoptionsService,
               private authService: AuthService) { }
 
   getProfileImage(image) {
@@ -38,13 +34,7 @@ constructor(private commentsService: CommentsService,
 
   onDelete(id: number) {
     if (confirm('Esta seguro de borrar este comentario?')) {
-      this.commentsService.deleteComment(id).subscribe(
-        (data: Comment) => {
-          const commentIndex = this.adoption.comments.findIndex((x => x.id == id));
-          this.adoption.comments.splice(commentIndex, 1);
-          this.adoptionsService.updateAdoptionArray(this.adoption);
-        }
-      );
+      return this.commentsService.deleteComment(id);
     }
   }
 }
