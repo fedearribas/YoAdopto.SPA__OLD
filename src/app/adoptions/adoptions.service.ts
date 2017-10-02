@@ -11,12 +11,12 @@ import { RequestOptions } from '@angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import 'rxjs/add/observable/of';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class AdoptionsService {
 
-  // private baseUrl = 'https://yoadoptoapi.herokuapp.com/adoptions';
-  private baseUrl = 'https://yoadopto-api-fedearribas.c9users.io/adoptions';
+  private baseUrl = environment.base_url_api_adoptions;
   private currentUserHeader;
   public adoptions: Adoption[] = [];
 

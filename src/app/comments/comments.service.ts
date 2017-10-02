@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class CommentsService {
 
-  private baseUrl = 'https://yoadopto-api-fedearribas.c9users.io/comments';
+  private baseUrl = environment.base_url_api_comments;
   private baseUrlGet = this.baseUrl + '/adoption';
 
   public comments: Comment[] = [];

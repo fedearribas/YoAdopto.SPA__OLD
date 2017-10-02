@@ -5,12 +5,13 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class MarkedAdoptionsService {
 
-  baseUrl = 'https://yoadopto-api-fedearribas.c9users.io/marked_adoptions/user/';
-  postUrl = 'https://yoadopto-api-fedearribas.c9users.io/marked_adoptions/';
+  postUrl = environment.base_url_api_marked_adoptions;
+  baseUrl = environment.base_url_api_marked_adoptions + 'user';
 
   constructor(private http: HttpClient) { }
 

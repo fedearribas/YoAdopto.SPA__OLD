@@ -7,5 +7,8 @@ export const environment = {
   production: false,
   token_auth_config: {
     apiBase: 'https://yoadopto-api-fedearribas.c9users.io'
-  }
+  },
+  base_url_api_adoptions: 'https://yoadopto-api-fedearribas.c9users.io/adoptions',
+  base_url_api_comments: 'https://yoadopto-api-fedearribas.c9users.io/comments',
+  base_url_api_marked_adoptions: 'https://yoadopto-api-fedearribas.c9users.io/marked_adoptions/'
 };
