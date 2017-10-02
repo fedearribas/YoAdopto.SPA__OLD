@@ -1,21 +1,20 @@
-<div class="row">
-  <div class="col-md-12 col-xs-12">
-    <div class="card-group" *ngIf="adoptions?.length > 0">
-      <app-adoption-item
-        *ngFor="let adoption of adoptions| paginate: { itemsPerPage: 15, currentPage: p }" 
-        [adoption]="adoption">
-      </app-adoption-item>
-    </div>
+<div class="div" *ngIf="adoptions && adoptions?.length > 0">
+  <div class="col-lg-7 ml-lg-auto mr-lg-auto col-md-10 ml-md-auto mr-md-auto">
+    <app-adoption-item
+      *ngFor="let adoption of adoptions| paginate: { itemsPerPage: 15, currentPage: p }" 
+      [adoption]="adoption">
+    </app-adoption-item>
   </div>
-</div>
 
-<div *ngIf="adoptions?.length > 0">
   <hr>
-  <pagination-controls
-    class="adoption-pagination"
-    style="color:white;"
-    (pageChange)="p = $event"
-    previousLabel="Anterior"
-    nextLabel="Siguiente">
-  </pagination-controls>
+
+  <div>  
+    <pagination-controls
+      class="adoption-pagination"
+      style="color:white;"
+      (pageChange)="p = $event"
+      previousLabel="Anterior"
+      nextLabel="Siguiente">
+    </pagination-controls>
+  </div>
 </div>

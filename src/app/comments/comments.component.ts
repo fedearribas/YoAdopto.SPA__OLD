@@ -23,6 +23,15 @@ export class CommentsComponent implements OnInit, OnDestroy {
       public commentsService: CommentsService) { }
 
   ngOnInit() {
+    this.commentsSubscription = this.commentsService.commentListChanged.subscribe(
+      (res: Comment[]) => {
+        this.comments = res;
+        if (this.comments) {
+          let c = this.comments.length === 1 ? ' comentario' : ' comentarios';
+          this.commentsCount = this.comments.length + c;
+        }
+      }
+    );
     this.timerSubscription = TimerObservable.create(0, 2000).subscribe(() => this.getComments());
   }
 

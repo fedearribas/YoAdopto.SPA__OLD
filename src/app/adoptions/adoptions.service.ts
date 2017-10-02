@@ -66,7 +66,8 @@ export class AdoptionsService {
     return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader})
       .subscribe(
         (data: Adoption) => {
-          this.adoptions[this.adoptions.indexOf(data)] = data;
+          const itemIndex = this.adoptions.findIndex(item => item.id == adoption.id);
+          this.adoptions[itemIndex] = data;
           this.adoptionsListChanged.next(this.adoptions);
         },
         (error) => alert(error.error)
@@ -80,6 +81,9 @@ export class AdoptionsService {
   deleteAdoption(adoption: Adoption) {
     return this.httpClient.delete(this.baseUrl + '/' + adoption.id).subscribe(
       (data) => {
+        const itemIndex = this.adoptions.findIndex(item => item.id == adoption.id);
+        this.adoptions.splice(itemIndex, 1);
+        this.adoptionsListChanged.next(this.adoptions);
         this.router.navigate(['/adoptions']);
       }
     );

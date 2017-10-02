@@ -47,7 +47,8 @@ export class CommentsService {
   deleteComment(id: number) {
     return this.http.delete(this.baseUrl + '/' + id).subscribe(
       (res: Comment) => {
-        this.comments.splice(this.comments.indexOf(res), 1);
+       const itemIndex = this.comments.findIndex(item => item.id == id);
+       this.comments.splice(itemIndex, 1);
         this.commentListChanged.next(this.comments);
       }
     );

@@ -3,14 +3,6 @@ a {
   color:black;
 }
 
-img.resize{
-  /* max-height:185px; */
-/*   width:auto;
-  height:auto;
-  max-width:MaxSize;
-  max-height:MaxSize; */
-}
-
 p.desc {
   word-wrap: break-word;
 }
@@ -18,7 +10,7 @@ h4.pet-name {
   font-size:2.5rem;
 }
 
-div.center-cropped {
+/* div.center-cropped {
   width: 350px;
   height: 350px;
   overflow:hidden;
@@ -29,4 +21,8 @@ div.center-cropped img {
   left: 50%;
   position: relative;
   transform: translateX(-50%);
+}
+ */
+.card {
+  margin-bottom: 5px;
 }
