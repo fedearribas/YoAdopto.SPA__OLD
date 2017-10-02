@@ -28,7 +28,7 @@
         
         <div *ngIf="authService.userSignedIn()">
           <div class="loader" [hidden]="loadedMarked"></div>    
-          <span class="noSelect" (click)="onFav()">
+          <span class="noSelect" (click)="onFav()" [hidden]="!loadedMarked" >
             <span class="star" [class.filled]="marked">&#9733;</span>
             <span class="clickable" *ngIf="!marked">Agregar a Destacados</span>
             <span class="clickable" *ngIf="marked">En Destacados</span>
