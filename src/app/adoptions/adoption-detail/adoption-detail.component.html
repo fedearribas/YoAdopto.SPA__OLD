@@ -30,8 +30,8 @@
           <div class="loader" [hidden]="loadedMarked"></div>    
           <span class="noSelect" (click)="onFav()" [hidden]="!loadedMarked" >
             <span class="star" [class.filled]="marked">&#9733;</span>
-            <span class="clickable" *ngIf="!marked">Agregar a Destacados</span>
-            <span class="clickable" *ngIf="marked">En Destacados</span>
+            <span class="clickable" *ngIf="!marked">Agregar a Mis Destacados</span>
+            <span class="clickable" *ngIf="marked">En Mis Destacados</span>
             <br>
             <br>
           </span>          
@@ -62,22 +62,7 @@
             <i class="fa fa-id-card-o" aria-hidden="true"></i> 
             Ver datos de contacto
           </button>
-        </ng-template>
-        <br>
-        <button 
-          class="btn btn-success clickable" 
-          *ngIf="canManage() && !adoption.adopted" 
-          (click)="onMarkAsAdopted()" 
-          type="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> 
-          Marcar como adoptado
-        </button>
-        <button 
-          class="btn btn-danger clickable" 
-          *ngIf="canManage() && adoption.adopted" 
-          (click)="onDismarkAsAdopted()" 
-          type="button"><i class="fa fa-ban" aria-hidden="true"></i> 
-          Desmarcar como adoptado
-        </button>
+        </ng-template>        
       </div>
      
     </div>  
@@ -98,6 +83,22 @@
           <i class="fa fa-trash-o" aria-hidden="true"></i> 
           Borrar
         </button>
+
+        <button 
+          class="btn btn-success clickable" 
+          *ngIf="canManage() && !adoption.adopted" 
+          (click)="onMarkAsAdopted()" 
+          type="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> 
+          Adoptado
+        </button>
+        <button 
+          class="btn btn-danger clickable" 
+          *ngIf="canManage() && adoption.adopted" 
+          (click)="onDismarkAsAdopted()" 
+          type="button"><i class="fa fa-ban" aria-hidden="true"></i> 
+          Quitar adopción
+        </button>
+        
       </div>     
     </div>
     <br> 

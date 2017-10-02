@@ -42,16 +42,18 @@ export class AdoptionDetailComponent implements OnInit {
   }
 
   getMark() {
-    this.markedAdoptionsService.getMarkedAdoptionByUserIdAndAdoptionId(this.authService.current_user.id, this.adoption.id).subscribe(
-      (res: MarkedAdoptions) => {
-        this.markedAdoption = res;
-        console.log(res);
-        if (this.markedAdoption) {
-          this.marked = true;
+    if (this.authService.userSignedIn()) {
+      this.markedAdoptionsService.getMarkedAdoptionByUserIdAndAdoptionId(this.authService.current_user.id, this.adoption.id).subscribe(
+        (res: MarkedAdoptions) => {
+          this.markedAdoption = res;
+          console.log(res);
+          if (this.markedAdoption) {
+            this.marked = true;
+          }
+          this.loadedMarked = true;
         }
-        this.loadedMarked = true;
-      }
-    );
+      );
+    }
   }
 
   onFav() {
