@@ -1,4 +1,3 @@
-import { Location } from './../../shared/location.model';
 import { LocationService } from './../../shared/location.service';
 import { AuthService } from './../../auth/auth.service';
 import { AdoptionsService } from './../adoptions.service';
