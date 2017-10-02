@@ -38,10 +38,11 @@
         </div>
 
         <p class="lead">{{ adoption?.description }}</p>
-        <p>
+        <p class="lead">
           <i class="fa fa-birthday-cake" aria-hidden="true"></i>
            {{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad
         </p>
+        <p class="lead">Localidad: {{ adoption?.location }}</p>
         <div class="list-group-item" *ngIf="canSeeData(); else showData" >
           <p class="lead">Datos de contacto:</p>
           <p>

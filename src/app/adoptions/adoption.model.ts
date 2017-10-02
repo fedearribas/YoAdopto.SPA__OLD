@@ -12,6 +12,7 @@ export class Adoption {
     public image?: string,
     public adopted?: boolean,
     public description?: string,
+    public location?: string,
     public published_date?: Date,
     public contact_phone?: number,
     public contact_email?: string,

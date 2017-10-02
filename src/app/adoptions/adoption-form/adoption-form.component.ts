@@ -1,3 +1,5 @@
+import { Location } from './../../shared/location.model';
+import { LocationService } from './../../shared/location.service';
 import { AuthService } from './../../auth/auth.service';
 import { AdoptionsService } from './../adoptions.service';
 import { Adoption } from './../adoption.model';
@@ -22,7 +24,8 @@ export class AdoptionFormComponent implements OnInit {
   constructor(private adoptionsService: AdoptionsService,
               private router: Router,
               private authService: AuthService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private locationService: LocationService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -34,11 +37,38 @@ export class AdoptionFormComponent implements OnInit {
     );
   }
 
+  private getLocation() {
+    if (window.navigator && window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(
+        position => {
+          console.log(position);
+
+          this.locationService.getLocation(position.coords.latitude, position.coords.longitude)
+          .subscribe((res: any) => {
+              this.adoption.location = res.long_name;
+            }
+          );
+        },
+        error => {
+          switch (error.code) {
+            case 1:
+              console.log('Permission Denied');
+              break;
+            case 2:
+              console.log('Position Unavailable');
+              break;
+            case 3:
+              console.log('Timeout');
+              break;
+          }
+        }
+      );
+    }
+  }
+
   private initForm() {
 
     if (this.editMode) {
-        // Retrieve from api
-      // this.adoption = <Adoption>this.adoptionsService.getAdoption(this.id);
       this.adoptionsService.getAdoption(this.id)
           .subscribe(res => {
             this.adoption = res;
@@ -46,6 +76,8 @@ export class AdoptionFormComponent implements OnInit {
             this.imageSelected = true;
           }
         );
+      } else {
+        this.getLocation();
       }
 
     this.adoptionForm = new FormGroup({
@@ -54,6 +86,7 @@ export class AdoptionFormComponent implements OnInit {
       'image': new FormControl(null),
       'age': new FormControl(null, Validators.required),
       'ageUnit': new FormControl(null, Validators.required),
+      'location': new FormControl(null, Validators.required),
       'phone': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email])
     });
@@ -88,6 +121,8 @@ export class AdoptionFormComponent implements OnInit {
     const ageUnit = this.adoptionForm.value['ageUnit'];
     const phone = this.adoptionForm.value['phone'];
     const email = this.adoptionForm.value['email'];
+    const location = this.adoptionForm.value['location'];
+
 
     this.adoption.name = name;
     this.adoption.description = description;
@@ -96,6 +131,7 @@ export class AdoptionFormComponent implements OnInit {
     this.adoption.age_measurement_unit = ageUnit;
     this.adoption.contact_phone = phone;
     this.adoption.contact_email = email;
+    this.adoption.location = location;
 
     if (this.editMode) {
       this.adoptionsService.updateAdoption(this.adoption);

@@ -76,6 +76,15 @@
           </div>
         </div>  
         <div class="form-group">
+          <label for="location">Localidad</label>
+          <input 
+            type="text" 
+            id="location"
+            formControlName="location" 
+            [(ngModel)]="adoption.location"            
+            class="form-control">
+        </div>
+        <div class="form-group">
           <label for="phone">Teléfono</label>
           <input 
             type="tel" 
@@ -99,7 +108,7 @@
         <h1 class="display-4">{{ adoption.name }}</h1>
         <img [src]="imageUrl" alt="" width="100%;" class="rounded-top rounded-bottom">
         <p class="lead">{{ adoption.description }}</p>
-        <p 
+        <p class="lead"
           *ngIf="adoption.age && adoption.age_measurement_unit">
           <i class="fa fa-birthday-cake" aria-hidden="true"></i> 
           {{ adoption.age}}  {{adoption.age_measurement_unit }} de edad

@@ -1,3 +1,4 @@
+import { LocationService } from './shared/location.service';
 import { MarkedAdoptionsService } from './users/marked-adoptions/marked-adoptions.service';
 import { CommentsService } from './comments/comments.service';
 import { AuthService } from './auth/auth.service';
@@ -67,7 +68,8 @@ import { AdoptionsContainerComponent } from './adoptions/adoptions-container/ado
     Angular2TokenService,
     AuthService,
     CommentsService,
-    MarkedAdoptionsService
+    MarkedAdoptionsService,
+    LocationService
   ],
   bootstrap: [AppComponent]
 })
