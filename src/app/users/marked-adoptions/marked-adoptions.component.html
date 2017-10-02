@@ -3,6 +3,6 @@
     <h1 class="display-4 heading">Mis Destacados</h1>
   </div>
 </div>
-<hr>
+<hr class="home-divisor">
 <app-adoption-list *ngIf="adoptions && adoptions.length > 0" [adoptions]="adoptions"></app-adoption-list>
 <p class="lead no-data" *ngIf="!adoptions || adoptions.length <= 0">{{ noDataMsg }}</p>
