@@ -67,6 +67,10 @@ export class AuthService {
     return this.validated_token;
   }
 
+  signInOAuth(authType: string) {
+    return this.tokenService.signInOAuth(authType);
+  }
+
   validateToken() {
     this.tokenService.validateToken().subscribe(
       (res) => {

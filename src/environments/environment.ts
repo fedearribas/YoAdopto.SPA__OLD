@@ -6,7 +6,12 @@
 export const environment = {
   production: false,
   token_auth_config: {
-    apiBase: 'https://yoadopto-api-fedearribas.c9users.io'
+    apiBase: 'https://yoadopto-api-fedearribas.c9users.io',
+    oAuthBase: 'https://yoadopto-api-fedearribas.c9users.io',
+    oAuthPaths: {
+      facebook: 'auth/facebook'
+  },
+  oAuthCallbackPath: 'auth/facebook/callback',
   },
   base_url_api_adoptions: 'https://yoadopto-api-fedearribas.c9users.io/adoptions',
   base_url_api_comments: 'https://yoadopto-api-fedearribas.c9users.io/comments',

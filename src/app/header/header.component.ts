@@ -10,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   navbarCollapsed = true;
   constructor(public authService: AuthService,
-              private router: Router) { }
+              private router: Router) {
+              }
 
   ngOnInit() {
   }
@@ -18,6 +19,10 @@ export class HeaderComponent implements OnInit {
   onSignOut() {
     this.authService.signOut();
     this.navbarCollapsed = true;
+  }
+
+  loginWithFacebook(): void {
+    this.authService.signInOAuth('facebook');
   }
 
 }
