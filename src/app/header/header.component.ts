@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  navbarCollapsed = false;
+  navbarCollapsed = true;
   constructor(public authService: AuthService,
               private router: Router) { }
 
