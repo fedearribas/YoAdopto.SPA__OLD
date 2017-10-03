@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-var staticRoot = __dirname;
+var staticRoot = __dirname + '/dist';
 // If an incoming request uses
 // a protocol other than HTTPS,
 // redirect that request to the
