@@ -26,6 +26,9 @@ app.use(express.static(staticRoot));
 app.get('/', function(req, res) {
   res.sendFile('index.html');
 });
+app.get('/adoptions', function(req, res) {
+  res.sendFile('index.html');
+});
 // Start the app by listening on the default
 // Heroku port
 app.listen(process.env.PORT || 8080);
