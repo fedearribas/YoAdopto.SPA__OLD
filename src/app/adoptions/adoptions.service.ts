@@ -17,6 +17,7 @@ import {environment} from '../../environments/environment';
 export class AdoptionsService {
 
   private baseUrl = environment.base_url_api_adoptions;
+  private baseUrlFiltered = this.baseUrl + '/type/adoption';
   private currentUserHeader;
   public adoptions: Adoption[] = [];
 
@@ -27,7 +28,7 @@ export class AdoptionsService {
               private router: Router) { }
 
   getAll() {
-     return this.httpClient.get<Adoption[]>(this.baseUrl).map(
+     return this.httpClient.get<Adoption[]>(this.baseUrlFiltered).map(
       (adoptions: Adoption[]) => {
        return adoptions;
       }

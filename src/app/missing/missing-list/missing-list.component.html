@@ -1,0 +1,20 @@
+<div class="div" *ngIf="missing && missing?.length > 0">
+  <div class="col-lg-7 ml-lg-auto mr-lg-auto col-md-10 ml-md-auto mr-md-auto">
+    <app-missing-item
+      *ngFor="let miss of missing| paginate: { itemsPerPage: 15, currentPage: p }" 
+      [miss]="miss">
+    </app-missing-item>
+  </div>
+
+  <hr class="home-divisor">
+
+  <div>  
+    <pagination-controls
+      class="adoption-pagination"
+      style="color:white;"
+      (pageChange)="p = $event"
+      previousLabel="Anterior"
+      nextLabel="Siguiente">
+    </pagination-controls>
+  </div>
+</div>

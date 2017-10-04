@@ -1,0 +1,147 @@
+<div class="card card-container">
+
+  <form [formGroup]="missingForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input 
+            type="text" 
+            id="name"
+            formControlName="name" 
+            [(ngModel)]="miss.name"
+            placeholder="Nombre de la mascota..." 
+            class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Imagen</label><br>
+            <label 
+              class="btn btn-info clickable" 
+              style="margin-bottom:0px;">
+              <i class="fa fa-picture-o" aria-hidden="true"></i> 
+              Seleccionar Imagen
+              <input 
+                type="file" 
+                style="display:none;" 
+                id="image" accept="image/*" 
+                formControlName="image" 
+                (change)="readUrl($event)" 
+                class="form-control">
+            </label>
+            <button 
+              type="button" 
+              *ngIf="imageSelected" 
+              (click)="onClearSelectedImage()" 
+              class="btn btn-secondary clickable">
+              <i class="fa fa-trash" aria-hidden="true"></i> 
+              Borrar Imagen
+            </button>
+        </div>
+        
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <textarea 
+            type="text" 
+            id="description" 
+            [(ngModel)]="miss.description" 
+            formControlName="description" 
+            placeholder="Deja una descripción..."
+            rows="5" 
+            class="form-control">          
+          </textarea>
+        </div>
+        <div class="form-group">
+          <label for="name">Edad</label>
+          <div class="row">
+            <div class="col-md-6">
+              <input 
+                type="number" 
+                id="age" 
+                formControlName="age" 
+                [(ngModel)]="miss.age" 
+                class="form-control">
+            </div>
+            <div class="col-md-6">
+              <select 
+                name="ageUnit" 
+                id="ageUnit" 
+                formControlName="ageUnit" 
+                [(ngModel)]="miss.age_measurement_unit" 
+                class="form-control">
+                <option value="Meses">Meses</option>
+                <option value="Años">Años</option>
+              </select>
+            </div>
+          </div>
+        </div>  
+        <div class="form-group">
+          <label for="location">Localidad</label>
+          <input 
+            type="text" 
+            id="location"
+            formControlName="location" 
+            [(ngModel)]="miss.location"            
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            formControlName="phone" 
+            [(ngModel)]="miss.contact_phone" 
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            [(ngModel)]="miss.contact_email" 
+            class="form-control">
+        </div>        
+      </div>
+
+      <div class="col-md-6">
+        <h1 class="display-4">{{ miss.name }}</h1>
+        <img [src]="imageUrl" alt="" width="100%;" class="rounded-top rounded-bottom">
+        <p class="lead">{{ miss.description }}</p>
+        <p class="lead"
+          *ngIf="miss.age && miss.age_measurement_unit">
+          <i class="fa fa-birthday-cake" aria-hidden="true"></i> 
+          {{ miss.age}}  {{miss.age_measurement_unit }} de edad
+        </p>
+        <div class="list-group-item" *ngIf="miss.contact_phone || miss.contact_email">
+          <p class="lead">Datos de contacto:</p>
+          <p>
+            <i class="fa fa-mobile" aria-hidden="true" *ngIf="miss.contact_phone" ></i> 
+            <span class="card-text">{{ miss.contact_phone }}</span>
+          </p>
+          <p>
+            <i class="fa fa-envelope-o" aria-hidden="true" *ngIf="miss.contact_email"></i> 
+            <span class="card-text">{{ miss.contact_email }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+<br>
+    <div class="row">
+      <div class="col-md-4 mr-md-auto ml-md-auto">
+        <button 
+          type="submit" 
+          class="btn btn-success btn-block" 
+          [disabled]="!missingForm.valid || !imageSelected || isSaving">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i> 
+          Guardar
+        </button>
+        <div *ngIf="isSaving" style="margin-top:10px;">
+          Guardando... <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+   

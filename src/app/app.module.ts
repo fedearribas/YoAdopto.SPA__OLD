@@ -1,3 +1,9 @@
+import { MissingService } from './missing/missing.service';
+import { MissingContainerComponent } from './missing/missing-container/missing-container.component';
+import { MissingFormComponent } from './missing/missing-form/missing-form.component';
+import { MissingDetailComponent } from './missing/missing-detail/missing-detail.component';
+import { MissingListComponent } from './missing/missing-list/missing-list.component';
+import { MissingItemComponent } from './missing/missing-list/missing-item/missing-item.component';
 import { LocationService } from './shared/location.service';
 import { MarkedAdoptionsService } from './users/marked-adoptions/marked-adoptions.service';
 import { CommentsService } from './comments/comments.service';
@@ -39,7 +45,6 @@ import { OauthCallbackComponent } from './auth/oauth-callback/oauth-callback.com
     AdoptionsComponent,
     HomeComponent,
     HeaderComponent,
-    MissingComponent,
     AdoptionItemComponent,
     AdoptionListComponent,
     AdoptionDetailComponent,
@@ -53,7 +58,14 @@ import { OauthCallbackComponent } from './auth/oauth-callback/oauth-callback.com
     CommentItemComponent,
     MarkedAdoptionsComponent,
     AdoptionsContainerComponent,
-    OauthCallbackComponent
+    OauthCallbackComponent,
+    MissingComponent,
+    MissingItemComponent,
+    MissingListComponent,
+    MissingDetailComponent,
+    MissingFormComponent,
+    MissingContainerComponent
+
   ],
   imports: [
     BrowserModule,
@@ -71,7 +83,8 @@ import { OauthCallbackComponent } from './auth/oauth-callback/oauth-callback.com
     AuthService,
     CommentsService,
     MarkedAdoptionsService,
-    LocationService
+    LocationService,
+    MissingService
   ],
   bootstrap: [AppComponent]
 })

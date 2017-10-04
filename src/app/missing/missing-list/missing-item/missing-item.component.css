@@ -1,0 +1,28 @@
+a {
+  text-decoration: none;
+  color:black;
+}
+
+p.desc {
+  word-wrap: break-word;
+}
+h4.pet-name {
+  font-size:2.5rem;
+}
+
+/* div.center-cropped {
+  width: 350px;
+  height: 350px;
+  overflow:hidden;
+}
+div.center-cropped img {
+  height: 100%;
+  min-width: 100%;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
+ */
+.card {
+  margin-bottom: 5px;
+}

@@ -1,0 +1,28 @@
+h4.pet-name {
+  font-size:2.5rem;
+}
+
+
+.star {
+  font-size: 1.5rem;
+  color: #b0c4de;
+  cursor: pointer;
+}
+.filled {
+  color: #1e90ff;
+}
+
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.loader {
+  width:30px;
+  height: 30px;
+}

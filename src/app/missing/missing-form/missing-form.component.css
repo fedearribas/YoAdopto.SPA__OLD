@@ -1,0 +1,13 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched  {
+  border: 1px solid red;
+}
+
+.card-container {
+  padding:30px;
+}
+
+.loader {
+  width:30px;
+  height: 30px;
+}

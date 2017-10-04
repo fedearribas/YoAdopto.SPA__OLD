@@ -1,0 +1,116 @@
+<div class="card mb-3" *ngIf="miss">
+  
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <img 
+          class="card-img-top rounded-top rounded-bottom" 
+          src="{{ miss?.image }}" 
+          alt="{{ miss?.name }}" 
+          style="max-width: 100%;">
+      </div>
+      <div class="col-md-6">
+          <p class="card-text">
+            <small 
+            class="text-muted">
+            Publicado por <b>{{miss.user?.name}}</b>
+             el {{ miss?.created_at | date:"dd/MM/yyyy HH:mm:ss" }}
+            </small>
+          </p>
+          <h4>
+            <span class="display-4">{{ miss?.name }}&nbsp; &nbsp;</span>
+            <span 
+              *ngIf="miss.found" 
+              class="badge badge-pill badge-success">
+              Encontrado!
+            </span>
+          </h4>        
+        
+        <div *ngIf="authService.userSignedIn()">
+          <div class="loader" [hidden]="loadedMarked"></div>    
+          <span class="noSelect" (click)="onFav()" [hidden]="!loadedMarked" >
+            <span class="star" [class.filled]="marked">&#9733;</span>
+            <span class="clickable" *ngIf="!marked">Agregar a Mis Destacados</span>
+            <span class="clickable" *ngIf="marked">En Mis Destacados</span>
+            <br>
+            <br>
+          </span>          
+        </div>
+
+        <p class="lead">{{ miss?.description }}</p>
+        <p class="lead">
+          <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+           {{ miss?.age }} {{ miss?.age_measurement_unit }} de edad
+        </p>
+        <p class="lead">Localidad: {{ miss?.location }}</p>
+        <div class="list-group-item" *ngIf="canSeeData(); else showData" >
+          <p class="lead">Datos de contacto:</p>
+          <p>
+            <i class="fa fa-mobile" aria-hidden="true"></i> 
+            <span class="card-text">{{ miss?.contact_phone }}
+            </span>
+          </p>
+          <p>
+            <i class="fa fa-envelope-o" aria-hidden="true"></i> 
+            <span class="card-text">{{ miss?.contact_email }}
+            </span>
+          </p>          
+        </div>
+        <ng-template #showData>
+          <button 
+            routerLink="/login" 
+            class="btn btn-outline-info">
+            <i class="fa fa-id-card-o" aria-hidden="true"></i> 
+            Ver datos de contacto
+          </button>
+        </ng-template>        
+      </div>
+     
+    </div>  
+    <br> 
+    <div class="row" *ngIf="canManage()">
+      <div class="col-md-12">
+        <button
+          type="button" 
+          class="btn btn-info clickable" 
+          routerLink="edit">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
+          Editar
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-secondary clickable" 
+          (click)="onDelete()">
+          <i class="fa fa-trash-o" aria-hidden="true"></i> 
+          Borrar
+        </button>
+
+        <button 
+          class="btn btn-success clickable" 
+          *ngIf="canManage() && !miss.found" 
+          (click)="onMarkAsFound()" 
+          type="button"><i class="fa fa-check-square-o" aria-hidden="true"></i> 
+          Encontrado
+        </button>
+        <button 
+          class="btn btn-danger clickable" 
+          *ngIf="canManage() && miss.found" 
+          (click)="onDismarkAsFound()" 
+          type="button"><i class="fa fa-ban" aria-hidden="true"></i> 
+          Quitar Encontrado
+        </button>
+        
+      </div>     
+    </div>
+    <br> 
+    <button 
+      type="button" 
+      (click)="onBack()"
+      class="btn btn-outline-success clickable">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i> 
+      Volver
+    </button>    
+  </div>
+  
+  <app-comments [id]="miss.id"></app-comments>
+</div>

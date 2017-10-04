@@ -1,8 +1,8 @@
 import { User } from './../auth/user.model';
-export class Adoption {
+export class Missing {
   public id: number;
   public created_at: Date;
-  public adopted?: boolean;
+  public found?: boolean;
 
   constructor(
     public name?: string,

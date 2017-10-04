@@ -1,0 +1,32 @@
+<div class="card">
+  
+  <img class="card-img-top clickable" src="{{ miss.image }}" 
+  alt="{{ miss.name }}"
+  routerLink="/missing/{{ miss.id }}">
+  
+  <div class="card-body">
+    <h4>
+      <span 
+        class="display-4 pet-name"
+        ngbTooltip="{{ miss.name }}">
+        {{( miss.name.length>8)? (miss.name | slice:0:8)+'...':(miss.name) }}
+      </span>
+      <span 
+        *ngIf="miss.found" 
+        class="badge badge-pill badge-success pull-right">
+        Encontrado!
+      </span>
+    </h4>
+    <p 
+      class="card-text desc" 
+      ngbTooltip="{{ miss.description }}">
+      {{( miss.description.length>140)? (miss.description | slice:0:140)+'...':(miss.description) }}
+    </p>
+    <p 
+      class="card-text">
+      <small class="text-muted">
+        Publicado el {{ miss.created_at | date:"dd/MM/yyyy HH:mm:ss" }}
+      </small>
+    </p>
+  </div>
+</div>

@@ -1,20 +1,20 @@
 import { LocationService } from './../../shared/location.service';
 import { AuthService } from './../../auth/auth.service';
-import { AdoptionsService } from './../adoptions.service';
-import { Adoption } from './../adoption.model';
+import { MissingService } from './../missing.service';
+import { Missing } from './../missing.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../auth/user.model';
 
 @Component({
-  selector: 'app-adoption-form',
-  templateUrl: './adoption-form.component.html',
-  styleUrls: ['./adoption-form.component.css']
+  selector: 'app-missing-form',
+  templateUrl: './missing-form.component.html',
+  styleUrls: ['./missing-form.component.css']
 })
-export class AdoptionFormComponent implements OnInit {
-  adoptionForm: FormGroup;
-  adoption = new Adoption;
+export class MissingFormComponent implements OnInit {
+  missingForm: FormGroup;
+  miss = new Missing;
   id: number;
   imageUrl = '';
   imageSelected = false;
@@ -22,7 +22,7 @@ export class AdoptionFormComponent implements OnInit {
 
   isSaving = false;
 
-  constructor(private adoptionsService: AdoptionsService,
+  constructor(private missingService: MissingService,
               private router: Router,
               private authService: AuthService,
               private route: ActivatedRoute,
@@ -46,7 +46,7 @@ export class AdoptionFormComponent implements OnInit {
 
           this.locationService.getLocation(position.coords.latitude, position.coords.longitude)
           .subscribe((res: any) => {
-              this.adoption.location = res.long_name;
+              this.miss.location = res.long_name;
             }
           );
         },
@@ -70,10 +70,10 @@ export class AdoptionFormComponent implements OnInit {
   private initForm() {
 
     if (this.editMode) {
-      this.adoptionsService.getAdoption(this.id)
+      this.missingService.getMiss(this.id)
           .subscribe(res => {
-            this.adoption = res;
-            this.imageUrl = this.adoption.image;
+            this.miss = res;
+            this.imageUrl = this.miss.image;
             this.imageSelected = true;
           }
         );
@@ -81,7 +81,7 @@ export class AdoptionFormComponent implements OnInit {
         this.getLocation();
       }
 
-    this.adoptionForm = new FormGroup({
+    this.missingForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'description': new FormControl(null, Validators.required),
       'image': new FormControl(null),
@@ -111,39 +111,39 @@ export class AdoptionFormComponent implements OnInit {
   onClearSelectedImage() {
     this.imageUrl = '';
     this.imageSelected = false;
-    this.adoptionForm.get('image').reset();
+    this.missingForm.get('image').reset();
   }
 
   onSubmit() {
-    const name = this.adoptionForm.value['name'];
-    const description = this.adoptionForm.value['description'];
+    const name = this.missingForm.value['name'];
+    const description = this.missingForm.value['description'];
     const image = this.imageUrl;
-    const age = this.adoptionForm.value['age'];
-    const ageUnit = this.adoptionForm.value['ageUnit'];
-    const phone = this.adoptionForm.value['phone'];
-    const email = this.adoptionForm.value['email'];
-    const location = this.adoptionForm.value['location'];
+    const age = this.missingForm.value['age'];
+    const ageUnit = this.missingForm.value['ageUnit'];
+    const phone = this.missingForm.value['phone'];
+    const email = this.missingForm.value['email'];
+    const location = this.missingForm.value['location'];
 
 
-    this.adoption.name = name;
-    this.adoption.description = description;
-    this.adoption.image = image;
-    this.adoption.age = age;
-    this.adoption.age_measurement_unit = ageUnit;
-    this.adoption.contact_phone = phone;
-    this.adoption.contact_email = email;
-    this.adoption.location = location;
-    this.adoption.publication_type = 'adoption';
+    this.miss.name = name;
+    this.miss.description = description;
+    this.miss.image = image;
+    this.miss.age = age;
+    this.miss.age_measurement_unit = ageUnit;
+    this.miss.contact_phone = phone;
+    this.miss.contact_email = email;
+    this.miss.location = location;
+    this.miss.publication_type = 'missing';
 
     this.isSaving = true;
 
     if (this.editMode) {
-      this.adoptionsService.updateAdoption(this.adoption);
+      this.missingService.updateMissing(this.miss);
     } else {
       const user = new User(this.authService.current_user.email, this.authService.current_user.name);
       user.id = this.authService.current_user.id;
-      this.adoption.user = user;
-      this.adoptionsService.insertAdoption(this.adoption);
+      this.miss.user = user;
+      this.missingService.insertMissing(this.miss);
     }
   }
 

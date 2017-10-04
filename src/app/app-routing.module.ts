@@ -1,3 +1,6 @@
+import { MissingDetailComponent } from './missing/missing-detail/missing-detail.component';
+import { MissingFormComponent } from './missing/missing-form/missing-form.component';
+import { MissingContainerComponent } from './missing/missing-container/missing-container.component';
 import { OauthCallbackComponent } from './auth/oauth-callback/oauth-callback.component';
 import { AdoptionsContainerComponent } from './adoptions/adoptions-container/adoptions-container.component';
 import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adoptions.component';
@@ -22,7 +25,12 @@ const routes: Routes = [
     {path: ':id', component: AdoptionDetailComponent },
     {path: ':id/edit', component: AdoptionFormComponent, canActivate: [Angular2TokenService] }
   ] },
-  {path: 'missing', component: MissingComponent },
+  {path: 'missing', component: MissingComponent, children: [
+    {path: '', component: MissingContainerComponent },
+    {path: 'new', component: MissingFormComponent, canActivate: [Angular2TokenService] },
+    {path: ':id', component: MissingDetailComponent },
+    {path: ':id/edit', component: MissingFormComponent, canActivate: [Angular2TokenService] }
+  ] },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'user/marked_adoptions', component: MarkedAdoptionsComponent, canActivate: [Angular2TokenService] },
