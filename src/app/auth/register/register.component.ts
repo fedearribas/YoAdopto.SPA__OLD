@@ -24,4 +24,8 @@ export class RegisterComponent implements OnInit {
     this.authService.signUp(this.signUpUser);
   }
 
+  loginWithFacebook(): void {
+    this.authService.signInOAuth('facebook');
+  }
+
 }

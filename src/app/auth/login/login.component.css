@@ -2,8 +2,6 @@ input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 
-
-
 /* Shared */
 .loginBtn {
   box-sizing: border-box;
