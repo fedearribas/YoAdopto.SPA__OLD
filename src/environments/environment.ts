@@ -12,7 +12,7 @@ export const environment = {
     oAuthPaths: {
       facebook: 'auth/facebook'
   },
-  oAuthCallbackPath: 'oauth_callback',
+    oAuthCallbackPath: 'oauth_callback',
   },
   base_url_api_adoptions: 'https://yoadopto-api-fedearribas.c9users.io/adoptions',
   base_url_api_comments: 'https://yoadopto-api-fedearribas.c9users.io/comments',
