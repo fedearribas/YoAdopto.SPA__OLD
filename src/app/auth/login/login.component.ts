@@ -24,10 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook(): void {
-    this.authService.signInOAuth('facebook').subscribe(
-      res => this.router.navigate(['/adoptions']),
-      err => this.router.navigate(['/login'])
-    );
+    this.authService.signInOAuth('facebook');
   }
 
 }
