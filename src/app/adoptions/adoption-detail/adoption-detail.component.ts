@@ -80,12 +80,12 @@ export class AdoptionDetailComponent implements OnInit {
 
   onMarkAsAdopted() {
     this.adoption.adopted = true;
-    this.adoptionsService.updateAdoption(this.adoption);
+    this.adoptionsService.updateAdoption(this.adoption, false);
   }
 
   onDismarkAsAdopted() {
     this.adoption.adopted = false;
-    this.adoptionsService.updateAdoption(this.adoption);
+    this.adoptionsService.updateAdoption(this.adoption, false);
   }
 
   canSeeData() {

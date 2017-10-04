@@ -61,13 +61,18 @@ export class AdoptionsService {
       });
     }
 
-  updateAdoption(adoption: Adoption) {
+  updateAdoption(adoption: Adoption, redirect: boolean = true) {
     this.currentUserHeader = new HttpHeaders().set('CURRENTUSERID', this.authService.current_user.id.toString());
     return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader})
       .subscribe(
         (data: Adoption) => {
+          const itemIndex = this.adoptions.findIndex(item => item.id == adoption.id);
+          this.adoptions[itemIndex] = data;
+          console.log('updated: ' + data);
           this.adoptionsListChanged.next(this.adoptions);
-          this.router.navigate(['/adoptions']);
+          if (redirect) {
+            this.router.navigate(['/adoptions']);
+          }
         },
         (error) => alert(error.error)
       );
