@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { AdoptionsComponent } from './adoptions/adoptions.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { LostComponent } from './lost/lost.component';
+import { MissingComponent } from './missing/missing.component';
 import { AdoptionItemComponent } from './adoptions/adoption-list/adoption-item/adoption-item.component';
 import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.component';
 import { AdoptionDetailComponent } from './adoptions/adoption-detail/adoption-detail.component';
@@ -39,7 +39,7 @@ import { OauthCallbackComponent } from './auth/oauth-callback/oauth-callback.com
     AdoptionsComponent,
     HomeComponent,
     HeaderComponent,
-    LostComponent,
+    MissingComponent,
     AdoptionItemComponent,
     AdoptionListComponent,
     AdoptionDetailComponent,

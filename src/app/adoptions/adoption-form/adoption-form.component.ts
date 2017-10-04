@@ -133,6 +133,7 @@ export class AdoptionFormComponent implements OnInit {
     this.adoption.contact_phone = phone;
     this.adoption.contact_email = email;
     this.adoption.location = location;
+    this.adoption.type = 'Adoption';
 
     this.isSaving = true;
 

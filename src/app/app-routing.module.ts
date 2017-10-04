@@ -9,7 +9,7 @@ import { AdoptionFormComponent } from './adoptions/adoption-form/adoption-form.c
 import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.component';
 import { AdoptionDetailComponent } from './adoptions/adoption-detail/adoption-detail.component';
 import { AdoptionsComponent } from './adoptions/adoptions.component';
-import { LostComponent } from './lost/lost.component';
+import { MissingComponent } from './missing/missing.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
@@ -22,7 +22,7 @@ const routes: Routes = [
     {path: ':id', component: AdoptionDetailComponent },
     {path: ':id/edit', component: AdoptionFormComponent, canActivate: [Angular2TokenService] }
   ] },
-  {path: 'lost', component: LostComponent },
+  {path: 'missing', component: MissingComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'user/marked_adoptions', component: MarkedAdoptionsComponent, canActivate: [Angular2TokenService] },

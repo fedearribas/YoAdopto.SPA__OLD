@@ -8,6 +8,7 @@ export class Adoption {
   constructor(
     public name?: string,
     public age?: number,
+    public type?: string,
     public age_measurement_unit?: string,
     public image?: string,
     public adopted?: boolean,
@@ -16,7 +17,9 @@ export class Adoption {
     public published_date?: Date,
     public contact_phone?: number,
     public contact_email?: string,
-    public user?: User
+    public user?: User,
+    public found?: boolean,
+    public delivered?: boolean,
     ) {  }
 
 }
