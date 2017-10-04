@@ -2,6 +2,15 @@ h1, p {
   color:#bdc3c7;
 }
 
-.content {
-  vertical-align: middle;
+@media screen and (min-width:767px) {
+  .content {
+    margin-top: 28%;    
+  }
 }
+
+@media screen and (max-width:767px) {
+  .content {
+    margin-top: 50%;    
+  }
+}
+
