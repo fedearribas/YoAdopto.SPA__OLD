@@ -132,10 +132,13 @@
         <button 
           type="submit" 
           class="btn btn-success btn-block" 
-          [disabled]="!adoptionForm.valid || !imageSelected">
+          [disabled]="!adoptionForm.valid || !imageSelected || isSaving">
           <i class="fa fa-floppy-o" aria-hidden="true"></i> 
           Guardar
         </button>
+        <div *ngIf="isSaving" style="margin-top:10px;">
+          Guardando... <div class="loader"></div>
+        </div>
       </div>
     </div>
   </form>

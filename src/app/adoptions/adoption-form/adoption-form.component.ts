@@ -20,6 +20,8 @@ export class AdoptionFormComponent implements OnInit {
   imageSelected = false;
   editMode = false;
 
+  isSaving = false;
+
   constructor(private adoptionsService: AdoptionsService,
               private router: Router,
               private authService: AuthService,
@@ -131,6 +133,8 @@ export class AdoptionFormComponent implements OnInit {
     this.adoption.contact_phone = phone;
     this.adoption.contact_email = email;
     this.adoption.location = location;
+
+    this.isSaving = true;
 
     if (this.editMode) {
       this.adoptionsService.updateAdoption(this.adoption);
