@@ -21,8 +21,4 @@ export class HeaderComponent implements OnInit {
     this.navbarCollapsed = true;
   }
 
-  loginWithFacebook(): void {
-    this.authService.signInOAuth('facebook');
-  }
-
 }

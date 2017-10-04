@@ -31,6 +31,7 @@ import { CommentItemComponent } from './comments/comment-list/comment-item/comme
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adoptions.component';
 import { AdoptionsContainerComponent } from './adoptions/adoptions-container/adoptions-container.component';
+import { OauthCallbackComponent } from './auth/oauth-callback/oauth-callback.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AdoptionsContainerComponent } from './adoptions/adoptions-container/ado
     CommentNewComponent,
     CommentItemComponent,
     MarkedAdoptionsComponent,
-    AdoptionsContainerComponent
+    AdoptionsContainerComponent,
+    OauthCallbackComponent
   ],
   imports: [
     BrowserModule,

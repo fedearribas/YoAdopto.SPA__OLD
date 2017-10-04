@@ -71,6 +71,19 @@ export class AuthService {
     return this.tokenService.signInOAuth(authType);
   }
 
+  processOAuthCallback() {
+    return this.tokenService.processOAuthCallback();
+  }
+
+  proccessResponse() {
+    this.tokenService.processOAuthCallback();
+    /* localStorage.setItem('accessToken', this.tokenService.currentAuthData.accessToken);
+    console.log(this.tokenService.currentAuthData.accessToken);
+    console.log(this.tokenService.currentAuthData); */
+    this.validateToken();
+    // console.log(this.tokenService.currentUserData);
+  }
+
   validateToken() {
     this.tokenService.validateToken().subscribe(
       (res) => {

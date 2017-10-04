@@ -23,4 +23,8 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(this.signInUser);
   }
 
+  loginWithFacebook(): void {
+    this.authService.signInOAuth('facebook');
+  }
+
 }

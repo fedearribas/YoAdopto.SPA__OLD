@@ -31,12 +31,21 @@
 
                 <p> No tienes una cuenta? Regístrate <a routerLink="/register">aquí</a></p>
                 
+                <div class="form-group">
                   <button type="submit" 
                           [disabled]="!(f.valid)" 
                           [ngClass]="{'disabled': !(f.valid)}" 
                           class="btn btn-info"><i class="fa fa-sign-in" aria-hidden="true"></i> Acceder 
                   </button>
-        
+                </div>
+                  <div class="form-group">
+                    <button 
+                      type="button" 
+                      class="loginBtn loginBtn--facebook clickable"
+                      (click)="loginWithFacebook()">
+                        Continuar con Facebook
+                    </button>
+                </div>
                 </div>
               </div>    
             </form>
