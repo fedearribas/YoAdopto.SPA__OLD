@@ -1,3 +1,4 @@
+import { MarkedAdoptionsComponent } from './../users/marked-adoptions/marked-adoptions.component';
 import { CommentsModule } from './../comments/comments.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,7 +21,8 @@ import { AdoptionsContainerComponent } from './adoptions-container/adoptions-con
     AdoptionListComponent,
     AdoptionDetailComponent,
     AdoptionFormComponent,
-    AdoptionsContainerComponent
+    AdoptionsContainerComponent,
+    MarkedAdoptionsComponent
   ],
   imports: [
     CommonModule,
