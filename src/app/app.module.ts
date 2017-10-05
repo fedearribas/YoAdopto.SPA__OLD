@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { AdoptionsModule } from './adoptions/adoptions.module';
 import { MissingModule } from './missing/missing.module';
@@ -17,13 +18,14 @@ import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adopti
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MarkedAdoptionsComponent,
+    MarkedAdoptionsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     HttpModule,
+    AuthModule,
     AppRoutingModule,
     AdoptionsModule,
     MissingModule,

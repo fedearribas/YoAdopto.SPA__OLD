@@ -23,7 +23,7 @@ import { NgModule } from '@angular/core';
     CommonModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   exports: [
     AppRoutingModule,
