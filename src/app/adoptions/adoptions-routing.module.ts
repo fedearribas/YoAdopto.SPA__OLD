@@ -14,7 +14,7 @@ const adoptionRoutes: Routes = [
     {path: 'new', component: AdoptionFormComponent, canActivate: [Angular2TokenService] },
     {path: ':id', component: AdoptionDetailComponent },
     {path: ':id/edit', component: AdoptionFormComponent, canActivate: [Angular2TokenService] },
-    { path: 'user/marked_adoptions', component: MarkedAdoptionsComponent, canActivate: [Angular2TokenService] }
+    { path: 'user/marked_publications/adoptions', component: MarkedAdoptionsComponent, canActivate: [Angular2TokenService] }
   ] }
 ];
 
