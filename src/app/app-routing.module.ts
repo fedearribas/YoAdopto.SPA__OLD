@@ -1,3 +1,4 @@
+import { MarkedPublicationsComponent } from './users/marked-publications/marked-publications.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './core/home/home.component';
 import { NgModule } from '@angular/core';
@@ -7,6 +8,7 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent },
   { path: 'adoptions', loadChildren: './adoptions/adoption.module#AdoptionModule' },
   { path: 'missing', loadChildren: './missing/missing.module#MissingModule' },
+  { path: 'user/marked_publications', component: MarkedPublicationsComponent },
   { path: '**', redirectTo: 'notfound'},
   { path: 'notfound', component: NotFoundComponent}
 ];

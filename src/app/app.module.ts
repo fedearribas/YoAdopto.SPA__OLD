@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 
@@ -10,11 +11,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MarkedPublicationsComponent } from './users/marked-publications/marked-publications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpModule,
     AuthModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })
