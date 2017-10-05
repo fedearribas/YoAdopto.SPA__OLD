@@ -5,5 +5,5 @@ export class MarkedAdoptions {
   public adoption: Adoption;
   public user: User;
 
-  constructor(public adoption_id: number, public user_id: number) {}
+  constructor(public adoption_id: number, public user_id: number, public publication_type: string) {}
 }

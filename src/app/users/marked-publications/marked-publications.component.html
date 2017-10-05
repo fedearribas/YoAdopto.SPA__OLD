@@ -1,2 +1,13 @@
-<button class="btn-primary" routerLink="/adoptions/user/marked_publications/adoptions">adopciones</button>
-<app-marked-adoptions></app-marked-adoptions>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="display-4 heading">Mis Destacados</h1>
+  </div>
+</div>
+
+<nav class="nav nav-tabs" id="myTab" role="tablist">
+  <a class="nav-item nav-link clickable" [ngClass]="{'active': adoptionsTabSelected}" (click)="onSelectAdoptionsTab()" data-toggle="tab" role="tab" aria-controls="nav-home" aria-expanded="true">Adopciones</a>
+  <a class="nav-item nav-link clickable" [ngClass]="{'active': missingTabSelected}" data-toggle="tab" (click)="onSelectMissingTab()"  role="tab" aria-controls="nav-profile">Perdidos</a>
+</nav>
+<br>
+<app-marked-adoptions *ngIf="adoptionsTabSelected"></app-marked-adoptions>
+<app-marked-missing *ngIf="missingTabSelected"></app-marked-missing>

@@ -58,7 +58,7 @@ export class AdoptionDetailComponent implements OnInit {
 
   onFav() {
     if (!this.marked) {
-      const mark = new MarkedAdoptions(this.adoption.id, this.authService.current_user.id);
+      const mark = new MarkedAdoptions(this.adoption.id, this.authService.current_user.id, 'adoption');
       this.markedAdoptionsService.insertAdoptionMark(mark).subscribe(
         (res: MarkedAdoptions) => {
           this.marked = true;

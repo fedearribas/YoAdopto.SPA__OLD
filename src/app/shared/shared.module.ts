@@ -1,3 +1,4 @@
+import { MarkedMissingComponent } from './../users/marked-missing/marked-missing.component';
 import { MarkedPublicationsComponent } from './../users/marked-publications/marked-publications.component';
 import { CommentsModule } from './../comments/comments.module';
 import { RouterModule } from '@angular/router';
@@ -32,7 +33,8 @@ import { CommonModule } from '@angular/common';
     MissingDetailComponent,
     MissingFormComponent,
     MissingContainerComponent,
-    MarkedPublicationsComponent
+    MarkedPublicationsComponent,
+    MarkedMissingComponent
 
   ],
   imports: [

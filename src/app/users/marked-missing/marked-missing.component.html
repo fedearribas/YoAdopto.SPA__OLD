@@ -1,0 +1,2 @@
+<app-missing-list *ngIf="missing && missing.length > 0" [missing]="missing"></app-missing-list>
+<p class="lead no-data" *ngIf="!missing || missing.length <= 0">{{ noDataMsg }}</p>

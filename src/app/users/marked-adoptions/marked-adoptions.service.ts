@@ -16,12 +16,21 @@ export class MarkedAdoptionsService {
   constructor(private http: HttpClient) { }
 
   getMarkedAdoptionsByUserId(user_id: number) {
-    return this.http.get(this.baseUrl + '/' + user_id).map(
+    return this.http.get(this.baseUrl + '/' + user_id + '/type/adoption').map(
       (res: MarkedAdoptions[]) => {
         return res;
       }
     );
   }
+
+  getMarkedMissingByUserId(user_id: number) {
+    return this.http.get(this.baseUrl + '/' + user_id + '/type/missing').map(
+      (res: MarkedAdoptions[]) => {
+        return res;
+      }
+    );
+  }
+
 
   getMarkedAdoptionByUserIdAndAdoptionId(user_id: number, adoption_id: number) {
     return this.http.get(this.baseUrl + '/' + user_id + '/' + adoption_id).map(
