@@ -8,9 +8,8 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent },
-  { path: 'adoptions', loadChildren: './adoptions/adoptions.module#AdoptionsModule' },
+  { path: 'adoptions', loadChildren: './adoptions/adoption.module#AdoptionModule' },
   { path: 'missing', loadChildren: './missing/missing.module#MissingModule' },
-  { path: 'user/marked_adoptions', component: MarkedAdoptionsComponent, canActivate: [Angular2TokenService] },
   { path: '**', redirectTo: 'notfound'},
   { path: 'notfound', component: NotFoundComponent}
 ];

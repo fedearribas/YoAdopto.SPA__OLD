@@ -1,7 +1,5 @@
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
-import { AdoptionsModule } from './adoptions/adoptions.module';
-import { MissingModule } from './missing/missing.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,13 +10,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adoptions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MarkedAdoptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +23,6 @@ import { MarkedAdoptionsComponent } from './users/marked-adoptions/marked-adopti
     HttpModule,
     AuthModule,
     AppRoutingModule,
-    AdoptionsModule,
-    MissingModule,
     CoreModule
   ],
   bootstrap: [AppComponent]
