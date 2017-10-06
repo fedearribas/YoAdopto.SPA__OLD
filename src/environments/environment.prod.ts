@@ -9,7 +9,7 @@ export const environment = {
   },
     oAuthCallbackPath: 'oauth_callback',
   },
-  base_url_api_adoptions: 'https://yoadoptoapi.herokuapp.com/adoptions',
+  base_url_api_publications: 'https://yoadoptoapi.herokuapp.com/publications',
   base_url_api_comments: 'https://yoadoptoapi.herokuapp.com/comments',
-  base_url_api_marked_adoptions: 'https://yoadoptoapi.herokuapp.com/marked_adoptions/'
+  base_url_api_marked_publications: 'https://yoadoptoapi.herokuapp.com/marked_publications/'
 };

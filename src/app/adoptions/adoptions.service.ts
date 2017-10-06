@@ -16,7 +16,7 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class AdoptionsService {
 
-  private baseUrl = environment.base_url_api_adoptions;
+  private baseUrl = environment.base_url_api_publications;
   private baseUrlFiltered = this.baseUrl + '/type/adoption';
   private currentUserHeader;
   public adoptions: Adoption[] = [];

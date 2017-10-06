@@ -12,7 +12,7 @@ import {environment} from '../../environments/environment';
 export class CommentsService {
 
   private baseUrl = environment.base_url_api_comments;
-  private baseUrlGet = this.baseUrl + '/adoption';
+  private baseUrlGet = this.baseUrl + '/publication';
 
   public comments: Comment[] = [];
   public commentListChanged: Subject<Comment[]> = new BehaviorSubject<Comment[]>(null);

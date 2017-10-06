@@ -27,7 +27,7 @@ export class MarkedMissingComponent implements OnInit {
           this.noDataMsg = 'Aún no tiene ninguna publicacion de perdidos en Destacados';
         }
         res.forEach(element => {
-          this.missing.push(element.adoption);
+          this.missing.push(element.publication);
         });
       }
     );

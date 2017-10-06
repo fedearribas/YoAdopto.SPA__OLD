@@ -10,8 +10,8 @@ import {environment} from '../../../environments/environment';
 @Injectable()
 export class MarkedAdoptionsService {
 
-  postUrl = environment.base_url_api_marked_adoptions;
-  baseUrl = environment.base_url_api_marked_adoptions + 'user';
+  postUrl = environment.base_url_api_marked_publications;
+  baseUrl = environment.base_url_api_marked_publications + 'user';
 
   constructor(private http: HttpClient) { }
 

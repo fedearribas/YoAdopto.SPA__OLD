@@ -23,9 +23,8 @@ export class MarkedAdoptionsComponent implements OnInit {
         if (res.length <= 0) {
           this.noDataMsg = 'Aún no tiene ninguna adopcion en Destacados';
         }
-        console.log(res);
         res.forEach(element => {
-          this.adoptions.push(element.adoption);
+          this.adoptions.push(element.publication);
         });
       }
     );

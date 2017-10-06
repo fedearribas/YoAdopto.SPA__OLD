@@ -6,6 +6,6 @@ export class Comment {
   public user: User;
   public adoption: Adoption;
 
-  constructor(public message: string, public adoption_id: number, public user_id: number) {}
+  constructor(public message: string, public publication_id: number, public user_id: number) {}
 
 }

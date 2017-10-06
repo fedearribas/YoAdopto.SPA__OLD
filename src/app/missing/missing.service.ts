@@ -16,7 +16,7 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class MissingService {
 
-  private baseUrl = environment.base_url_api_adoptions;
+  private baseUrl = environment.base_url_api_publications;
   private baseUrlFiltered = this.baseUrl + '/type/missing';
   private currentUserHeader;
   public missing: Missing[] = [];

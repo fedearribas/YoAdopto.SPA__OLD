@@ -14,7 +14,7 @@ export const environment = {
   },
     oAuthCallbackPath: 'oauth_callback',
   },
-  base_url_api_adoptions: 'https://yoadopto-api-fedearribas.c9users.io/adoptions',
+  base_url_api_publications: 'https://yoadopto-api-fedearribas.c9users.io/publications',
   base_url_api_comments: 'https://yoadopto-api-fedearribas.c9users.io/comments',
-  base_url_api_marked_adoptions: 'https://yoadopto-api-fedearribas.c9users.io/marked_adoptions/'
+  base_url_api_marked_publications: 'https://yoadopto-api-fedearribas.c9users.io/marked_publications/'
 };
