@@ -1,7 +1,7 @@
-import { MarkedAdoptions } from './marked-adoptions.model';
-import { AuthService } from './../../auth/auth.service';
-import { MarkedAdoptionsService } from './marked-adoptions.service';
-import { Adoption } from './../../adoptions/adoption.model';
+import { MarkedPublicationsService } from './../marked-publications.service';
+import { MarkedPublications } from './../marked-publications.model';
+import { AuthService } from './../../../auth/auth.service';
+import { Adoption } from './../../../adoptions/adoption.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,12 +14,12 @@ export class MarkedAdoptionsComponent implements OnInit {
   adoptions: Adoption[] = [];
   noDataMsg = '';
 
-  constructor(private markedAdoptionsService: MarkedAdoptionsService,
+  constructor(private markedPublicationsService: MarkedPublicationsService,
               private authService: AuthService) { }
 
   ngOnInit() {
-    this.markedAdoptionsService.getMarkedAdoptionsByUserId(this.authService.current_user.id).subscribe(
-      (res: MarkedAdoptions[]) => {
+    this.markedPublicationsService.getMarkedAdoptionsByUserId(this.authService.current_user.id).subscribe(
+      (res: MarkedPublications[]) => {
         if (res.length <= 0) {
           this.noDataMsg = 'Aún no tiene ninguna adopcion en Destacados';
         }

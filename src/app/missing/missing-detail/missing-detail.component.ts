@@ -1,5 +1,5 @@
-import { MarkedAdoptions } from './../../users/marked-adoptions/marked-adoptions.model';
-import { MarkedAdoptionsService } from './../../users/marked-adoptions/marked-adoptions.service';
+import { MarkedPublicationsService } from './../../users/marked-publications/marked-publications.service';
+import { MarkedPublications } from './../../users/marked-publications/marked-publications.model';
 import { AuthService } from './../../auth/auth.service';
 import { MissingService } from './../missing.service';
 import { Missing } from './../missing.model';
@@ -17,14 +17,14 @@ export class MissingDetailComponent implements OnInit {
   miss: Missing;
   isDataAvailable = false;
   marked = false;
-  markedMissing: MarkedAdoptions;
+  markedMissing: MarkedPublications;
   loadedMarked = false;
 
   constructor(private route: ActivatedRoute,
     private missingService: MissingService,
     public authService: AuthService,
     private router: Router,
-    private markedAdoptionsService: MarkedAdoptionsService,
+    private markedPublicationsService: MarkedPublicationsService,
     private location: Location) {}
 
   ngOnInit() {
@@ -43,31 +43,32 @@ export class MissingDetailComponent implements OnInit {
 
   getMark() {
     if (this.authService.userSignedIn()) {
-      this.markedAdoptionsService.getMarkedAdoptionByUserIdAndAdoptionId(this.authService.current_user.id, this.miss.id).subscribe(
-        (res: MarkedAdoptions) => {
-          this.markedMissing = res;
-          console.log(res);
-          if (this.markedMissing) {
-            this.marked = true;
+      this.markedPublicationsService.getMarkedPublicationByUserIdAndAdoptionId(this.authService.current_user.id, this.miss.id)
+        .subscribe(
+          (res: MarkedPublications) => {
+            this.markedMissing = res;
+            console.log(res);
+            if (this.markedMissing) {
+              this.marked = true;
+            }
+            this.loadedMarked = true;
           }
-          this.loadedMarked = true;
-        }
-      );
+        );
     }
   }
 
   onFav() {
     if (!this.marked) {
-      const mark = new MarkedAdoptions(this.miss.id, this.authService.current_user.id, 'missing');
-      this.markedAdoptionsService.insertAdoptionMark(mark).subscribe(
-        (res: MarkedAdoptions) => {
+      const mark = new MarkedPublications(this.miss.id, this.authService.current_user.id, 'missing');
+      this.markedPublicationsService.insertPublicationMark(mark).subscribe(
+        (res: MarkedPublications) => {
           this.marked = true;
         }
       );
 
     } else {
-      this.markedAdoptionsService.deleteAdoptionMark(this.markedMissing.id).subscribe(
-        (res: MarkedAdoptions) => {
+      this.markedPublicationsService.deletePublicationMark(this.markedMissing.id).subscribe(
+        (res: MarkedPublications) => {
           this.marked = false;
         }
       );

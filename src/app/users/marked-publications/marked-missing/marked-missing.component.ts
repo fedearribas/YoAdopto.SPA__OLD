@@ -1,9 +1,7 @@
-import { Missing } from './../../missing/missing.model';
-import { MarkedAdoptionsService } from './../marked-adoptions/marked-adoptions.service';
-import { MarkedAdoptions } from './../marked-adoptions/marked-adoptions.model';
-
-import { AuthService } from './../../auth/auth.service';
-
+import { MarkedPublicationsService } from './../marked-publications.service';
+import { MarkedPublications } from './../marked-publications.model';
+import { AuthService } from './../../../auth/auth.service';
+import { Missing } from './../../../missing/missing.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -16,12 +14,12 @@ export class MarkedMissingComponent implements OnInit {
   missing: Missing[] = [];
   noDataMsg = '';
 
-  constructor(private markedAdoptionsService: MarkedAdoptionsService,
+  constructor(private markedPublicationsService: MarkedPublicationsService,
               private authService: AuthService) { }
 
   ngOnInit() {
-    this.markedAdoptionsService.getMarkedMissingByUserId(this.authService.current_user.id).subscribe(
-      (res: MarkedAdoptions[]) => {
+    this.markedPublicationsService.getMarkedMissingByUserId(this.authService.current_user.id).subscribe(
+      (res: MarkedPublications[]) => {
         console.log(res);
         if (res.length <= 0) {
           this.noDataMsg = 'Aún no tiene ninguna publicacion de perdidos en Destacados';

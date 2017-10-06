@@ -1,6 +1,6 @@
 import { User } from './../../auth/user.model';
 import { Adoption } from './../../adoptions/adoption.model';
-export class MarkedAdoptions {
+export class MarkedPublications {
   public id: number;
   public publication: Adoption;
   public user: User;

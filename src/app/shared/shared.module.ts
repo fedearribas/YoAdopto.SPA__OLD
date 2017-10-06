@@ -1,4 +1,5 @@
-import { MarkedMissingComponent } from './../users/marked-missing/marked-missing.component';
+import { MarkedMissingComponent } from './../users/marked-publications/marked-missing/marked-missing.component';
+import { MarkedAdoptionsComponent } from './../users/marked-publications/marked-adoptions/marked-adoptions.component';
 import { MarkedPublicationsComponent } from './../users/marked-publications/marked-publications.component';
 import { CommentsModule } from './../comments/comments.module';
 import { RouterModule } from '@angular/router';
@@ -12,7 +13,7 @@ import { AdoptionFormComponent } from './../adoptions/adoption-form/adoption-for
 import { AdoptionDetailComponent } from './../adoptions/adoption-detail/adoption-detail.component';
 import { AdoptionListComponent } from './../adoptions/adoption-list/adoption-list.component';
 import { AdoptionItemComponent } from './../adoptions/adoption-list/adoption-item/adoption-item.component';
-import { MarkedAdoptionsComponent } from './../users/marked-adoptions/marked-adoptions.component';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -22,7 +23,6 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    MarkedAdoptionsComponent,
     AdoptionItemComponent,
     AdoptionListComponent,
     AdoptionDetailComponent,
@@ -34,6 +34,7 @@ import { CommonModule } from '@angular/common';
     MissingFormComponent,
     MissingContainerComponent,
     MarkedPublicationsComponent,
+    MarkedAdoptionsComponent,
     MarkedMissingComponent
 
   ],
