@@ -38,7 +38,7 @@ export class AdoptionFormComponent implements OnInit {
     );
   }
 
-  private getLocation() {
+  getLocation() {
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
