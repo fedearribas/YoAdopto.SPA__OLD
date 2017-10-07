@@ -21,7 +21,7 @@ export class MarkedAdoptionsComponent implements OnInit {
     this.markedPublicationsService.getMarkedAdoptionsByUserId(this.authService.current_user.id).subscribe(
       (res: MarkedPublications[]) => {
         if (res.length <= 0) {
-          this.noDataMsg = 'Aún no tiene ninguna adopcion en Destacados';
+          this.noDataMsg = 'Aún no tiene ninguna publicación de adopciones en Destacados';
         }
         res.forEach(element => {
           this.adoptions.push(element.publication);
