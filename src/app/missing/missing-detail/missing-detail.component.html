@@ -42,7 +42,10 @@
           <i class="fa fa-birthday-cake" aria-hidden="true"></i>
            {{ miss?.age }} {{ miss?.age_measurement_unit }} de edad
         </p>
-        <p class="lead">Localidad: {{ miss?.location }}</p>
+        <p class="lead">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> 
+          Localidad: {{ miss?.location }}
+        </p>
         <div class="list-group-item" *ngIf="canSeeData(); else showData" >
           <p class="lead">Datos de contacto:</p>
           <p>
