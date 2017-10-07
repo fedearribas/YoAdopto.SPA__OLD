@@ -9,3 +9,13 @@
 a.nav-link {
   color:white;
 }
+
+
+a.nav-link.active {
+  background-color: #bdc3c7;
+  border-color: #bdc3c7 #bdc3c7 #bdc3c7;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #bdc3c7;
+}
