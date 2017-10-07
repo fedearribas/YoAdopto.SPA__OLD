@@ -77,13 +77,21 @@
         </div>  
         <div class="form-group">
           <label for="location">Localidad</label>
-          <input 
-            type="text" 
-            id="location"
-            formControlName="location" 
-            [(ngModel)]="adoption.location"            
-            class="form-control">
-        </div>
+
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <input 
+              type="text" 
+              id="location"
+              formControlName="location" 
+              [(ngModel)]="adoption.location"            
+              class="form-control">
+              <div class="input-group-addon clickable" (click)="getLocation()">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+              </div>
+          </div>
+
+        </div>          
+       
         <div class="form-group">
           <label for="phone">Teléfono</label>
           <input 
@@ -94,14 +102,15 @@
             class="form-control">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input 
+          <label for="email">Email</label>       
+            <input 
             type="email" 
             id="email" 
             formControlName="email" 
             [(ngModel)]="adoption.contact_email" 
-            class="form-control">
-        </div>        
+            class="form-control">       
+        </div>
+        
       </div>
 
       <div class="col-md-6">
