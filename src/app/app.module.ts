@@ -11,11 +11,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileComponent } from './users/profile/profile.component';
+import { ProfileMenuComponent } from './users/profile/profile-menu/profile-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProfileComponent,
+    ProfileMenuComponent
   ],
   imports: [
     BrowserModule,

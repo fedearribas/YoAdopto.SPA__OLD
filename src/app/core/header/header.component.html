@@ -37,6 +37,13 @@
 					<div ngbDropdownMenu aria-labelledby="dropdownMenu1">
 						<button 
 							class="dropdown-item" 
+							routerLink="/user/profile"
+							(click)="navbarCollapsed = true">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+							 Perfil
+						</button>
+						<button 
+							class="dropdown-item" 
 							routerLink="/user/marked_publications"
 							(click)="navbarCollapsed = true">
 							<i class="fa fa-star-o" aria-hidden="true"></i> 
