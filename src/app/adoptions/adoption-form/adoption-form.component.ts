@@ -79,6 +79,8 @@ export class AdoptionFormComponent implements OnInit {
         );
       } else {
         this.getLocation();
+        this.adoption.contact_phone = this.authService.current_user.contact_phone;
+        this.adoption.contact_email = this.authService.current_user.contact_email;
       }
 
     this.adoptionForm = new FormGroup({

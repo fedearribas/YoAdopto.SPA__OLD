@@ -10,17 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileMenuComponent implements OnInit {
 
   user: User;
+  imageUrl: string;
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
     this.user = this.authService.current_user;
-  }
-
-  getProfilePicture(image: string) {
-    if (!image) {
-      return '../../../assets/images/profile_image_default.png';
+    this.imageUrl = this.user.image;
+    if (!this.imageUrl) {
+      this.imageUrl = '../../../assets/images/profile_image_default.png';
     }
-    return image.replace('unsafe: ', '').replace('http', 'https');
   }
-
 }

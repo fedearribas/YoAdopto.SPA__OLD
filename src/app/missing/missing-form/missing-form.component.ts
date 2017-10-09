@@ -79,6 +79,8 @@ export class MissingFormComponent implements OnInit {
         );
       } else {
         this.getLocation();
+        this.miss.contact_phone = this.authService.current_user.contact_phone;
+        this.miss.contact_email = this.authService.current_user.contact_email;
       }
 
     this.missingForm = new FormGroup({

@@ -1,0 +1,86 @@
+<div class="card card-container">
+  
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-12">
+  
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input 
+              type="text" 
+              id="name"
+              formControlName="name" 
+              [(ngModel)]="user.name"
+              placeholder="Nombre de usuario..." 
+              class="form-control">
+          </div>
+          <div class="form-group">
+              <label>Imagen</label><br>
+              <img [src]="imageUrl" alt="" width="100%;"  width="250px" class="img-thumbnail">
+              <div *ngIf="!oauth">
+                <br><br>
+                <label 
+                  class="btn btn-info clickable" 
+                  style="margin-bottom:0px;">
+                  <i class="fa fa-picture-o" aria-hidden="true"></i> 
+                  Seleccionar Imagen
+                  <input 
+                    type="file" 
+                    style="display:none;" 
+                    id="image" accept="image/*" 
+                    formControlName="image" 
+                    (change)="readUrl($event)" 
+                    class="form-control">
+                </label>
+                <button 
+                  type="button" 
+                  *ngIf="imageSelected" 
+                  (click)="onClearSelectedImage()" 
+                  class="btn btn-secondary clickable">
+                  <i class="fa fa-trash" aria-hidden="true"></i> 
+                  Borrar Imagen
+                </button>
+              </div>
+          </div>                 
+         
+          <div class="form-group">
+            <label for="phone">Teléfono de contacto</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              formControlName="phone" 
+              [(ngModel)]="user.contact_phone" 
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email">Email de contacto</label>       
+              <input 
+              type="email" 
+              id="email" 
+              formControlName="email" 
+              [(ngModel)]="user.contact_email" 
+              class="form-control">       
+          </div>
+          
+        </div>
+      </div>
+        
+      <div class="row">
+        <div class="col-md-4 mr-md-auto ml-md-auto">
+          <button 
+            type="submit" 
+            class="btn btn-success btn-block" 
+            [disabled]="!profileForm.valid || isSaving">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i> 
+            Guardar
+          </button>
+          <div *ngIf="isSaving" style="margin-top:10px;">
+            Guardando... <div class="loader"></div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+     
+  

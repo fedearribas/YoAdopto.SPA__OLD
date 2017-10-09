@@ -59,6 +59,14 @@ export class AuthService {
     this.signed_in = false;
   }
 
+  updateProfileSettings(user) {
+    this.tokenService.patch('auth', user).subscribe(
+      (res) => {
+        // this.validateToken();
+        this.router.navigate(['/user/profile/settings/updating-dummy']);
+      });
+  }
+
   userSignedIn() {
      return this.signed_in;
   }
@@ -77,11 +85,7 @@ export class AuthService {
 
   proccessResponse() {
     this.tokenService.processOAuthCallback();
-    /* localStorage.setItem('accessToken', this.tokenService.currentAuthData.accessToken);
-    console.log(this.tokenService.currentAuthData.accessToken);
-    console.log(this.tokenService.currentAuthData); */
     this.validateToken();
-    // console.log(this.tokenService.currentUserData);
   }
 
   validateToken() {
@@ -90,6 +94,7 @@ export class AuthService {
         this.signed_in = true;
         this.current_user = res.json().data;
         this.validated_token = true;
+        console.log(this.tokenService.currentUserData);
       },
       (err) => {
         this.validated_token = true;

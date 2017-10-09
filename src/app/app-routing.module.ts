@@ -1,3 +1,5 @@
+import { UpdatingDummyComponent } from './users/profile/profile-settings/updating-dummy/updating-dummy.component';
+import { ProfileSettingsComponent } from './users/profile/profile-settings/profile-settings.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { MarkedPublicationsComponent } from './users/marked-publications/marked-publications.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -11,9 +13,12 @@ const appRoutes: Routes = [
   { path: 'missing', loadChildren: './missing/missing.module#MissingModule' },
 
   { path: 'user/profile', component: ProfileComponent, children: [
-    { path: 'marked_publications', component: MarkedPublicationsComponent }
+    { path: '', redirectTo: 'settings', pathMatch: 'full' },
+    { path: 'marked_publications', component: MarkedPublicationsComponent },
+    { path: 'settings', component: ProfileSettingsComponent },
+    { path: 'settings/updating-dummy', component: UpdatingDummyComponent }
   ] }, // Move to own module later
- 
+
   { path: '**', redirectTo: 'notfound'},
   { path: 'notfound', component: NotFoundComponent}
 ];
