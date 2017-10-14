@@ -1,46 +1,37 @@
 <div class="card card-container">
+
+  <img [src]="imageUrl" class="img-fluid" alt="">
+
   <div class="text-center">
-    <img 
-      class="img-thumbnail rounded-circle" 
-      [src]="imageUrl" 
-      alt="" 
-      width="120px">
-    
     <h4 class="card-title" style="margin-top:10px !important;">{{ user.name }}</h4>
   </div>
- <p>Email: {{ user.email }}</p>
+  <p>Email: {{ user.email }}</p>
 
- <div class="list-group-item" *ngIf="user.contact_email || user.contact_phone">
-  <p class="lead">Datos de contacto:</p>
-  <p *ngIf="user.contact_phone">
-    <i class="fa fa-mobile" aria-hidden="true"></i> 
-    <span class="card-text">{{ user?.contact_phone }}
-    </span>
-  </p>
-  <p *ngIf="user.contact_email">
-    <i class="fa fa-envelope-o" aria-hidden="true"></i> 
-    <span class="card-text">{{ user?.contact_email }}
-    </span>
-  </p>          
-</div>
- <br>
+  <div class="list-group-item" *ngIf="user.contact_email || user.contact_phone">
+    <p class="lead">Datos de contacto:</p>
+    <p *ngIf="user.contact_phone">
+      <i class="fa fa-mobile" aria-hidden="true"></i>
+      <span class="card-text">{{ user?.contact_phone }}
+      </span>
+    </p>
+    <p *ngIf="user.contact_email">
+      <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      <span class="card-text">{{ user?.contact_email }}
+      </span>
+    </p>
+  </div>
+  <br>
 
- <div class="list-group" role="tablist">
-    <a 
-      class="list-group-item list-group-item-action clickable" 
-      routerLinkActive="active" 
-      routerLink="/user/profile/settings" 
+  <div class="list-group" role="tablist">
+    <a class="list-group-item list-group-item-action clickable" routerLinkActive="active" routerLink="/user/profile/settings"
       role="tab">
-        <i class="fa fa-cog" aria-hidden="true"></i> 
-        Configuración
-      </a>
-    <a 
-      class="list-group-item list-group-item-action clickable" 
-      routerLinkActive="active" 
-      routerLink="/user/profile/marked_publications" 
+      <i class="fa fa-cog" aria-hidden="true"></i>
+      Configuración
+    </a>
+    <a class="list-group-item list-group-item-action clickable" routerLinkActive="active" routerLink="/user/profile/marked_publications"
       role="tab">
-        <i class="fa fa-star-o" aria-hidden="true"></i> 
-        Mis Destacados
-      </a>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+      Mis Destacados
+    </a>
   </div>
 </div>
