@@ -36,7 +36,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.imageSelected = true;
     }
     this.profileForm = new FormGroup({
-      'name': new FormControl({value: null, disabled: this.oauth}, Validators.required),
+      'name': new FormControl({value: this.user.name, disabled: this.oauth}, Validators.required),
       'image': new FormControl(null),
       'phone': new FormControl(null),
       'email': new FormControl(null)
@@ -65,7 +65,10 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   onSubmit() {
-    const name = this.profileForm.value['name'];
+    let name = this.profileForm.value['name'];
+    if (this.oauth) {
+      name = this.user.name;
+    }
     let image = this.imageUrl;
     if (!this.imageSelected) {
       image = '';
