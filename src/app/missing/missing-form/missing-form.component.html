@@ -120,7 +120,7 @@
           <i class="fa fa-birthday-cake" aria-hidden="true"></i> 
           {{ miss.age}}  {{miss.age_measurement_unit }} de edad
         </p>
-        <div class="list-group-item" *ngIf="miss.contact_phone || miss.contact_email">
+        <div class="list-group-item" *ngIf="(miss.contact_phone || miss.contact_email) && miss.name">
           <p class="lead">Datos de contacto:</p>
           <p>
             <i class="fa fa-mobile" aria-hidden="true" *ngIf="miss.contact_phone" ></i> 

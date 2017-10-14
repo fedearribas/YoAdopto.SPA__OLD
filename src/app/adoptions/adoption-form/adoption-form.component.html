@@ -122,7 +122,7 @@
           <i class="fa fa-birthday-cake" aria-hidden="true"></i> 
           {{ adoption.age}}  {{adoption.age_measurement_unit }} de edad
         </p>
-        <div class="list-group-item" *ngIf="adoption.contact_phone || adoption.contact_email">
+        <div class="list-group-item" *ngIf="(adoption.contact_phone || adoption.contact_email) && adoption.name">
           <p class="lead">Datos de contacto:</p>
           <p>
             <i class="fa fa-mobile" aria-hidden="true" *ngIf="adoption.contact_phone" ></i> 

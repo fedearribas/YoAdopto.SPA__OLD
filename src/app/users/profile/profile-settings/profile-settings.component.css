@@ -1,3 +1,7 @@
 .card-container {
   padding: 30px;
 }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
