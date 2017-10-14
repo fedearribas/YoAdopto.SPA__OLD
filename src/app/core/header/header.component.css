@@ -30,3 +30,7 @@
 button.dropdown {
   color:white;
 } */
+
+.white-text {
+  color:white !important;
+}

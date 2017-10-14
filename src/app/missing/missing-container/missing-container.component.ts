@@ -25,17 +25,11 @@ export class MissingContainerComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToData(): void {
-    this.missingSubscription = this.missingService.missingListChanged.subscribe(res => {
-      this.missing = res;
-  });
     this.timerSubscription = TimerObservable.create(0, 5000).subscribe(() => this.refreshData());
   }
 
   private refreshData(): void {
-    this.missingService.getAll();
-    this.missingSubscription = this.missingService.missingListChanged.subscribe(res => {
-        this.missing = res;
-    });
+    this.missingService.getAll().subscribe(data => this.missing = data);
   }
 
   ngOnDestroy() {

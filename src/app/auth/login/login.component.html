@@ -2,7 +2,10 @@
   <div class="col-md-6 mr-md-auto ml-md-auto">
       <div class="card">    
           <div class="card-body">
-            <h3 class="card-title">Ingresar</h3>
+            <div class="text-center">
+              <img src="../../../assets/images/yoadopto-logo.png" class="mb-2" width="60px" alt="">
+              <h3 class="card-title">Ingresar</h3>
+          </div>
             <hr>
             <form (ngSubmit)="onSignInSubmit()" #f="ngForm">        
               <div class="row">
@@ -37,6 +40,7 @@
                           class="btn btn-info"><i class="fa fa-sign-in" aria-hidden="true"></i> Acceder 
                   </button>
                 </div>
+                <hr>
                   <div class="form-group">
                     <button 
                       type="button" 

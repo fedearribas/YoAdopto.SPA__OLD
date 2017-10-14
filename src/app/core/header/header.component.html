@@ -28,8 +28,7 @@
 			<ul class="navbar-nav ml-auto">
 				<div ngbDropdown class="d-inline-block" *ngIf="authService.userSignedIn()">
 					<a 
-						class="nav-item dropdown clickable"
-						style="color:white;" 
+						class="nav-item dropdown clickable white-text"					
 						id="dropdownMenu1" 
 						ngbDropdownToggle>
 						<i class="fa fa-user" aria-hidden="true"></i> 
@@ -54,7 +53,7 @@
 
 				<li class='nav-item' style="margin-right:5px;" *ngIf="!authService.userSignedIn()">
 					<a 
-						class='btn btn-success btn-block' 
+						class='btn btn-warning btn-block white-text' 
 						routerLink="/login" 
 						(click)="navbarCollapsed = true">
 						<i class="fa fa-sign-in" aria-hidden="true"></i> 

@@ -27,17 +27,19 @@ export class AdoptionsService {
               private authService: AuthService,
               private router: Router) { }
 
-  getAll() {
-     return this.httpClient.get<Adoption[]>(this.baseUrlFiltered).map(
-      (adoptions: Adoption[]) => {
-       return adoptions;
-      }
-    ).subscribe(
+  getAll(): Observable<Adoption[]> {
+    if (this.adoptions) {
+      this.adoptionsListChanged.next(this.adoptions);
+    }
+     this.httpClient.get<Adoption[]>(this.baseUrlFiltered).map(
+      adoptions => adoptions)
+      .subscribe(
       (res: Adoption[]) =>  {
         this.adoptions = res;
         this.adoptionsListChanged.next(this.adoptions);
       }
     );
+    return this.adoptionsListChanged;
   }
 
   getAdoption(id: number): Observable<Adoption> {

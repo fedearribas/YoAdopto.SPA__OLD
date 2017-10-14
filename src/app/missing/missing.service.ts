@@ -27,17 +27,19 @@ export class MissingService {
               private authService: AuthService,
               private router: Router) { }
 
-  getAll() {
-     return this.httpClient.get<Missing[]>(this.baseUrlFiltered).map(
-      (missing: Missing[]) => {
-       return missing;
-      }
-    ).subscribe(
+  getAll(): Observable<Missing[]>  {
+    if (this.missing) {
+      this.missingListChanged.next(this.missing);
+    }
+     this.httpClient.get<Missing[]>(this.baseUrlFiltered).map(
+      missing => missing)
+      .subscribe(
       (res: Missing[]) =>  {
         this.missing = res;
         this.missingListChanged.next(this.missing);
       }
     );
+    return this.missingListChanged;
   }
 
   getMiss(id: number): Observable<Missing> {

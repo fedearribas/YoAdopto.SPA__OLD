@@ -25,17 +25,11 @@ export class AdoptionsContainerComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToData(): void {
-    this.adoptionsSubscription = this.adoptionsService.adoptionsListChanged.subscribe(res => {
-      this.adoptions = res;
-  });
     this.timerSubscription = TimerObservable.create(0, 5000).subscribe(() => this.refreshData());
   }
 
   private refreshData(): void {
-    this.adoptionsService.getAll();
-    this.adoptionsSubscription = this.adoptionsService.adoptionsListChanged.subscribe(res => {
-        this.adoptions = res;
-    });
+    this.adoptionsService.getAll().subscribe(data => this.adoptions = data);
   }
 
   ngOnDestroy() {
